@@ -73,16 +73,29 @@
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
 
+        /* Portfolio Card Hover Effects */
+        .portfolio-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .portfolio-card:hover .card-icon {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
     </style>
 </head>
 <body class="bg-white">
 
     <!-- NAVIGATION -->
-    <nav class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50 transition-all duration-300" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-slate-800 tracking-tight">Jian Su, Ph.D.</span>
+                    <span class="text-2xl font-bold text-slate-800 tracking-tight hover:text-blue-600 transition-colors cursor-pointer" onclick="window.scrollTo(0,0)">Jian Su, Ph.D.</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#" class="text-slate-900 font-semibold border-b-2 border-blue-600 px-1 pt-1">Home</a>
@@ -91,7 +104,7 @@
                     <a href="#scholarship" class="text-gray-500 hover:text-slate-900 hover:border-gray-300 border-b-2 border-transparent px-1 pt-1 transition">Scholarship</a>
                     <a href="#credentials" class="text-gray-500 hover:text-slate-900 hover:border-gray-300 border-b-2 border-transparent px-1 pt-1 transition">Credentials</a>
                     <a href="#resume" class="text-gray-500 hover:text-slate-900 hover:border-gray-300 border-b-2 border-transparent px-1 pt-1 transition">Resume</a>
-                    <a href="#contact" class="px-4 py-2 rounded-md bg-slate-800 text-white hover:bg-slate-700 transition">Contact</a>
+                    <a href="#contact" class="px-4 py-2 rounded-md bg-slate-800 text-white hover:bg-slate-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Contact</a>
                 </div>
             </div>
         </div>
@@ -101,19 +114,19 @@
     <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 structural-bg overflow-hidden animate-fade-in-up">
         <!-- Overlay integrated into CSS -->
         <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-sm">
                 Instructional Design Manager <br/>
                 <span class="text-blue-400">driving student success</span>
             </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300">
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300 drop-shadow-sm">
                 Through innovative, high-impact, data-driven course design.
             </p>
             <div class="mt-10 flex justify-center gap-4">
-                <a href="#portfolio" class="gs-button px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:text-lg md:px-10">
+                <a href="#portfolio" class="gs-button px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:text-lg md:px-10 shadow-lg hover:shadow-blue-500/50 transition-all duration-300">
                     View Portfolio
                 </a>
                 <!-- UPDATED LINK: Pointing to Resume.pdf -->
-                <a href="Resume.pdf" target="_blank" class="gs-button px-8 py-3 border border-slate-400 text-base font-medium rounded-md text-white hover:bg-white/10 md:text-lg md:px-10">
+                <a href="Resume.pdf" target="_blank" class="gs-button px-8 py-3 border border-slate-400 text-base font-medium rounded-md text-white hover:bg-white/10 md:text-lg md:px-10 backdrop-blur-sm">
                     Download CV
                 </a>
             </div>
@@ -132,71 +145,77 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <!-- Project 1: Social Work Simulation (Featured Story) -->
-                <div class="group relative bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                    <div class="h-48 bg-orange-50 relative overflow-hidden flex items-center justify-center">
+                <div class="group portfolio-card relative bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden cursor-pointer">
+                    <div class="h-48 bg-orange-50 relative overflow-hidden flex items-center justify-center group-hover:bg-orange-100 transition-colors duration-500">
                          <div class="absolute inset-0 bg-orange-100 pattern-grid-lg opacity-30"></div>
-                        <i class="fas fa-users text-6xl text-orange-300"></i>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
-                            <span class="text-white text-sm font-semibold tracking-wider uppercase">Front Story</span>
+                        <i class="fas fa-users text-6xl text-orange-300 card-icon transition-transform duration-500"></i>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-semibold tracking-wider uppercase">View Case Study</span>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm">
+                            Front Story
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Social Work Simulation</h3>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">Social Work Simulation</h3>
                         <p class="text-gray-600 mb-4">Designed storyline components, embedded in Canvas, managed flow, and created support guides for multi-course access.</p>
-                        <a href="https://canvas.instructure.com/courses/8814527" target="_blank" class="inline-flex items-center text-orange-600 font-semibold text-sm hover:text-orange-800 transition">View Project</a>
+                        <a href="https://canvas.instructure.com/courses/8814527" target="_blank" class="inline-flex items-center text-orange-600 font-semibold text-sm hover:text-orange-800 transition">View Project <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i></a>
                     </div>
                 </div>
 
                 <!-- Project 2: Interactive Learning Objects (Renamed Storyline Project) -->
-                <div class="group relative bg-white border-2 border-purple-500 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden transform scale-105 md:scale-100 md:hover:scale-105">
+                <div class="group portfolio-card relative bg-white border-2 border-purple-500 rounded-lg shadow-lg overflow-hidden">
                     <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10 uppercase tracking-wider">
                         New Project
                     </div>
-                    <div class="h-48 bg-purple-50 relative overflow-hidden flex items-center justify-center">
+                    <div class="h-48 bg-purple-50 relative overflow-hidden flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-500">
                         <div class="absolute inset-0 bg-purple-100 pattern-grid-lg opacity-30"></div>
-                        <i class="fas fa-shapes text-6xl text-purple-300 group-hover:text-purple-600 transition-colors duration-300"></i>
-                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
-                            <span class="text-white text-sm font-semibold tracking-wider uppercase">Articulate 360</span>
+                        <i class="fas fa-shapes text-6xl text-purple-300 card-icon transition-transform duration-500"></i>
+                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-semibold tracking-wider uppercase">Try Interaction</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Interactive Learning Objects</h3>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">Interactive Learning Objects</h3>
                         <p class="text-gray-600 mb-4">Storyline design work demonstrating complex branching and user engagement strategies.</p>
                         <a href="https://share.articulate.com/mdqHHMLwjJVolhygvCJhp" target="_blank" class="inline-flex items-center text-purple-600 font-semibold text-sm hover:text-purple-800 transition">
-                            Launch Project <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                            Launch Project <i class="fas fa-external-link-alt ml-2 transform group-hover:scale-110 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Project 3: MATH 112 (Featured) -->
-                <div class="group relative bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer">
-                    <div class="h-48 bg-slate-100 relative overflow-hidden flex items-center justify-center">
+                <div class="group portfolio-card relative bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden cursor-pointer">
+                    <div class="h-48 bg-slate-100 relative overflow-hidden flex items-center justify-center group-hover:bg-slate-200 transition-colors duration-500">
                         <!-- Abstract representation of the "After" visual -->
                         <div class="absolute inset-0 bg-blue-50 pattern-grid-lg opacity-20"></div>
-                        <i class="fas fa-chart-line text-6xl text-blue-200 group-hover:text-blue-600 transition-colors duration-300"></i>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
-                            <span class="text-white text-sm font-semibold tracking-wider uppercase">High-Impact Redesign</span>
+                        <i class="fas fa-chart-line text-6xl text-blue-200 group-hover:text-blue-600 card-icon transition-all duration-500"></i>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-semibold tracking-wider uppercase">Read Analysis</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition">MATH 112</h3>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">MATH 112</h3>
                         <p class="text-gray-600 mb-4 line-clamp-3">Reversing high attrition rates through structural redesign and pedagogical alignment.</p>
-                        <span class="inline-flex items-center text-blue-600 font-semibold text-sm">
-                            Read Case Study <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        <span class="inline-flex items-center text-blue-600 font-semibold text-sm group-hover:underline">
+                            Read Case Study <i class="fas fa-arrow-right ml-2 text-xs transform group-hover:translate-x-1 transition-transform"></i>
                         </span>
                     </div>
                 </div>
 
                 <!-- Project 4: Managing Digital Distractions -->
-                <div class="group relative bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                    <div class="h-48 bg-slate-100 flex items-center justify-center">
-                        <i class="fas fa-mobile-alt text-6xl text-gray-300"></i>
+                <div class="group portfolio-card relative bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition-colors duration-500">
+                        <i class="fas fa-mobile-alt text-6xl text-gray-300 group-hover:text-slate-600 card-icon transition-transform duration-500"></i>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-semibold tracking-wider uppercase">Watch Presentation</span>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Managing Digital Distractions</h3>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-slate-700 transition-colors">Managing Digital Distractions</h3>
                         <p class="text-gray-600 mb-4">Presentation on utilizing digital devices for student engagement in the classroom.</p>
                         <div class="text-xs text-gray-500 mb-4 italic">Presented at ELI Annual Meeting 2019</div>
-                        <a href="https://canvas.instructure.com/courses/1298217" target="_blank" class="inline-flex items-center text-gray-400 font-semibold text-sm hover:text-gray-600 transition">View Session <i class="fas fa-external-link-alt ml-2 text-xs"></i></a>
+                        <a href="https://canvas.instructure.com/courses/1298217" target="_blank" class="inline-flex items-center text-gray-400 font-semibold text-sm hover:text-gray-600 transition">View Session <i class="fas fa-external-link-alt ml-2 text-xs transform group-hover:scale-110 transition-transform"></i></a>
                     </div>
                 </div>
 
@@ -351,7 +370,7 @@
 
                 <!-- Philosophy Cards -->
                 <div class="space-y-4">
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-start">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-start hover:shadow-md transition-shadow duration-300">
                         <div class="bg-blue-100 p-3 rounded-full mr-4 flex-shrink-0 text-blue-600">
                             <i class="fas fa-chart-pie"></i>
                         </div>
@@ -361,7 +380,7 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-start">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-start hover:shadow-md transition-shadow duration-300">
                         <div class="bg-green-100 p-3 rounded-full mr-4 flex-shrink-0 text-green-600">
                             <i class="fas fa-universal-access"></i>
                         </div>
@@ -371,7 +390,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-start">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-start hover:shadow-md transition-shadow duration-300">
                         <div class="bg-purple-100 p-3 rounded-full mr-4 flex-shrink-0 text-purple-600">
                             <i class="fas fa-hands-helping"></i>
                         </div>
@@ -395,21 +414,21 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Publications -->
-                <div class="bg-slate-50 p-8 rounded-xl border border-gray-100">
+                <div class="bg-slate-50 p-8 rounded-xl border border-gray-100 hover:shadow-md transition-shadow duration-300">
                     <h3 class="flex items-center text-xl font-bold text-slate-900 mb-6">
                         <span class="bg-blue-600 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-4 shadow-sm"><i class="fas fa-book-open"></i></span>
                         Selected Publications
                     </h3>
                     <ul class="space-y-6">
-                        <li class="pl-4 border-l-2 border-blue-200">
+                        <li class="pl-4 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300">
                             <p class="text-slate-900 font-semibold text-sm">Validating the Turkish Version of the Self-Directed Online Learning Scale</p>
                             <p class="text-gray-500 text-sm italic mt-1">Technology, Knowledge and Learning (2025)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-blue-200">
+                        <li class="pl-4 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300">
                             <p class="text-slate-900 font-semibold text-sm">Investigating Students' Perception with an Online Dynamic Earth Course</p>
                             <p class="text-gray-500 text-sm italic mt-1">Geosciences (2024)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-blue-200">
+                        <li class="pl-4 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300">
                             <p class="text-slate-900 font-semibold text-sm">A Construct Revalidation of the Community of Inquiry Survey</p>
                             <p class="text-gray-500 text-sm italic mt-1">International Review of Research in Open and Distributed Learning (2021)</p>
                         </li>
@@ -417,25 +436,25 @@
                 </div>
 
                 <!-- Speaking -->
-                <div class="bg-slate-50 p-8 rounded-xl border border-gray-100">
+                <div class="bg-slate-50 p-8 rounded-xl border border-gray-100 hover:shadow-md transition-shadow duration-300">
                     <h3 class="flex items-center text-xl font-bold text-slate-900 mb-6">
                         <span class="bg-purple-600 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-4 shadow-sm"><i class="fas fa-microphone-alt"></i></span>
                         Conference Speaking
                     </h3>
                     <ul class="space-y-6">
-                        <li class="pl-4 border-l-2 border-purple-200">
+                        <li class="pl-4 border-l-2 border-purple-200 hover:border-purple-400 transition-colors duration-300">
                             <p class="text-slate-900 font-semibold text-sm">Building An Online Learning Community</p>
                             <p class="text-gray-500 text-sm italic mt-1">OLC Innovate Conference, Nashville, TN (2023)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-purple-200">
+                        <li class="pl-4 border-l-2 border-purple-200 hover:border-purple-400 transition-colors duration-300">
                             <p class="text-slate-900 font-semibold text-sm">More Than Just Eye Candy: Visual Design for Online Content</p>
                             <p class="text-gray-500 text-sm italic mt-1">OLC Accelerate, Washington, DC (2020)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-purple-200">
+                        <li class="pl-4 border-l-2 border-purple-200 hover:border-purple-400 transition-colors duration-300">
                             <p class="text-slate-900 font-semibold text-sm">Use Them or Lose Them: Digital Devices for Student Engagement</p>
                             <p class="text-gray-500 text-sm italic mt-1">ELI Annual Meeting (Anaheim) & Encore! Online Event (2019)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-purple-200">
+                        <li class="pl-4 border-l-2 border-purple-200 hover:border-purple-400 transition-colors duration-300">
                             <p class="text-slate-900 font-semibold text-sm">Psychometric Validation of the Self-Directed Learning Scale</p>
                             <p class="text-gray-500 text-sm italic mt-1">ELI Annual Meeting, Anaheim, CA (2019)</p>
                         </li>
@@ -461,7 +480,7 @@
                     </h3>
                     <div class="space-y-4">
                         <!-- Cert 1 -->
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start">
+                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300">
                             <div class="flex-shrink-0 mr-4">
                                 <span class="bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">IBM</span>
                             </div>
@@ -471,7 +490,7 @@
                             </div>
                         </div>
                         <!-- Cert 2 -->
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start">
+                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300">
                             <div class="flex-shrink-0 mr-4">
                                 <span class="bg-blue-50 text-blue-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">Google</span>
                             </div>
@@ -481,7 +500,7 @@
                             </div>
                         </div>
                         <!-- Cert 3 -->
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start">
+                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300">
                             <div class="flex-shrink-0 mr-4">
                                 <span class="bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">IBM</span>
                             </div>
@@ -491,7 +510,7 @@
                             </div>
                         </div>
                          <!-- Cert 4 -->
-                         <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start">
+                         <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300">
                             <div class="flex-shrink-0 mr-4">
                                 <span class="bg-pink-50 text-pink-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">Asana</span>
                             </div>
@@ -508,7 +527,7 @@
                     <h3 class="font-bold text-slate-900 text-xl mb-6 flex items-center">
                         <i class="fas fa-medal text-yellow-500 mr-3"></i> Honors & Awards
                     </h3>
-                    <div class="bg-white p-8 rounded-xl border border-gray-200 h-full">
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 h-full hover:shadow-md transition-shadow duration-300">
                         <ul class="space-y-8">
                             <li class="relative pl-6 border-l-2 border-yellow-400">
                                 <h4 class="text-lg font-bold text-slate-900">Travis Hawk Fellowship</h4>
@@ -540,7 +559,7 @@
                     <h2 class="text-3xl font-bold text-slate-900">Resume</h2>
                     <p class="text-gray-500 mt-1">Professional Experience & Qualifications</p>
                 </div>
-                <a href="Resume.pdf" target="_blank" class="mt-4 md:mt-0 inline-flex items-center px-6 py-2 border border-slate-300 shadow-sm text-sm font-medium rounded-md text-slate-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <a href="Resume.pdf" target="_blank" class="mt-4 md:mt-0 inline-flex items-center px-6 py-2 border border-slate-300 shadow-sm text-sm font-medium rounded-md text-slate-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:-translate-y-0.5">
                     <i class="fas fa-download mr-2 text-slate-400"></i> Download PDF
                 </a>
             </div>
@@ -627,19 +646,19 @@
 
                 <!-- Sidebar (Skills) -->
                 <div class="space-y-8">
-                    <div class="bg-slate-50 p-6 rounded-lg border border-gray-200">
+                    <div class="bg-slate-50 p-6 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300">
                         <h3 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider">Core Competencies</h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Instructional Systems Design</span>
-                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Project Management</span>
-                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Faculty Development</span>
-                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Needs Analysis</span>
-                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Universal Design for Learning (UDL)</span>
-                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Data-Driven Design</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-default">Instructional Systems Design</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-default">Project Management</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-default">Faculty Development</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-default">Needs Analysis</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-default">Universal Design for Learning (UDL)</span>
+                            <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-default">Data-Driven Design</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 p-6 rounded-lg border border-gray-200">
+                    <div class="bg-slate-50 p-6 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300">
                         <h3 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider">Tools & Tech</h3>
                         <div class="space-y-3">
                             <div>
@@ -647,8 +666,8 @@
                                     <span class="font-medium text-slate-700">Canvas LMS</span>
                                     <span class="text-slate-400">Expert</span>
                                 </div>
-                                <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 100%"></div>
+                                <div class="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-blue-600 h-1.5 rounded-full w-0 animate-[growWidth_1.5s_ease-out_forwards]" style="--target-width: 100%"></div>
                                 </div>
                             </div>
                             <div>
@@ -656,8 +675,8 @@
                                     <span class="font-medium text-slate-700">Articulate Rise/Storyline</span>
                                     <span class="text-slate-400">Advanced</span>
                                 </div>
-                                <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 90%"></div>
+                                <div class="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-blue-600 h-1.5 rounded-full w-0 animate-[growWidth_1.5s_ease-out_0.2s_forwards]" style="--target-width: 90%"></div>
                                 </div>
                             </div>
                             <div>
@@ -665,11 +684,36 @@
                                     <span class="font-medium text-slate-700">HTML/CSS</span>
                                     <span class="text-slate-400">Intermediate</span>
                                 </div>
-                                <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 75%"></div>
+                                <div class="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-blue-600 h-1.5 rounded-full w-0 animate-[growWidth_1.5s_ease-out_0.4s_forwards]" style="--target-width: 75%"></div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <style>
+                            @keyframes growWidth {
+                                from { width: 0; }
+                                to { width: var(--target-width); }
+                            }
+                        </style>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300">
+                        <h3 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider">Certifications</h3>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-start hover:text-slate-900 transition-colors">
+                                <i class="fas fa-certificate text-yellow-500 mt-0.5 mr-2"></i>
+                                <span>Google Project Management Professional</span>
+                            </li>
+                            <li class="flex items-start hover:text-slate-900 transition-colors">
+                                <i class="fas fa-certificate text-yellow-500 mt-0.5 mr-2"></i>
+                                <span>IBM AI Project Manager</span>
+                            </li>
+                            <li class="flex items-start hover:text-slate-900 transition-colors">
+                                <i class="fas fa-certificate text-yellow-500 mt-0.5 mr-2"></i>
+                                <span>Evaluate, Statistics, & Measurement (Graduate Cert)</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
