@@ -13,7 +13,7 @@
         body {
             font-family: 'Open Sans', sans-serif;
             color: #333;
-            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4 {
@@ -24,81 +24,25 @@
         .structural-bg {
             background-color: #1e293b;
             /* Dark slate overlay + YOUR CUSTOM IMAGE */
-            /* Ensure your uploaded image is named exactly "hero-bg.jpg" (case sensitive!) */
             background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.85)),
+                linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)),
                 url('./hero-bg.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Parallax effect */
         }
-
-        /* --- SCROLL REVEAL ANIMATION --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        /* JS will add 'active' class on scroll */
-        .reveal.active { 
-            opacity: 1;
-            transform: translateY(0);
-        }
         
-        /* Simple Fade In Animation for Load */
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Stagger delays for grid items (Note: these need JS for staggered application) */
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-
-        /* --- TYPEWRITER CURSOR --- */
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            background-color: #60a5fa; /* Blue-400 */
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
         /* --- PORTFOLIO CARD HOVER --- */
         .portfolio-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .portfolio-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
         }
         .portfolio-card:hover .card-icon {
             transform: scale(1.1);
             transition: transform 0.3s ease;
-        }
-
-        /* --- SKILL BAR ANIMATION --- */
-        .skill-bar-fill {
-            width: 0;
-            transition: width 1.5s ease-out;
-        }
-        
-        @keyframes growWidth {
-            from { width: 0; }
-            to { width: var(--target-width); }
         }
 
         /* --- IMAGE COMPARISON SLIDER (Required CSS) --- */
@@ -146,9 +90,6 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
             transition: transform 0.1s;
         }
-        .img-comp-slider:active {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
         
         /* Mobile adjustment for slider height */
         @media (max-width: 640px) {
@@ -156,62 +97,41 @@
                 height: 300px; 
             }
         }
-
-
-        /* --- NAVIGATION ACTIVE STATE (ScrollSpy) --- */
-        /* Use important because Tailwind classes conflict with simple CSS rules */
-        #navbar .nav-link.active {
-            color: #2563eb !important; /* Blue-600 */
-            border-bottom-color: #2563eb !important;
-        }
-        /* Default text color for the dynamic nav bar */
-        #navbar .nav-link {
-            color: white; /* Default on dark hero */
-        }
-        #navbar.bg-white .nav-link {
-            color: #1e293b; /* Dark on white scroll */
-        }
-        #navbar.bg-white .contact-btn {
-            background-color: #1e293b;
-            color: white;
-        }
-
     </style>
 </head>
 <body class="bg-white">
 
-    <!-- NAVIGATION -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent text-white" id="navbar">
+    <!-- NAVIGATION (Simplified: Static White Bar) -->
+    <nav class="sticky top-0 w-full z-50 bg-white shadow-md">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold tracking-tight cursor-pointer" onclick="window.scrollTo(0,0)">Jian Su, Ph.D.</span>
+                    <span class="text-2xl font-bold text-slate-800 tracking-tight cursor-pointer" onclick="window.scrollTo(0,0)">Jian Su, Ph.D.</span>
                 </div>
                 <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider">
-                    <a href="#" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Home</a>
-                    <a href="#process" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Process</a>
-                    <a href="#portfolio" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Portfolio</a>
-                    <a href="#about" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">About</a>
-                    <a href="#scholarship" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Scholarship</a>
-                    <a href="#credentials" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Credentials</a>
-                    <a href="#contact" class="px-4 py-2 rounded border border-white hover:bg-white hover:text-slate-900 transition contact-btn">Contact</a>
+                    <a href="#" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Home</a>
+                    <a href="#process" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Process</a>
+                    <a href="#portfolio" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Portfolio</a>
+                    <a href="#about" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">About</a>
+                    <a href="#scholarship" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Scholarship</a>
+                    <a href="#credentials" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Credentials</a>
+                    <a href="#contact" class="px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-blue-600 transition">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="relative min-h-screen flex items-center justify-center structural-bg text-center px-4">
-        <div class="relative max-w-5xl mx-auto z-10 pt-20">
+    <!-- HERO SECTION (Simplified: Static Text) -->
+    <header class="relative min-h-[60vh] flex items-center justify-center structural-bg text-center px-4 py-20">
+        <div class="relative max-w-5xl mx-auto z-10 pt-10">
             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-                Instructional Design Manager <br/>
-                <span class="text-blue-400" id="typewriter-text"></span><span class="cursor">&nbsp;</span>
+                Instructional Design Manager 
             </h1>
-            <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-200 font-light drop-shadow-md reveal">
+            <p class="mt-4 max-w-3xl mx-auto text-2xl text-blue-300 font-light drop-shadow-md">
                 Through innovative, high-impact, data-driven course design.
             </p>
-            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 reveal">
-                <a href="#portfolio" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-blue-500/50 transition-all transform hover:-translate-y-1">
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#portfolio" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-all transform hover:-translate-y-1">
                     View Portfolio
                 </a>
                 <!-- UPDATED LINK: Pointing to Resume.pdf -->
@@ -220,26 +140,19 @@
                 </a>
             </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#portfolio" class="text-white opacity-70 hover:opacity-100">
-                <i class="fas fa-chevron-down text-3xl"></i>
-            </a>
-        </div>
     </header>
 
-    <!-- NEW SECTION: MY PROCESS (Adjusted to 2 columns on mobile) -->
+    <!-- NEW SECTION: MY PROCESS -->
     <section id="process" class="py-24 bg-slate-50 border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-16">
                 <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Methodology</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">How I Work (ADDIE & Agile)</h2>
                 <p class="mt-4 text-lg text-gray-500">Structured processes ensure timely delivery and measurable outcomes.</p>
             </div>
             
             <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-2 for mobile, md:grid-cols-5 for desktop -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center reveal">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center">
                 <!-- Step 1 -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
@@ -292,7 +205,7 @@
     <!-- PORTFOLIO GRID -->
     <section id="portfolio" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-16">
                 <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Case Studies</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">Selected Works</h2>
                 <p class="mt-4 text-lg text-gray-500">Case studies in academic transformation and faculty development.</p>
@@ -302,7 +215,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 
                 <!-- Project 1: Social Work Simulation (Featured Story) -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     <!-- Card Content -->
                     <div class="h-56 bg-orange-50 relative overflow-hidden flex items-center justify-center group-hover:bg-orange-100 transition-colors duration-500">
                          <div class="absolute inset-0 bg-orange-100 pattern-grid-lg opacity-30"></div>
@@ -326,7 +239,7 @@
                 </div>
 
                 <!-- Project 2: Interactive Learning Objects -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10 uppercase tracking-wider">
                         New Project
                     </div>
@@ -349,7 +262,7 @@
                 </div>
 
                 <!-- Project 3: MATH 112 -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="h-56 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative overflow-hidden">
                         <!-- Abstract representation of the "After" visual -->
                         <i class="fas fa-chart-line text-7xl text-blue-200 group-hover:text-blue-600 card-icon transition-all duration-500 group-hover:scale-110"></i>
@@ -368,7 +281,7 @@
                 </div>
 
                 <!-- Project 4: Managing Digital Distractions -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     <a href="https://canvas.instructure.com/courses/1298217" target="_blank" class="block h-full">
                         <div class="h-56 bg-gradient-to-br from-slate-50 to-slate-200 flex items-center justify-center relative overflow-hidden">
                             <i class="fas fa-mobile-alt text-7xl text-gray-300 group-hover:text-slate-600 card-icon transition-transform duration-500 group-hover:scale-110"></i>
@@ -396,7 +309,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Context Header for the Mockup -->
-            <div class="mb-12 text-center reveal">
+            <div class="mb-12 text-center">
                 <span class="text-orange-600 font-bold uppercase tracking-widest text-sm">Project Deep Dive</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">Social Work Simulation</h2>
             </div>
@@ -405,7 +318,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 
                 <!-- Text Content -->
-                <div class="reveal">
+                <div>
                     <div class="inline-block bg-orange-100 text-orange-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">Before & After</div>
                     <h2 class="text-3xl font-bold text-slate-900 mb-6">Reimagining the Student Experience</h2>
                     <p class="text-gray-600 text-lg mb-6 leading-relaxed">
@@ -429,7 +342,7 @@
                 </div>
 
                 <!-- Interactive Slider -->
-                <div class="reveal delay-200">
+                <div>
                     <p class="text-center text-xs text-gray-500 mb-2 uppercase tracking-widest">Drag slider to compare</p>
                     
                     <div class="img-comp-container" id="comparison-1">
@@ -454,13 +367,13 @@
     <section id="math-deep-dive" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="mb-8 border-l-4 border-blue-600 pl-4 reveal">
+            <div class="mb-8 border-l-4 border-blue-600 pl-4">
                 <span class="text-sm font-bold text-blue-600 tracking-wide uppercase">Secondary Project Deep Dive</span>
                 <h2 class="text-3xl font-bold text-slate-900">MATH 112 Redesign</h2>
             </div>
 
             <!-- Content for MATH 112 Case Study -->
-            <div class="bg-slate-50 rounded-xl shadow-lg p-8 border border-gray-200 reveal">
+            <div class="bg-slate-50 rounded-xl shadow-lg p-8 border border-gray-200">
                 
                 <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 3 columns on large screens -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -505,7 +418,7 @@
     <!-- ABOUT SECTION -->
     <section id="about" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-slate-900 mb-4">Expertise & Technical Skills</h2>
                 <p class="mt-4 text-lg text-gray-500">A unique blend of academic theory and technical application.</p>
             </div>
@@ -513,7 +426,7 @@
             <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on large screens -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <!-- Bio -->
-                <div class="prose prose-lg text-gray-600 reveal">
+                <div class="prose prose-lg text-gray-600">
                     <p>
                         With a <strong>Ph.D. in Instructional Technology</strong> and a background in Linguistics, I approach course design as a translation process: translating expert knowledge into learner-centric experiences.
                     </p>
@@ -538,15 +451,15 @@
                     </div>
                 </div>
 
-                <!-- Animated Skill Bars -->
-                <div class="space-y-8 reveal delay-200">
+                <!-- Skill bars (Static - no animation logic needed) -->
+                <div class="space-y-8">
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-base font-bold text-slate-700">Canvas LMS Architecture</span>
                             <span class="text-sm font-medium text-blue-600">Expert</span>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
-                            <div class="bg-blue-600 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_forwards]" style="--target-width: 95%"></div>
+                            <div class="bg-blue-600 h-3 rounded-full" style="width: 95%"></div>
                         </div>
                     </div>
                     <div>
@@ -555,7 +468,7 @@
                             <span class="text-sm font-medium text-purple-600">Advanced</span>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
-                            <div class="bg-purple-600 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.2s_forwards]" style="--target-width: 90%"></div>
+                            <div class="bg-purple-600 h-3 rounded-full" style="width: 90%"></div>
                         </div>
                     </div>
                     <div>
@@ -564,7 +477,7 @@
                             <span class="text-sm font-medium text-orange-500">Intermediate</span>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
-                            <div class="bg-orange-500 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.4s_forwards]" style="--target-width: 75%"></div>
+                            <div class="bg-orange-500 h-3 rounded-full" style="width: 75%"></div>
                         </div>
                     </div>
                     <div>
@@ -573,7 +486,7 @@
                             <span class="text-sm font-medium text-slate-500">Certified</span>
                         </div>
                         <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
-                            <div class="bg-gray-500 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.6s_forwards]" style="--target-width: 85%"></div>
+                            <div class="bg-gray-500 h-3 rounded-full" style="width: 85%"></div>
                         </div>
                     </div>
                 </div>
@@ -861,83 +774,13 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC (RESTORED & IMPROVED) -->
+    <!-- JAVASCRIPT LOGIC (CLEANED) -->
     <script>
-        // 1. NAVIGATION SCROLL EFFECT & SCROLLSPY
+        // 1. NAVIGATION SCROLL EFFECT (Simplified)
         const navbar = document.getElementById('navbar');
-        const navLinks = document.querySelectorAll('.nav-link');
-        // Add all sections that should trigger the ScrollSpy logic
-        const sections = document.querySelectorAll('#process, #portfolio, #social-work-deep-dive, #math-deep-dive, #about, #scholarship, #credentials, #resume, #contact');
+        // Removed complex ScrollSpy logic as navigation is now static white.
 
-        function updateNavStyles() {
-            // Sticky Nav Style
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white', 'shadow-md', 'text-slate-900');
-                navbar.classList.remove('bg-transparent', 'text-white');
-            } else {
-                navbar.classList.remove('bg-white', 'shadow-md', 'text-slate-900');
-                navbar.classList.add('bg-transparent', 'text-white');
-            }
-
-            // ScrollSpy (Active Link Highlighting)
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 250)) { // Adjusted offset for smoother triggering
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(li => {
-                li.classList.remove('active');
-                if (li.getAttribute('href').includes(current)) {
-                    li.classList.add('active');
-                }
-            });
-        }
-        window.addEventListener('scroll', updateNavStyles);
-        window.addEventListener('load', updateNavStyles); // Initial check on load
-
-
-        // 2. TYPEWRITER EFFECT
-        const words = ["driving student success.", "empowering faculty.", "innovating curriculum.", "scaling accessibility."];
-        let i = 0;
-        let timer;
-
-        function typeWriter() {
-            const heading = document.getElementById("typewriter-text");
-            // Guard clause in case element is missing
-            if (!heading) return;
-            
-            const currentWord = words[i];
-            let charIndex = 0;
-            
-            function type() {
-                if (charIndex < currentWord.length) {
-                    heading.innerHTML += currentWord.charAt(charIndex);
-                    charIndex++;
-                    timer = setTimeout(type, 100);
-                } else {
-                    timer = setTimeout(erase, 2000);
-                }
-            }
-            
-            function erase() {
-                if (charIndex > 0) {
-                    heading.innerHTML = currentWord.substring(0, charIndex - 1);
-                    charIndex--;
-                    timer = setTimeout(erase, 50);
-                } else {
-                    i = (i + 1) % words.length;
-                    type();
-                }
-            }
-            type();
-        }
-
-
-        // 3. IMAGE COMPARISON SLIDER
+        // 2. IMAGE COMPARISON SLIDER (Essential logic for interaction)
         function initComparisons() {
             const container = document.getElementById("comparison-1");
             if (!container) return; // Guard clause
@@ -946,7 +789,6 @@
             const afterImage = container.querySelector(".img-comp-img:not(.img-comp-overlay) img");
             const beforeImage = overlay.querySelector("img");
             
-            // Adjust overlay width and slider position to match image size (important for responsiveness)
             const adjustSliderPosition = () => {
                 const containerWidth = container.offsetWidth;
                 overlay.style.width = (containerWidth / 2) + "px";
@@ -962,8 +804,8 @@
             slider.innerHTML = "<i class='fas fa-arrows-alt-h text-orange-600'></i>";
             container.appendChild(slider);
             
-            adjustSliderPosition(); // Initial position
-            window.addEventListener('resize', adjustSliderPosition); // Adjust on resize
+            adjustSliderPosition(); 
+            window.addEventListener('resize', adjustSliderPosition); 
 
             let clicked = 0;
 
@@ -1002,40 +844,10 @@
             }
         }
 
-        // 4. SCROLL REVEAL & SKILL BAR ANIMATION
-        function reveal() {
-            const windowHeight = window.innerHeight;
-            
-            // Basic Reveal Logic
-            const reveals = document.querySelectorAll(".reveal");
-            for (let i = 0; i < reveals.length; i++) {
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-
-            // Skill bars specific trigger
-            const skillBars = document.querySelectorAll(".skill-bar-fill");
-            for (let j = 0; j < skillBars.length; j++) {
-                const barTop = skillBars[j].getBoundingClientRect().top;
-                if (barTop < windowHeight - 100) {
-                    // Trigger the CSS animation by setting the width property
-                    skillBars[j].style.setProperty('--target-width', skillBars[j].getAttribute("data-width"));
-                    skillBars[j].style.animationPlayState = 'running';
-                }
-            }
-        }
-
         // INITIALIZE ALL LOGIC
         document.addEventListener('DOMContentLoaded', () => {
-            typeWriter();
             initComparisons();
-            reveal(); 
         });
-        window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal); // Initial reveal check on load
 
     </script>
 </body>
