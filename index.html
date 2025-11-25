@@ -149,6 +149,14 @@
         .img-comp-slider:active {
             transform: translate(-50%, -50%) scale(1.1);
         }
+        
+        /* Mobile adjustment for slider height */
+        @media (max-width: 640px) {
+            .img-comp-container {
+                height: 300px; 
+            }
+        }
+
 
         /* --- NAVIGATION ACTIVE STATE (ScrollSpy) --- */
         /* Use important because Tailwind classes conflict with simple CSS rules */
@@ -221,7 +229,7 @@
         </div>
     </header>
 
-    <!-- NEW SECTION: MY PROCESS (Incorporated from selected code) -->
+    <!-- NEW SECTION: MY PROCESS (Adjusted to 2 columns on mobile) -->
     <section id="process" class="py-24 bg-slate-50 border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -230,7 +238,8 @@
                 <p class="mt-4 text-lg text-gray-500">Structured processes ensure timely delivery and measurable outcomes.</p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center reveal">
+            <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-2 for mobile, md:grid-cols-5 for desktop -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center reveal">
                 <!-- Step 1 -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
@@ -238,7 +247,7 @@
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">1. Analyze</h4>
                     <p class="text-xs text-gray-500 mt-1">Needs Assessment & Learner Profiles</p>
-                    <!-- Connector Line -->
+                    <!-- Connector Line (Responsive) -->
                     <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
                 </div>
                 <!-- Step 2 -->
@@ -289,11 +298,10 @@
                 <p class="mt-4 text-lg text-gray-500">Case studies in academic transformation and faculty development.</p>
             </div>
 
-            <!-- Changed to 2 columns for better balance with 4 items -->
+            <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-1 for mobile, md:grid-cols-2 for desktop -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 
                 <!-- Project 1: Social Work Simulation (Featured Story) -->
-                <!-- Made entire card clickable by wrapping in anchor -->
                 <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
                     <!-- Card Content -->
                     <div class="h-56 bg-orange-50 relative overflow-hidden flex items-center justify-center group-hover:bg-orange-100 transition-colors duration-500">
@@ -393,6 +401,7 @@
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">Social Work Simulation</h2>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on large screens -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 
                 <!-- Text Content -->
@@ -453,6 +462,7 @@
             <!-- Content for MATH 112 Case Study -->
             <div class="bg-slate-50 rounded-xl shadow-lg p-8 border border-gray-200 reveal">
                 
+                <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 3 columns on large screens -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Sidebar / Quick Summary -->
                     <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-8">
@@ -492,7 +502,7 @@
         </div>
     </section>
 
-    <!-- NEW SECTION: TESTIMONIALS (Incorporated from selected code) -->
+    <!-- NEW SECTION: TESTIMONIALS -->
     <section id="testimonials" class="py-20 bg-white border-t border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
             <h2 class="text-3xl font-bold text-slate-900 mb-12">Faculty Partnership: Endorsements</h2>
@@ -501,9 +511,10 @@
                 <p class="text-xl text-gray-600 italic relative z-10 mb-6">
                     "Jian's ability to translate our complex social work scenarios into an interactive digital format was transformative. Students finally have a safe space to practice before entering the field."
                 </p>
-                <div class="flex items-center justify-center space-x-4">
+                <!-- RESPONSIVE ADJUSTMENT: centered on mobile -->
+                <div class="flex flex-col items-center justify-center space-y-2">
                     <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold">JD</div>
-                    <div class="text-left">
+                    <div class="text-center">
                         <p class="font-bold text-slate-900 text-sm">Jane Doe, LCSW</p>
                         <p class="text-xs text-gray-500">Associate Professor, College of Social Work</p>
                     </div>
@@ -520,6 +531,7 @@
                 <p class="mt-4 text-lg text-gray-500">A unique blend of academic theory and technical application.</p>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on large screens -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <!-- Bio -->
                 <div class="prose prose-lg text-gray-600 reveal">
@@ -598,6 +610,7 @@
                 <p class="mt-4 text-lg text-gray-500">Bridging research and practice through evidence-based publications.</p>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on desktop -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Publications -->
                 <div class="bg-white p-10 rounded-xl border border-gray-100 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
@@ -654,6 +667,7 @@
                 <p class="mt-4 text-lg text-gray-500">Continuous learning in Artificial Intelligence, Project Management, and Leadership.</p>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on desktop -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- AI & Technical Leadership -->
                 <div>
@@ -747,6 +761,7 @@
                 </a>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: experience list remains full width but stacked content adjusts -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <!-- Main Content (Experience & Education) -->
                 <div class="lg:col-span-3 space-y-12">
@@ -808,6 +823,7 @@
                             Education
                         </h3>
                         <div class="space-y-8">
+                            <!-- Education item 1 -->
                             <div class="flex justify-between items-start sm:items-center flex-col sm:flex-row gap-2">
                                 <div>
                                     <h4 class="text-lg font-bold text-slate-900">Ph.D. in Education (Instructional Technology)</h4>
@@ -815,6 +831,7 @@
                                 </div>
                                 <span class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">2016</span>
                             </div>
+                            <!-- Education item 2 -->
                             <div class="flex justify-between items-start sm:items-center flex-col sm:flex-row gap-2">
                                 <div>
                                     <h4 class="text-lg font-bold text-slate-900">M.Ed. in TESOL</h4>
@@ -842,11 +859,12 @@
             <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
                 I am interested in discussing learning strategy, curriculum innovation, or leadership roles in instructional design.
             </p>
+            <!-- RESPONSIVE ADJUSTMENT: stack buttons vertically on mobile -->
             <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="mailto:jsu1@utk.edu" class="inline-flex items-center justify-center px-10 py-5 border border-transparent text-lg font-bold rounded-xl text-slate-900 bg-white hover:bg-gray-100 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <a href="mailto:jsu1@utk.edu" class="inline-flex items-center justify-center px-10 py-5 border border-transparent text-lg font-bold rounded-xl text-slate-900 bg-white hover:bg-gray-100 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto">
                     <i class="fas fa-envelope mr-3 text-blue-600 text-xl"></i> Email Me
                 </a>
-                <a href="https://www.linkedin.com/in/jiansuphd/" target="_blank" class="inline-flex items-center justify-center px-10 py-5 border-2 border-slate-600 text-lg font-bold rounded-xl text-white hover:bg-slate-800 hover:border-slate-500 transition transform hover:-translate-y-1">
+                <a href="https://www.linkedin.com/in/jiansuphd/" target="_blank" class="inline-flex items-center justify-center px-10 py-5 border-2 border-slate-600 text-lg font-bold rounded-xl text-white hover:bg-slate-800 hover:border-slate-500 transition transform hover:-translate-y-1 w-full sm:w-auto">
                     <i class="fab fa-linkedin mr-3 text-blue-400 text-xl"></i> LinkedIn Profile
                 </a>
             </div>
@@ -855,7 +873,7 @@
 
     <!-- FOOTER -->
     <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center">
             <div class="mb-4 md:mb-0 text-center md:text-left">
                 <span class="text-xl font-bold text-white">Jian Su, Ph.D.</span>
                 <p class="text-sm mt-1 text-slate-500">Instructional Design Manager</p>
