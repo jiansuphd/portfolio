@@ -23,7 +23,7 @@
         /* --- HERO BACKGROUND --- */
         .structural-bg {
             background-color: #1e293b;
-            /* Dark slate overlay + YOUR CUSTOM IMAGE */
+            /* Dark slate overlay + YOUR CUSTOM IMAGE (Requires file to be named hero-bg.jpg in root) */
             background-image: 
                 linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)),
                 url('./hero-bg.jpg'); 
@@ -48,7 +48,7 @@
         /* --- IMAGE COMPARISON SLIDER (Required CSS) --- */
         .img-comp-container {
             position: relative;
-            height: 400px; /* Standard height */
+            height: 400px; 
             overflow: hidden;
             border-radius: 0.75rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -151,46 +151,49 @@
                 <p class="mt-4 text-lg text-gray-500">Structured processes ensure timely delivery and measurable outcomes.</p>
             </div>
             
-            <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-2 for mobile, md:grid-cols-5 for desktop -->
+            <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-2 for mobile, sm:grid-cols-3, md:grid-cols-5 for desktop -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center">
-                <!-- Step 1 -->
+                <!-- Step 1: Analyze -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-search text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">1. Analyze</h4>
                     <p class="text-xs text-gray-500 mt-1">Needs Assessment & Learner Profiles</p>
-                    <!-- Connector Line (Responsive) -->
-                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                    <!-- Connector Line -->
+                    <div class="hidden md:block absolute top-10 right-0 w-1/2 h-0.5 bg-gray-300 -z-10 transform translate-x-1/2"></div>
                 </div>
-                <!-- Step 2 -->
+                <!-- Step 2: Design -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-pencil-ruler text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">2. Design</h4>
                     <p class="text-xs text-gray-500 mt-1">Storyboarding & Blueprinting</p>
-                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                    <!-- Connector Line -->
+                    <div class="hidden md:block absolute top-10 right-0 w-full h-0.5 bg-gray-300 -z-10 transform translate-x-1/2"></div>
                 </div>
-                <!-- Step 3 -->
+                <!-- Step 3: Develop -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-code text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">3. Develop</h4>
                     <p class="text-xs text-gray-500 mt-1">Canvas, Storyline & HTML5</p>
-                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                    <!-- Connector Line -->
+                    <div class="hidden md:block absolute top-10 right-0 w-full h-0.5 bg-gray-300 -z-10 transform translate-x-1/2"></div>
                 </div>
-                <!-- Step 4 -->
+                <!-- Step 4: Implement -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-rocket text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">4. Implement</h4>
                     <p class="text-xs text-gray-500 mt-1">QA Testing & Launch</p>
-                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                    <!-- Connector Line -->
+                    <div class="hidden md:block absolute top-10 right-0 w-full h-0.5 bg-gray-300 -z-10 transform translate-x-1/2"></div>
                 </div>
-                <!-- Step 5 -->
+                <!-- Step 5: Evaluate -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-chart-line text-2xl text-blue-600 group-hover:text-white"></i>
@@ -271,7 +274,7 @@
                         </div>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">MATH 112 Redesign</h3>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">MATH 112 Redesign</h3>
                         <p class="text-gray-600 mb-6">Reversing high attrition rates through structural redesign and pedagogical alignment.</p>
                         <!-- Link to the Math Deep Dive section -->
                         <a href="#math-deep-dive" class="inline-flex items-center text-blue-600 font-bold uppercase text-sm hover:underline">
@@ -451,7 +454,7 @@
                     </div>
                 </div>
 
-                <!-- Skill bars (Static - no animation logic needed) -->
+                <!-- Skill bars (Static) -->
                 <div class="space-y-8">
                     <div>
                         <div class="flex justify-between mb-2">
@@ -653,14 +656,15 @@
                 </a>
             </div>
 
-            <!-- RESPONSIVE GRID ADJUSTMENT: experience list remains full width but stacked content adjusts -->
+            <!-- DUAL-COLUMN LAYOUT -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Main Content (Experience & Education) -->
-                <div class="lg:col-span-3 space-y-12">
+                
+                <!-- COLUMN 1: Experience & Education (Takes 2/3 width) -->
+                <div class="lg:col-span-2 space-y-12">
                     <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100">
                         <h3 class="flex items-center text-xl font-bold text-slate-900 mb-8 border-b border-gray-100 pb-4">
                             <span class="bg-blue-100 text-blue-600 rounded-lg w-10 h-10 flex items-center justify-center mr-4 text-lg"><i class="fas fa-briefcase"></i></span>
-                            Experience
+                            Experience Timeline
                         </h3>
                         
                         <div class="space-y-12">
@@ -712,7 +716,7 @@
                     <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100">
                         <h3 class="flex items-center text-xl font-bold text-slate-900 mb-8 border-b border-gray-100 pb-4">
                             <span class="bg-blue-100 text-blue-600 rounded-lg w-10 h-10 flex items-center justify-center mr-4 text-lg"><i class="fas fa-graduation-cap"></i></span>
-                            Education
+                            Education History
                         </h3>
                         <div class="space-y-8">
                             <!-- Education item 1 -->
@@ -731,6 +735,66 @@
                                 </div>
                                 <span class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">2007</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN 2: Skills Sidebar (Takes 1/3 width) -->
+                <div class="lg:col-span-1 space-y-12">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider border-b pb-2">Core Competencies</h3>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-sm text-blue-700 font-medium">Instructional Systems Design</span>
+                            <span class="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-sm text-blue-700 font-medium">Project Management</span>
+                            <span class="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-sm text-blue-700 font-medium">Faculty Development</span>
+                            <span class="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-sm text-blue-700 font-medium">Needs Analysis</span>
+                            <span class="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-sm text-blue-700 font-medium">Universal Design (UDL)</span>
+                            <span class="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-sm text-blue-700 font-medium">Data-Driven Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider border-b pb-2">Technical Proficiency</h3>
+                        <div class="space-y-6 pt-2">
+                            <!-- Canvas -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-bold text-slate-700">Canvas LMS Architecture</span>
+                                    <span class="text-xs font-medium text-blue-600">Expert</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-2.5">
+                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <!-- Storyline -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-bold text-slate-700">Articulate Storyline 360</span>
+                                    <span class="text-xs font-medium text-purple-600">Advanced</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <!-- HTML/CSS -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm font-bold text-slate-700">HTML5/CSS/JavaScript</span>
+                                    <span class="text-xs font-medium text-orange-500">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-2.5">
+                                    <div class="bg-orange-500 h-2.5 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider border-b pb-2">Certifications</h3>
+                        <div class="space-y-4 pt-2">
+                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-green-500 mr-2"></i> IBM AI Project Manager</p>
+                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-green-500 mr-2"></i> Google Project Management</p>
+                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-green-500 mr-2"></i> Asana Workflow Specialist</p>
                         </div>
                     </div>
                 </div>
@@ -776,11 +840,7 @@
 
     <!-- JAVASCRIPT LOGIC (CLEANED) -->
     <script>
-        // 1. NAVIGATION SCROLL EFFECT (Simplified)
-        const navbar = document.getElementById('navbar');
-        // Removed complex ScrollSpy logic as navigation is now static white.
-
-        // 2. IMAGE COMPARISON SLIDER (Essential logic for interaction)
+        // 1. IMAGE COMPARISON SLIDER (Essential logic for interaction)
         function initComparisons() {
             const container = document.getElementById("comparison-1");
             if (!container) return; // Guard clause
@@ -789,12 +849,13 @@
             const afterImage = container.querySelector(".img-comp-img:not(.img-comp-overlay) img");
             const beforeImage = overlay.querySelector("img");
             
+            // Adjusts slider and image widths on load and resize
             const adjustSliderPosition = () => {
                 const containerWidth = container.offsetWidth;
                 overlay.style.width = (containerWidth / 2) + "px";
                 slider.style.left = (containerWidth / 2) + "px";
                 
-                // Crucial: ensure images inside the comparison layers match the container width
+                // Ensure images inside the comparison layers match the container width
                 afterImage.style.width = containerWidth + 'px';
                 beforeImage.style.width = containerWidth + 'px';
             };
@@ -834,6 +895,7 @@
             }
             function getCursorPos(e) {
                 const r = container.getBoundingClientRect();
+                // Check for touch event object structure
                 let x = (e.touches ? e.touches[0].pageX : e.pageX) - r.left;
                 x = x - window.pageXOffset;
                 return x;
