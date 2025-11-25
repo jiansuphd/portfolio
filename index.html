@@ -24,9 +24,10 @@
         .structural-bg {
             background-color: #1e293b;
             /* Dark slate overlay + YOUR CUSTOM IMAGE */
+            /* Ensure your uploaded image is named exactly "hero-bg.jpg" (case sensitive!) */
             background-image: 
                 linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.85)),
-                url('hero-bg.jpg'); /* Ensure your uploaded image is named exactly "hero-bg.jpg" */
+                url('./hero-bg.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Parallax effect */
@@ -242,7 +243,7 @@
                             </div>
                         </div>
                         <div class="p-8">
-                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">Digital Distractions</h3>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">Managing Digital Distractions</h3>
                             <p class="text-gray-600 mb-6">Presentation on utilizing digital devices for student engagement in the classroom.</p>
                             <div class="text-xs text-gray-500 mb-4 italic">Presented at ELI Annual Meeting 2019</div>
                             <span class="text-slate-600 font-bold uppercase text-sm hover:underline">
@@ -371,6 +372,108 @@
                                     </div>
                                 </div>
                             </details>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- MATH 112 Deep Dive (Hidden but linkable if needed, or displayed as secondary) -->
+    <section id="math-deep-dive" class="py-20 bg-white border-t border-gray-200 animate-fade-in-up delay-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Context Header for the Mockup -->
+            <div class="mb-8 border-l-4 border-blue-600 pl-4">
+                <span class="text-sm font-bold text-blue-600 tracking-wide uppercase">Secondary Project Deep Dive</span>
+                <h2 class="text-3xl font-bold text-slate-900">MATH 112 Redesign</h2>
+            </div>
+
+            <!-- "THE REVEAL" LAYOUT STARTS HERE -->
+            
+            <!-- 1. The "After" Image (Solution) - Hero placement -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 border border-gray-200">
+                <!-- Placeholder for your actual screenshot -->
+                <div class="aspect-video bg-slate-800 flex items-center justify-center relative group">
+                    <div class="text-center">
+                        <i class="fas fa-desktop text-6xl text-blue-400 mb-4"></i>
+                        <p class="text-slate-300 font-medium">Hero Image: The New Visual Homepage & Linear Module Path</p>
+                    </div>
+                    <!-- Badge -->
+                    <div class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm">
+                        The Solution
+                    </div>
+                </div>
+                
+                <!-- Metadata Bar -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-slate-50 border-b border-gray-100 text-sm">
+                    <div>
+                        <p class="text-gray-500 font-medium">Role</p>
+                        <p class="font-semibold text-slate-800">Instructional Design Specialist</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 font-medium">Tools</p>
+                        <p class="font-semibold text-slate-800">Canvas, Articulate Rise</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 font-medium">Timeline</p>
+                        <p class="font-semibold text-slate-800">3 Months</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 font-medium">Outcome</p>
+                        <p class="font-semibold text-green-600">Double-digit Pass Rate &uarr;</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. The Narrative Content (Situation/Task/Action/Result) -->
+            <div class="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Sidebar / Quick Summary -->
+                    <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-8">
+                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider">The Challenge</h4>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Historically <strong>high attrition rates</strong> signaled a disconnect between student effort and course outcomes.
+                        </p>
+                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider mt-8">The Fix</h4>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Reduced Cognitive Load</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Constructive Alignment</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Weekly Scaffolding</li>
+                        </ul>
+                    </div>
+
+                    <!-- Main Story -->
+                    <div class="md:col-span-2 space-y-8">
+                        
+                        <!-- Situation & Task -->
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Diagnosis: Cognitive Overload</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                An instructional audit revealed two root causes for the failure rate: confusing LMS navigation that forced students to "hunt" for content, and assessments that didn't align with learning objectives. My objective was to transform the course into a learner-centered environment.
+                            </p>
+                        </div>
+
+                        <!-- Action -->
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Action: Structural & Pedagogical Redesign</h3>
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                <strong>Structural Redesign:</strong> I reorganized the content into consistent weekly modules and built a visual homepage to create a clear, linear learning path.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <strong>Pedagogical Alignment:</strong> I restructured the assessment strategy to ensure every high-stakes exam was directly supported by measurable objectives and preparatory practice modules.
+                            </p>
+                        </div>
+
+                        <!-- Result -->
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-md">
+                            <h4 class="font-bold text-green-800 text-sm uppercase mb-1">The Result</h4>
+                            <p class="text-green-900 font-medium">
+                                We saw a double-digit percentage increase in pass rates and a marked reduction in course withdrawals year-over-year.
+                            </p>
                         </div>
 
                     </div>
