@@ -19,19 +19,14 @@
             font-family: 'Roboto Slab', serif; /* Strong, structural headers */
         }
 
-        /* The "Structural Abstract" Background Pattern */
+        /* The "Bold Solid" Background */
         .structural-bg {
-            background-color: #f8fafc; /* Slate-50 */
-            background-image: 
-                linear-gradient(#cbd5e1 1px, transparent 1px), 
-                linear-gradient(90deg, #cbd5e1 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center center;
+            background-color: #1e293b; /* Slate-800: Deep, professional charcoal */
         }
         
-        /* Subtle overlay to soften the grid */
+        /* Overlay removed for bold solid look */
         .structural-overlay {
-            background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(248,250,252,1) 100%);
+            display: none;
         }
 
         /* Google Sites Simulation Styles */
@@ -73,22 +68,22 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION: "The Architect" + Structural Abstract -->
+    <!-- HERO SECTION: "The Bold Solid" -->
     <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 structural-bg overflow-hidden">
-        <div class="absolute inset-0 structural-overlay pointer-events-none"></div>
+        <!-- Overlay removed -->
         <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Instructional Design Manager <br/>
-                <span class="text-blue-700">driving student success</span>
+                <span class="text-blue-400">driving student success</span>
             </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600">
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300">
                 Through high-impact, data-driven course design.
             </p>
             <div class="mt-10 flex justify-center gap-4">
-                <a href="#portfolio" class="gs-button px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-700 hover:bg-blue-800 md:text-lg md:px-10">
+                <a href="#portfolio" class="gs-button px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:text-lg md:px-10">
                     View Portfolio
                 </a>
-                <a href="#" class="gs-button px-8 py-3 border border-slate-300 text-base font-medium rounded-md text-slate-700 bg-white hover:bg-gray-50 md:text-lg md:px-10">
+                <a href="#" class="gs-button px-8 py-3 border border-slate-400 text-base font-medium rounded-md text-white hover:bg-white/10 md:text-lg md:px-10">
                     Download CV
                 </a>
             </div>
