@@ -19,12 +19,19 @@
             font-family: 'Roboto Slab', serif; /* Strong, structural headers */
         }
 
-        /* The "Bold Solid" Background */
+        /* The "Modern Workspace" Background */
         .structural-bg {
-            background-color: #1e293b; /* Slate-800: Deep, professional charcoal */
+            background-color: #1e293b;
+            /* Dark slate overlay + Image of code/laptop to create "Focused" vibe */
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.80)),
+                url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect for premium feel */
         }
         
-        /* Overlay removed for bold solid look */
+        /* Overlay div no longer needed as we baked it into the background-image above */
         .structural-overlay {
             display: none;
         }
@@ -68,9 +75,9 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION: "The Bold Solid" -->
+    <!-- HERO SECTION: "The Modern Workspace" -->
     <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 structural-bg overflow-hidden">
-        <!-- Overlay removed -->
+        <!-- Overlay integrated into CSS -->
         <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 Instructional Design Manager <br/>
