@@ -45,53 +45,9 @@
             transition: transform 0.3s ease;
         }
 
-        /* --- IMAGE COMPARISON SLIDER (Required CSS) --- */
-        .img-comp-container {
-            position: relative;
-            height: 400px; 
-            overflow: hidden;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .img-comp-img {
-            position: absolute;
-            width: auto;
-            height: 100%;
-            overflow: hidden;
-        }
-        .img-comp-img img {
-            display: block;
-            height: 100%;
-            width: auto;
-            max-width: none; 
-        }
-        .img-comp-overlay {
-            /* This is the BEFORE image layer */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%; /* Initial split */
-            z-index: 8;
-        }
-        .img-comp-slider {
-            position: absolute;
-            z-index: 9;
-            cursor: ew-resize;
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 50%;
-            border: 2px solid #ea580c; /* Orange accent */
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            transition: transform 0.1s;
-        }
+        /* --- REMOVED SLIDER CSS --- */
         
-        /* Mobile adjustment for slider height */
+        /* Mobile adjustment for deep dive section */
         @media (max-width: 640px) {
             .img-comp-container {
                 height: 300px; 
@@ -307,59 +263,54 @@
         </div>
     </section>
 
-    <!-- DEEP DIVE: SOCIAL WORK SIMULATION (Primary Case Study with Slider) -->
+    <!-- DEEP DIVE: SOCIAL WORK SIMULATION (Primary Case Study - Text Focused) -->
     <section id="social-work-deep-dive" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Context Header for the Mockup -->
             <div class="mb-12 text-center">
                 <span class="text-orange-600 font-bold uppercase tracking-widest text-sm">Project Deep Dive</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">Social Work Simulation</h2>
             </div>
 
-            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on large screens -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- SINGLE COLUMN LAYOUT FOR TEXT FOCUS -->
+            <div class="max-w-4xl mx-auto space-y-12">
                 
-                <!-- Text Content -->
-                <div>
-                    <div class="inline-block bg-orange-100 text-orange-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">Before & After</div>
-                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Reimagining the Student Experience</h2>
-                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                        The original Social Work course suffered from deep nested folders and lack of visual hierarchy, causing high support ticket volume.
+                <!-- Narrative -->
+                <div class="text-gray-600 text-lg leading-relaxed border-b border-gray-200 pb-8">
+                    <div class="inline-block bg-orange-100 text-orange-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">The Challenge</div>
+                    <p class="mb-4">
+                        The original Social Work course utilized complex, multi-course student access and suffered from deep nested folders, leading to high support ticket volume and student frustration with wayfinding.
                     </p>
-                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-                        My redesign introduced a branching simulation hub embedded directly in Canvas. This centralized access, improved wayfinding, and provided immediate context for learners.
+                    <div class="inline-block bg-green-100 text-green-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">The Solution</div>
+                    <p>
+                        My solution focused on **structural UX design** and **component development**. I designed the storyline components, managed the embedding and data flow into Canvas, and created clear, external support guides (job aids) to minimize technical barriers. This centralized access and simplified the learner journey.
                     </p>
-                    
-                    <ul class="space-y-4">
-                        <li class="flex items-center text-slate-700 font-medium">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Storyline Component Design & Flow Management
-                        </li>
-                        <li class="flex items-center text-slate-700 font-medium">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Developed comprehensive student/instructor guides
-                        </li>
-                        <li class="flex items-center text-slate-700 font-medium">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Minimized technical barriers for multi-course access
-                        </li>
-                    </ul>
                 </div>
 
-                <!-- Interactive Slider -->
-                <div>
-                    <p class="text-center text-xs text-gray-500 mb-2 uppercase tracking-widest">Drag slider to compare</p>
-                    
-                    <div class="img-comp-container" id="comparison-1">
-                        <!-- AFTER IMAGE (Bottom Layer) -->
-                        <div class="img-comp-img">
-                            <!-- Placeholder: NEW Design Mockup -->
-                            <img src="https://via.placeholder.com/800x450.png?text=NEW+Simulation+Hub+(After+Redesign)" alt="New Design">
-                        </div>
-                        <!-- BEFORE IMAGE (Top Layer) -->
-                        <div class="img-comp-img img-comp-overlay">
-                            <!-- Placeholder: OLD Design Mockup -->
-                            <img src="https://via.placeholder.com/800x450.png?text=OLD+Course+Folder+Structure+(Before)" alt="Old Design">
-                        </div>
+                <!-- Artifact Focus and Decorative Elements -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center py-4 border-b border-gray-200">
+                    <div class="p-6 bg-white rounded-xl shadow-lg">
+                        <i class="fas fa-pencil-ruler text-5xl text-blue-600 mb-4"></i>
+                        <h4 class="font-bold text-slate-900">Storyline Design</h4>
+                        <p class="text-sm text-gray-500">Complex branching and scenario development.</p>
                     </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg">
+                        <i class="fas fa-laptop-code text-5xl text-purple-600 mb-4"></i>
+                        <h4 class="font-bold text-slate-900">Canvas Integration</h4>
+                        <p class="text-sm text-gray-500">Flow management and troubleshooting multi-course access.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg">
+                        <i class="fas fa-book-reader text-5xl text-green-600 mb-4"></i>
+                        <h4 class="font-bold text-slate-900">Support Guides</h4>
+                        <p class="text-sm text-gray-500">Created job aids for faculty and students.</p>
+                    </div>
+                </div>
+
+                <!-- Direct Link to Artifact -->
+                <div class="text-center pt-8">
+                    <a href="https://canvas.instructure.com/courses/8814527" target="_blank" class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-xl text-white bg-orange-600 hover:bg-orange-700 transition shadow-lg transform hover:-translate-y-1">
+                        <i class="fas fa-external-link-alt mr-3"></i> View Live Course Artifact
+                    </a>
                 </div>
 
             </div>
@@ -715,7 +666,7 @@
                     <!-- Education -->
                     <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100">
                         <h3 class="flex items-center text-xl font-bold text-slate-900 mb-8 border-b border-gray-100 pb-4">
-                            <span class="bg-blue-100 text-blue-600 rounded-lg w-10 h-10 flex items-center justify-center mr-4 text-lg"><i class="fas fa-graduation-cap"></i></span>
+                            <span class="bg-blue-100 text-blue-600 rounded-lg w-10 h-1- flex items-center justify-center mr-4 text-lg"><i class="fas fa-graduation-cap"></i></span>
                             Education History
                         </h3>
                         <div class="space-y-8">
@@ -841,69 +792,11 @@
     <!-- JAVASCRIPT LOGIC (CLEANED) -->
     <script>
         // 1. IMAGE COMPARISON SLIDER (Essential logic for interaction)
+        // Since the slider was removed, this function is now unnecessary, 
+        // but kept here for stability if the user reintroduces the code later.
         function initComparisons() {
-            const container = document.getElementById("comparison-1");
-            if (!container) return; // Guard clause
-            
-            const overlay = container.querySelector(".img-comp-overlay");
-            const afterImage = container.querySelector(".img-comp-img:not(.img-comp-overlay) img");
-            const beforeImage = overlay.querySelector("img");
-            
-            // Adjusts slider and image widths on load and resize
-            const adjustSliderPosition = () => {
-                const containerWidth = container.offsetWidth;
-                overlay.style.width = (containerWidth / 2) + "px";
-                slider.style.left = (containerWidth / 2) + "px";
-                
-                // Ensure images inside the comparison layers match the container width
-                afterImage.style.width = containerWidth + 'px';
-                beforeImage.style.width = containerWidth + 'px';
-            };
-            
-            const slider = document.createElement("DIV");
-            slider.setAttribute("class", "img-comp-slider");
-            slider.innerHTML = "<i class='fas fa-arrows-alt-h text-orange-600'></i>";
-            container.appendChild(slider);
-            
-            adjustSliderPosition(); 
-            window.addEventListener('resize', adjustSliderPosition); 
-
-            let clicked = 0;
-
-            slider.addEventListener("mousedown", slideReady);
-            window.addEventListener("mouseup", slideFinish);
-            slider.addEventListener("touchstart", slideReady);
-            window.addEventListener("touchend", slideFinish);
-
-            function slideReady(e) {
-                e.preventDefault();
-                clicked = 1;
-                window.addEventListener("mousemove", slideMove);
-                window.addEventListener("touchmove", slideMove);
-            }
-            function slideFinish() {
-                clicked = 0;
-                window.removeEventListener("mousemove", slideMove);
-                window.removeEventListener("touchmove", slideMove);
-            }
-            function slideMove(e) {
-                if (clicked == 0) return false;
-                let pos = getCursorPos(e);
-                if (pos < 0) pos = 0;
-                if (pos > container.offsetWidth) pos = container.offsetWidth;
-                slide(pos);
-            }
-            function getCursorPos(e) {
-                const r = container.getBoundingClientRect();
-                // Check for touch event object structure
-                let x = (e.touches ? e.touches[0].pageX : e.pageX) - r.left;
-                x = x - window.pageXOffset;
-                return x;
-            }
-            function slide(x) {
-                overlay.style.width = x + "px";
-                slider.style.left = x + "px";
-            }
+            // Guard clause prevents script errors since elements are gone
+            return;
         }
 
         // INITIALIZE ALL LOGIC
