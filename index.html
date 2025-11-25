@@ -39,8 +39,8 @@
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
-        /* Class to trigger the reveal animation via JS (we'll simulate by adding directly or use simple CSS animation for now) */
-        .reveal-active { 
+        /* JS will add 'active' class on scroll */
+        .reveal.active { 
             opacity: 1;
             transform: translateY(0);
         }
@@ -59,7 +59,7 @@
             }
         }
         
-        /* Stagger delays for grid items */
+        /* Stagger delays for grid items (Note: these need JS for staggered application) */
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
@@ -101,41 +101,108 @@
             to { width: var(--target-width); }
         }
 
+        /* --- IMAGE COMPARISON SLIDER (Required CSS) --- */
+        .img-comp-container {
+            position: relative;
+            height: 400px; /* Standard height */
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .img-comp-img {
+            position: absolute;
+            width: auto;
+            height: 100%;
+            overflow: hidden;
+        }
+        .img-comp-img img {
+            display: block;
+            height: 100%;
+            width: auto;
+            max-width: none; 
+        }
+        .img-comp-overlay {
+            /* This is the BEFORE image layer */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%; /* Initial split */
+            z-index: 8;
+        }
+        .img-comp-slider {
+            position: absolute;
+            z-index: 9;
+            cursor: ew-resize;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            border: 2px solid #ea580c; /* Orange accent */
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transition: transform 0.1s;
+        }
+        .img-comp-slider:active {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* --- NAVIGATION ACTIVE STATE (ScrollSpy) --- */
+        /* Use important because Tailwind classes conflict with simple CSS rules */
+        #navbar .nav-link.active {
+            color: #2563eb !important; /* Blue-600 */
+            border-bottom-color: #2563eb !important;
+        }
+        /* Default text color for the dynamic nav bar */
+        #navbar .nav-link {
+            color: white; /* Default on dark hero */
+        }
+        #navbar.bg-white .nav-link {
+            color: #1e293b; /* Dark on white scroll */
+        }
+        #navbar.bg-white .contact-btn {
+            background-color: #1e293b;
+            color: white;
+        }
+
     </style>
 </head>
 <body class="bg-white">
 
     <!-- NAVIGATION -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-100 text-slate-800" id="navbar">
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent text-white" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold tracking-tight cursor-pointer hover:text-blue-600 transition-colors" onclick="window.scrollTo(0,0)">Jian Su, Ph.D.</span>
+                    <span class="text-2xl font-bold tracking-tight cursor-pointer" onclick="window.scrollTo(0,0)">Jian Su, Ph.D.</span>
                 </div>
                 <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider">
-                    <a href="#" class="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Home</a>
-                    <a href="#portfolio" class="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Portfolio</a>
-                    <a href="#about" class="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">About</a>
-                    <a href="#scholarship" class="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Scholarship</a>
-                    <a href="#credentials" class="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Credentials</a>
-                    <a href="#resume" class="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Resume</a>
-                    <a href="#contact" class="px-4 py-2 rounded border border-slate-800 hover:bg-slate-800 hover:text-white transition">Contact</a>
+                    <a href="#" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Home</a>
+                    <a href="#process" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Process</a>
+                    <a href="#portfolio" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Portfolio</a>
+                    <a href="#about" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">About</a>
+                    <a href="#scholarship" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Scholarship</a>
+                    <a href="#credentials" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Credentials</a>
+                    <a href="#contact" class="px-4 py-2 rounded border border-white hover:bg-white hover:text-slate-900 transition contact-btn">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION: "The Modern Workspace" -->
-    <header class="relative min-h-screen flex items-center justify-center structural-bg text-center px-4 animate-fade-in-up">
+    <!-- HERO SECTION -->
+    <header class="relative min-h-screen flex items-center justify-center structural-bg text-center px-4">
         <div class="relative max-w-5xl mx-auto z-10 pt-20">
             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
                 Instructional Design Manager <br/>
-                <span class="text-blue-400">driving student success<span class="cursor">&nbsp;</span></span>
+                <span class="text-blue-400" id="typewriter-text"></span><span class="cursor">&nbsp;</span>
             </h1>
-            <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-200 font-light drop-shadow-md reveal animate-fade-in-up delay-100">
+            <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-200 font-light drop-shadow-md reveal">
                 Through innovative, high-impact, data-driven course design.
             </p>
-            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 reveal animate-fade-in-up delay-200">
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 reveal">
                 <a href="#portfolio" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-blue-500/50 transition-all transform hover:-translate-y-1">
                     View Portfolio
                 </a>
@@ -154,10 +221,69 @@
         </div>
     </header>
 
-    <!-- PORTFOLIO GRID PREVIEW -->
-    <section id="portfolio" class="py-24 bg-white animate-fade-in-up delay-300">
+    <!-- NEW SECTION: MY PROCESS (Incorporated from selected code) -->
+    <section id="process" class="py-24 bg-slate-50 border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal animate-fade-in-up">
+            <div class="text-center mb-16 reveal">
+                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Methodology</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2">How I Work (ADDIE & Agile)</h2>
+                <p class="mt-4 text-lg text-gray-500">Structured processes ensure timely delivery and measurable outcomes.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center reveal">
+                <!-- Step 1 -->
+                <div class="relative group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
+                        <i class="fas fa-search text-2xl text-blue-600 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mt-2">1. Analyze</h4>
+                    <p class="text-xs text-gray-500 mt-1">Needs Assessment & Learner Profiles</p>
+                    <!-- Connector Line -->
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
+                        <i class="fas fa-pencil-ruler text-2xl text-blue-600 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mt-2">2. Design</h4>
+                    <p class="text-xs text-gray-500 mt-1">Storyboarding & Blueprinting</p>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
+                        <i class="fas fa-code text-2xl text-blue-600 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mt-2">3. Develop</h4>
+                    <p class="text-xs text-gray-500 mt-1">Canvas, Storyline & HTML5</p>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
+                        <i class="fas fa-rocket text-2xl text-blue-600 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mt-2">4. Implement</h4>
+                    <p class="text-xs text-gray-500 mt-1">QA Testing & Launch</p>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                </div>
+                <!-- Step 5 -->
+                <div class="relative group">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
+                        <i class="fas fa-chart-line text-2xl text-blue-600 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mt-2">5. Evaluate</h4>
+                    <p class="text-xs text-gray-500 mt-1">Data Review & Iteration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO GRID -->
+    <section id="portfolio" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
                 <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Case Studies</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">Selected Works</h2>
                 <p class="mt-4 text-lg text-gray-500">Case studies in academic transformation and faculty development.</p>
@@ -168,7 +294,7 @@
                 
                 <!-- Project 1: Social Work Simulation (Featured Story) -->
                 <!-- Made entire card clickable by wrapping in anchor -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
                     <!-- Card Content -->
                     <div class="h-56 bg-orange-50 relative overflow-hidden flex items-center justify-center group-hover:bg-orange-100 transition-colors duration-500">
                          <div class="absolute inset-0 bg-orange-100 pattern-grid-lg opacity-30"></div>
@@ -192,7 +318,7 @@
                 </div>
 
                 <!-- Project 2: Interactive Learning Objects -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
                     <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10 uppercase tracking-wider">
                         New Project
                     </div>
@@ -215,7 +341,7 @@
                 </div>
 
                 <!-- Project 3: MATH 112 -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
                     <div class="h-56 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative overflow-hidden">
                         <!-- Abstract representation of the "After" visual -->
                         <i class="fas fa-chart-line text-7xl text-blue-200 group-hover:text-blue-600 card-icon transition-all duration-500 group-hover:scale-110"></i>
@@ -226,15 +352,15 @@
                     <div class="p-8">
                         <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">MATH 112 Redesign</h3>
                         <p class="text-gray-600 mb-6">Reversing high attrition rates through structural redesign and pedagogical alignment.</p>
-                        <!-- Link Removed: No external link or deep dive section available currently -->
-                        <span class="inline-flex items-center text-gray-400 font-medium text-sm">
-                            Impact: Improved Retention & Pass Rates
-                        </span>
+                        <!-- Link to the Math Deep Dive section -->
+                        <a href="#math-deep-dive" class="inline-flex items-center text-blue-600 font-bold uppercase text-sm hover:underline">
+                            Read Case Study <i class="fas fa-arrow-down ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Project 4: Managing Digital Distractions -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
                     <a href="https://canvas.instructure.com/courses/1298217" target="_blank" class="block h-full">
                         <div class="h-56 bg-gradient-to-br from-slate-50 to-slate-200 flex items-center justify-center relative overflow-hidden">
                             <i class="fas fa-mobile-alt text-7xl text-gray-300 group-hover:text-slate-600 card-icon transition-transform duration-500 group-hover:scale-110"></i>
@@ -257,225 +383,108 @@
         </div>
     </section>
 
-    <!-- FULL CASE STUDY MOCKUP: Social Work Simulation (Deep Dive) -->
-    <section id="social-work-deep-dive" class="py-24 bg-slate-50 border-t border-slate-200 animate-fade-in-up delay-200">
+    <!-- DEEP DIVE: SOCIAL WORK SIMULATION (Primary Case Study with Slider) -->
+    <section id="social-work-deep-dive" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Context Header for the Mockup -->
-            <div class="mb-12 text-center">
+            <div class="mb-12 text-center reveal">
                 <span class="text-orange-600 font-bold uppercase tracking-widest text-sm">Project Deep Dive</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">Social Work Simulation</h2>
             </div>
 
-            <!-- "THE REVEAL" LAYOUT STARTS HERE -->
-            
-            <!-- 1. The "After" Image (Solution) - Hero placement -->
-            <div class="bg-white rounded-xl shadow-2xl overflow-hidden mb-16 border border-gray-200 transform hover:scale-[1.01] transition-transform duration-500">
-                <!-- Placeholder for your actual screenshot -->
-                <div class="aspect-video bg-slate-800 flex items-center justify-center relative group">
-                    <div class="text-center">
-                        <i class="fas fa-desktop text-6xl text-orange-400 mb-4"></i>
-                        <p class="text-slate-300 font-medium text-xl">Hero Image: Simulation Interface & Student View</p>
-                    </div>
-                    <!-- Badge -->
-                    <div class="absolute top-6 right-6 bg-green-500 text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-lg">
-                        The Solution
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 
-                <!-- Metadata Bar -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 bg-slate-50 border-b border-gray-100 text-sm">
-                    <div>
-                        <p class="text-gray-500 font-medium uppercase tracking-wide text-xs mb-1">Role</p>
-                        <p class="font-bold text-slate-800 text-lg">Instructional Design Manager</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 font-medium uppercase tracking-wide text-xs mb-1">Tools</p>
-                        <p class="font-bold text-slate-800 text-lg">Canvas, Storyline 360</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 font-medium uppercase tracking-wide text-xs mb-1">Focus</p>
-                        <p class="font-bold text-slate-800 text-lg">Simulation & User Flow</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 font-medium uppercase tracking-wide text-xs mb-1">Outcome</p>
-                        <p class="font-bold text-green-600 text-lg">Enhanced Access & Support</p>
+                <!-- Text Content -->
+                <div class="reveal">
+                    <div class="inline-block bg-orange-100 text-orange-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">Before & After</div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Reimagining the Student Experience</h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        The original Social Work course suffered from deep nested folders and lack of visual hierarchy, causing high support ticket volume.
+                    </p>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        My redesign introduced a branching simulation hub embedded directly in Canvas. This centralized access, improved wayfinding, and provided immediate context for learners.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Storyline Component Design & Flow Management
+                        </li>
+                        <li class="flex items-center text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Developed comprehensive student/instructor guides
+                        </li>
+                        <li class="flex items-center text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Minimized technical barriers for multi-course access
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Slider -->
+                <div class="reveal delay-200">
+                    <p class="text-center text-xs text-gray-500 mb-2 uppercase tracking-widest">Drag slider to compare</p>
+                    
+                    <div class="img-comp-container" id="comparison-1">
+                        <!-- AFTER IMAGE (Bottom Layer) -->
+                        <div class="img-comp-img">
+                            <!-- Placeholder: NEW Design Mockup -->
+                            <img src="https://via.placeholder.com/800x450.png?text=NEW+Simulation+Hub+(After+Redesign)" alt="New Design">
+                        </div>
+                        <!-- BEFORE IMAGE (Top Layer) -->
+                        <div class="img-comp-img img-comp-overlay">
+                            <!-- Placeholder: OLD Design Mockup -->
+                            <img src="https://via.placeholder.com/800x450.png?text=OLD+Course+Folder+Structure+(Before)" alt="Old Design">
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-            <!-- 2. The Narrative Content (Situation/Task/Action/Result) -->
-            <div class="bg-white rounded-xl shadow-lg p-10 border border-gray-100">
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <!-- Sidebar / Quick Summary -->
-                    <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-8">
-                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider text-blue-600">The Challenge</h4>
-                        <p class="text-gray-600 mb-8 leading-relaxed">
-                            Complex simulation requirements needed seamless integration into Canvas for students across multiple courses in the program.
-                        </p>
-                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider text-green-600">The Fix</h4>
-                        <ul class="text-gray-600 space-y-3">
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i> Storyline Component Design</li>
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i> Seamless Canvas Embedding</li>
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i> User Flow Optimization</li>
-                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i> Comprehensive Support Guides</li>
-                        </ul>
-                    </div>
-
-                    <!-- Main Story -->
-                    <div class="md:col-span-2 space-y-10">
-                        
-                        <!-- Situation & Task -->
-                        <div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-4">Integration & Support Complexity</h3>
-                            <p class="text-gray-600 leading-relaxed text-lg">
-                                The Social Work program required a robust simulation environment. The challenge was not just designing the interactive components in Storyline, but ensuring they were seamlessly embedded within the Canvas LMS. Students from various courses needed reliable access, and the flow had to be intuitive to prevent technical barriers from impeding learning.
-                            </p>
-                        </div>
-
-                        <!-- Action -->
-                        <div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-4">Action: End-to-End Strategy</h3>
-                            <p class="text-gray-600 leading-relaxed mb-4 text-lg">
-                                <strong>Design & Integration:</strong> I helped design the interactive Storyline components and managed the technical embedding into Canvas, ensuring the simulation communicated correctly with the LMS gradebook and navigation.
-                            </p>
-                            <p class="text-gray-600 leading-relaxed text-lg">
-                                <strong>Support Infrastructure:</strong> I established the user flow and created comprehensive job aids, including student and instructor guides. I also led the troubleshooting efforts to resolve access issues for students entering from different course entry points.
-                            </p>
-                        </div>
-
-                        <!-- Result -->
-                        <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg shadow-sm">
-                            <h4 class="font-bold text-green-800 text-sm uppercase mb-2 tracking-wide">The Result</h4>
-                            <p class="text-green-900 font-medium text-lg leading-relaxed">
-                                Successfully deployed a stable, accessible simulation environment with clear documentation, minimizing technical support tickets and enhancing the student learning experience.
-                            </p>
-                        </div>
-
-                        <!-- 3. The "Before" Reveal (Collapsible) -->
-                        <div class="mt-12 pt-8 border-t border-gray-100">
-                            <details class="group">
-                                <summary class="flex items-center text-slate-600 hover:text-slate-900 font-bold text-lg cursor-pointer transition-colors select-none">
-                                    <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mr-4 group-hover:bg-gray-200 transition shadow-sm">
-                                        <i class="fas fa-chevron-down text-sm transform group-open:rotate-180 transition-transform text-slate-500"></i>
-                                    </div>
-                                    <span>Peek at the "Before" State (The Problem)</span>
-                                </summary>
-                                <div class="mt-6 p-6 bg-gray-50 rounded-xl border border-dashed border-gray-300 shadow-inner">
-                                    <p class="text-sm text-gray-500 mb-4 italic font-medium">
-                                        Note: The original course lacked a landing page and relied on deep nested folders.
-                                    </p>
-                                    <div class="aspect-video bg-gray-200 flex items-center justify-center rounded-lg overflow-hidden border border-gray-300">
-                                        <!-- Placeholder wireframe for "Before" state -->
-                                        <img src="https://via.placeholder.com/800x450.png?text=Original+Course+Interface+(Wireframe)" alt="Wireframe of confusing old course interface" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                                    </div>
-                                </div>
-                            </details>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
-    
-    <!-- MATH 112 Deep Dive (Hidden but linkable if needed, or displayed as secondary) -->
-    <section id="math-deep-dive" class="py-20 bg-white border-t border-gray-200 animate-fade-in-up delay-200">
+
+    <!-- MATH 112 Deep Dive (Secondary Case Study Details) -->
+    <section id="math-deep-dive" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Context Header for the Mockup -->
-            <div class="mb-8 border-l-4 border-blue-600 pl-4">
+            <div class="mb-8 border-l-4 border-blue-600 pl-4 reveal">
                 <span class="text-sm font-bold text-blue-600 tracking-wide uppercase">Secondary Project Deep Dive</span>
                 <h2 class="text-3xl font-bold text-slate-900">MATH 112 Redesign</h2>
             </div>
 
-            <!-- "THE REVEAL" LAYOUT STARTS HERE -->
-            
-            <!-- 1. The "After" Image (Solution) - Hero placement -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 border border-gray-200">
-                <!-- Placeholder for your actual screenshot -->
-                <div class="aspect-video bg-slate-800 flex items-center justify-center relative group">
-                    <div class="text-center">
-                        <i class="fas fa-desktop text-6xl text-blue-400 mb-4"></i>
-                        <p class="text-slate-300 font-medium">Hero Image: The New Visual Homepage & Linear Module Path</p>
-                    </div>
-                    <!-- Badge -->
-                    <div class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm">
-                        The Solution
-                    </div>
-                </div>
-                
-                <!-- Metadata Bar -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-slate-50 border-b border-gray-100 text-sm">
-                    <div>
-                        <p class="text-gray-500 font-medium">Role</p>
-                        <p class="font-semibold text-slate-800">Instructional Design Specialist</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 font-medium">Tools</p>
-                        <p class="font-semibold text-slate-800">Canvas, Articulate Rise</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 font-medium">Timeline</p>
-                        <p class="font-semibold text-slate-800">3 Months</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-500 font-medium">Outcome</p>
-                        <p class="font-semibold text-green-600">Double-digit Pass Rate &uarr;</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2. The Narrative Content (Situation/Task/Action/Result) -->
-            <div class="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
+            <!-- Content for MATH 112 Case Study -->
+            <div class="bg-slate-50 rounded-xl shadow-lg p-8 border border-gray-200 reveal">
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Sidebar / Quick Summary -->
                     <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-8">
-                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider">The Challenge</h4>
+                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider text-blue-600">The Challenge</h4>
                         <p class="text-gray-600 text-sm mb-4">
                             Historically <strong>high attrition rates</strong> signaled a disconnect between student effort and course outcomes.
                         </p>
-                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider mt-8">The Fix</h4>
+                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider mt-8 text-green-600">The Fix</h4>
                         <ul class="text-sm text-gray-600 space-y-2">
-                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Reduced Cognitive Load</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Structural Redesign</li>
                             <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Constructive Alignment</li>
-                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Weekly Scaffolding</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Improved Retention</li>
                         </ul>
                     </div>
 
                     <!-- Main Story -->
                     <div class="md:col-span-2 space-y-8">
                         
-                        <!-- Situation & Task -->
                         <div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Diagnosis: Cognitive Overload</h3>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Action: Data-Driven Redesign</h3>
                             <p class="text-gray-600 leading-relaxed">
-                                An instructional audit revealed two root causes for the failure rate: confusing LMS navigation that forced students to "hunt" for content, and assessments that didn't align with learning objectives. My objective was to transform the course into a learner-centered environment.
-                            </p>
-                        </div>
-
-                        <!-- Action -->
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Action: Structural & Pedagogical Redesign</h3>
-                            <p class="text-gray-600 leading-relaxed mb-4">
-                                <strong>Structural Redesign:</strong> I reorganized the content into consistent weekly modules and built a visual homepage to create a clear, linear learning path.
-                            </p>
-                            <p class="text-gray-600 leading-relaxed">
-                                <strong>Pedagogical Alignment:</strong> I restructured the assessment strategy to ensure every high-stakes exam was directly supported by measurable objectives and preparatory practice modules.
+                                Audited the course to find the root cause (misalignment and confusing LMS navigation). Implemented a weekly modular structure with clear visual hierarchy, eliminating cognitive load from navigation. Restructured assessments to directly support measurable learning objectives.
                             </p>
                         </div>
 
                         <!-- Result -->
-                        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-md">
+                        <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded-r-md">
                             <h4 class="font-bold text-green-800 text-sm uppercase mb-1">The Result</h4>
                             <p class="text-green-900 font-medium">
                                 We saw a double-digit percentage increase in pass rates and a marked reduction in course withdrawals year-over-year.
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -483,8 +492,28 @@
         </div>
     </section>
 
-    <!-- NEW ABOUT SECTION -->
-    <section id="about" class="py-24 bg-white">
+    <!-- NEW SECTION: TESTIMONIALS (Incorporated from selected code) -->
+    <section id="testimonials" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">Faculty Partnership: Endorsements</h2>
+            <div class="relative bg-slate-50 p-10 rounded-xl border border-gray-100 shadow-xl">
+                <i class="fas fa-quote-left text-4xl text-blue-200 absolute top-6 left-6"></i>
+                <p class="text-xl text-gray-600 italic relative z-10 mb-6">
+                    "Jian's ability to translate our complex social work scenarios into an interactive digital format was transformative. Students finally have a safe space to practice before entering the field."
+                </p>
+                <div class="flex items-center justify-center space-x-4">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold">JD</div>
+                    <div class="text-left">
+                        <p class="font-bold text-slate-900 text-sm">Jane Doe, LCSW</p>
+                        <p class="text-xs text-gray-500">Associate Professor, College of Social Work</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl font-bold text-slate-900 mb-4">Expertise & Technical Skills</h2>
@@ -561,7 +590,7 @@
         </div>
     </section>
 
-    <!-- NEW SCHOLARSHIP SECTION -->
+    <!-- SCHOLARSHIP SECTION -->
     <section id="scholarship" class="py-24 bg-slate-50 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -617,7 +646,7 @@
         </div>
     </section>
 
-    <!-- NEW CREDENTIALS & AWARDS SECTION -->
+    <!-- CREDENTIALS SECTION -->
     <section id="credentials" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -705,7 +734,7 @@
         </div>
     </section>
 
-    <!-- NEW RESUME SECTION -->
+    <!-- RESUME SECTION -->
     <section id="resume" class="py-24 bg-slate-50 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center mb-16">
@@ -720,7 +749,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <!-- Main Content (Experience & Education) -->
-                <div class="lg:col-span-3 space-y-12"> <!-- Expanded to full width for clean list look, or keep 2 cols if preferred -->
+                <div class="lg:col-span-3 space-y-12">
                     <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100">
                         <h3 class="flex items-center text-xl font-bold text-slate-900 mb-8 border-b border-gray-100 pb-4">
                             <span class="bg-blue-100 text-blue-600 rounded-lg w-10 h-10 flex items-center justify-center mr-4 text-lg"><i class="fas fa-briefcase"></i></span>
@@ -800,7 +829,7 @@
         </div>
     </section>
 
-    <!-- NEW CONTACT SECTION -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="py-32 bg-slate-900 text-white border-t border-slate-800 relative overflow-hidden">
         <!-- Background decoration -->
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
@@ -835,5 +864,182 @@
         </div>
     </footer>
 
+    <!-- JAVASCRIPT LOGIC (RESTORED & IMPROVED) -->
+    <script>
+        // 1. NAVIGATION SCROLL EFFECT & SCROLLSPY
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        // Add all sections that should trigger the ScrollSpy logic
+        const sections = document.querySelectorAll('#process, #portfolio, #social-work-deep-dive, #math-deep-dive, #testimonials, #about, #scholarship, #credentials, #resume, #contact');
+
+        function updateNavStyles() {
+            // Sticky Nav Style
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md', 'text-slate-900');
+                navbar.classList.remove('bg-transparent', 'text-white');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md', 'text-slate-900');
+                navbar.classList.add('bg-transparent', 'text-white');
+            }
+
+            // ScrollSpy (Active Link Highlighting)
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 250)) { // Adjusted offset for smoother triggering
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href').includes(current)) {
+                    li.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', updateNavStyles);
+        window.addEventListener('load', updateNavStyles); // Initial check on load
+
+
+        // 2. TYPEWRITER EFFECT
+        const words = ["driving student success.", "empowering faculty.", "innovating curriculum.", "scaling accessibility."];
+        let i = 0;
+        let timer;
+
+        function typeWriter() {
+            const heading = document.getElementById("typewriter-text");
+            // Guard clause in case element is missing
+            if (!heading) return;
+            
+            const currentWord = words[i];
+            let charIndex = 0;
+            
+            function type() {
+                if (charIndex < currentWord.length) {
+                    heading.innerHTML += currentWord.charAt(charIndex);
+                    charIndex++;
+                    timer = setTimeout(type, 100);
+                } else {
+                    timer = setTimeout(erase, 2000);
+                }
+            }
+            
+            function erase() {
+                if (charIndex > 0) {
+                    heading.innerHTML = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                    timer = setTimeout(erase, 50);
+                } else {
+                    i = (i + 1) % words.length;
+                    type();
+                }
+            }
+            type();
+        }
+
+
+        // 3. IMAGE COMPARISON SLIDER
+        function initComparisons() {
+            const container = document.getElementById("comparison-1");
+            if (!container) return; // Guard clause
+            
+            const overlay = container.querySelector(".img-comp-overlay");
+            const afterImage = container.querySelector(".img-comp-img:not(.img-comp-overlay) img");
+            const beforeImage = overlay.querySelector("img");
+            
+            // Adjust overlay width and slider position to match image size (important for responsiveness)
+            const adjustSliderPosition = () => {
+                const containerWidth = container.offsetWidth;
+                overlay.style.width = (containerWidth / 2) + "px";
+                slider.style.left = (containerWidth / 2) + "px";
+                
+                // Crucial: ensure images inside the comparison layers match the container width
+                afterImage.style.width = containerWidth + 'px';
+                beforeImage.style.width = containerWidth + 'px';
+            };
+            
+            const slider = document.createElement("DIV");
+            slider.setAttribute("class", "img-comp-slider");
+            slider.innerHTML = "<i class='fas fa-arrows-alt-h text-orange-600'></i>";
+            container.appendChild(slider);
+            
+            adjustSliderPosition(); // Initial position
+            window.addEventListener('resize', adjustSliderPosition); // Adjust on resize
+
+            let clicked = 0;
+
+            slider.addEventListener("mousedown", slideReady);
+            window.addEventListener("mouseup", slideFinish);
+            slider.addEventListener("touchstart", slideReady);
+            window.addEventListener("touchend", slideFinish);
+
+            function slideReady(e) {
+                e.preventDefault();
+                clicked = 1;
+                window.addEventListener("mousemove", slideMove);
+                window.addEventListener("touchmove", slideMove);
+            }
+            function slideFinish() {
+                clicked = 0;
+                window.removeEventListener("mousemove", slideMove);
+                window.removeEventListener("touchmove", slideMove);
+            }
+            function slideMove(e) {
+                if (clicked == 0) return false;
+                let pos = getCursorPos(e);
+                if (pos < 0) pos = 0;
+                if (pos > container.offsetWidth) pos = container.offsetWidth;
+                slide(pos);
+            }
+            function getCursorPos(e) {
+                const r = container.getBoundingClientRect();
+                let x = (e.touches ? e.touches[0].pageX : e.pageX) - r.left;
+                x = x - window.pageXOffset;
+                return x;
+            }
+            function slide(x) {
+                overlay.style.width = x + "px";
+                slider.style.left = x + "px";
+            }
+        }
+
+        // 4. SCROLL REVEAL & SKILL BAR ANIMATION
+        function reveal() {
+            const windowHeight = window.innerHeight;
+            
+            // Basic Reveal Logic
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+
+            // Skill bars specific trigger
+            const skillBars = document.querySelectorAll(".skill-bar-fill");
+            for (let j = 0; j < skillBars.length; j++) {
+                const barTop = skillBars[j].getBoundingClientRect().top;
+                if (barTop < windowHeight - 100) {
+                    // Trigger the CSS animation by setting the width property
+                    skillBars[j].style.setProperty('--target-width', skillBars[j].getAttribute("data-width"));
+                    skillBars[j].style.animationPlayState = 'running';
+                }
+            }
+        }
+
+        // INITIALIZE ALL LOGIC
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriter();
+            initComparisons();
+            reveal(); 
+        });
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal); // Initial reveal check on load
+
+    </script>
 </body>
 </html>
