@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
             font-family: 'Roboto Slab', serif; /* Strong, structural headers */
         }
 
-        /* The "Modern Workspace" Background */
+        /* The "Modern Workspace" Background with Stock Image */
         .structural-bg {
             background-color: #1e293b;
             /* Dark slate overlay + Image of code/laptop to create "Focused" vibe */
@@ -53,6 +53,26 @@
         details summary::-webkit-details-marker {
             display: none;
         }
+
+        /* Simple Fade In Animation */
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Stagger delays for grid items */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
     </style>
 </head>
 <body class="bg-white">
@@ -78,7 +98,7 @@
     </nav>
 
     <!-- HERO SECTION: "The Modern Workspace" -->
-    <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 structural-bg overflow-hidden">
+    <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 structural-bg overflow-hidden animate-fade-in-up">
         <!-- Overlay integrated into CSS -->
         <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
@@ -101,7 +121,7 @@
     </header>
 
     <!-- PORTFOLIO GRID PREVIEW -->
-    <section id="portfolio" class="py-20 bg-white">
+    <section id="portfolio" class="py-20 bg-white animate-fade-in-up delay-100">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-slate-900">Selected Works</h2>
@@ -185,7 +205,7 @@
     </section>
 
     <!-- FULL CASE STUDY MOCKUP: MATH 112 -->
-    <section class="py-20 bg-slate-50 border-t border-gray-200">
+    <section class="py-20 bg-slate-50 border-t border-gray-200 animate-fade-in-up delay-200">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Context Header for the Mockup -->
