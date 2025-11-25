@@ -20,18 +20,11 @@
             font-family: 'Roboto Slab', serif;
         }
 
-        /* --- HERO BACKGROUND: Structural Abstract Style --- */
+        /* --- HERO BACKGROUND: Bold Solid Color Style --- */
         .structural-bg {
-            background-color: #1e293b; /* Deep Slate Blue */
-            /* Using a geometric/blueprint pattern overlay on a dark background */
-            background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
-                /* CSS Grid Pattern for "Architect/System" feel */
-                linear-gradient(0deg, #334155 1px, transparent 1px),
-                linear-gradient(90deg, #334155 1px, transparent 1px);
-            background-size: 100px 100px;
-            background-position: 0 0;
-            background-attachment: fixed;
+            background-color: #0f172a; /* Deep Navy/Slate 950 */
+            background-image: none; /* No image, no pattern */
+            background-attachment: scroll; /* Parallax effect removed */
         }
         
         /* --- PORTFOLIO CARD HOVER --- */
@@ -187,15 +180,15 @@
                     </div>
                 </div>
 
-                <!-- Project 2: ILOs -->
+                <!-- Project 2: Interactive Learning Objects (UPDATED) -->
                 <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="h-56 bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center relative overflow-hidden">
                         <i class="fas fa-cubes text-7xl text-purple-200 group-hover:scale-110 transition-transform duration-500"></i>
                         <div class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Interactive</div>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">HTML5 Learning Objects</h3>
-                        <p class="text-gray-600 mb-6">Custom coded interactive maps and learning widgets using HTML/CSS/JS, removing dependencies on external authoring tools.</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">Interactive Learning Objects</h3>
+                        <p class="text-gray-600 mb-6">Developed custom, responsive interactions using Articulate Storyline and Rise, focusing on complex logic and engagement metrics.</p>
                         <a href="https://share.articulate.com/mdqHHMLwjJVolhygvCJhp" target="_blank" class="text-purple-600 font-bold uppercase text-sm hover:underline">Launch Interaction <i class="fas fa-external-link-alt ml-1"></i></a>
                     </div>
                 </div>
@@ -329,26 +322,6 @@
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- NEW SECTION: TESTIMONIALS -->
-    <section class="py-20 bg-white border-t border-gray-100">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12">Faculty Partnership</h2>
-            <div class="relative bg-slate-50 p-10 rounded-xl border border-gray-100">
-                <i class="fas fa-quote-left text-4xl text-blue-200 absolute top-6 left-6"></i>
-                <p class="text-xl text-gray-600 italic relative z-10 mb-6">
-                    "Jian's ability to translate our complex social work scenarios into an interactive digital format was transformative. Students finally have a safe space to practice before entering the field."
-                </p>
-                <div class="flex items-center justify-center space-x-4">
-                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold">JD</div>
-                    <div class="text-left">
-                        <p class="font-bold text-slate-900 text-sm">Jane Doe, LCSW</p>
-                        <p class="text-xs text-gray-500">Associate Professor, College of Social Work</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
