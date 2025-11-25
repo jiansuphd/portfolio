@@ -502,27 +502,6 @@
         </div>
     </section>
 
-    <!-- NEW SECTION: TESTIMONIALS -->
-    <section id="testimonials" class="py-20 bg-white border-t border-gray-100">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12">Faculty Partnership: Endorsements</h2>
-            <div class="relative bg-slate-50 p-10 rounded-xl border border-gray-100 shadow-xl">
-                <i class="fas fa-quote-left text-4xl text-blue-200 absolute top-6 left-6"></i>
-                <p class="text-xl text-gray-600 italic relative z-10 mb-6">
-                    "Jian's ability to translate our complex social work scenarios into an interactive digital format was transformative. Students finally have a safe space to practice before entering the field."
-                </p>
-                <!-- RESPONSIVE ADJUSTMENT: centered on mobile -->
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold">JD</div>
-                    <div class="text-center">
-                        <p class="font-bold text-slate-900 text-sm">Jane Doe, LCSW</p>
-                        <p class="text-xs text-gray-500">Associate Professor, College of Social Work</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ABOUT SECTION -->
     <section id="about" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -888,7 +867,7 @@
         const navbar = document.getElementById('navbar');
         const navLinks = document.querySelectorAll('.nav-link');
         // Add all sections that should trigger the ScrollSpy logic
-        const sections = document.querySelectorAll('#process, #portfolio, #social-work-deep-dive, #math-deep-dive, #testimonials, #about, #scholarship, #credentials, #resume, #contact');
+        const sections = document.querySelectorAll('#process, #portfolio, #social-work-deep-dive, #math-deep-dive, #about, #scholarship, #credentials, #resume, #contact');
 
         function updateNavStyles() {
             // Sticky Nav Style
