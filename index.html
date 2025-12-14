@@ -13,135 +13,271 @@
         body {
             font-family: 'Open Sans', sans-serif;
             color: #333;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
         }
         
         h1, h2, h3, h4 {
             font-family: 'Roboto Slab', serif;
         }
 
-        /* --- HERO BACKGROUND: Bold Solid Color Style --- */
+        /* --- HERO BACKGROUND --- */
         .structural-bg {
-            background-color: #0f172a; /* Deep Navy/Slate 950 */
-            background-image: none; /* No image, no pattern */
-            background-attachment: scroll; /* Parallax effect removed */
+            background-color: #1e293b;
+            /* Dark slate overlay + YOUR CUSTOM IMAGE */
+            /* Ensure your uploaded image is named exactly "hero-bg.jpg" (case sensitive!) */
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.85)),
+                url('./hero-bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+        }
+
+        /* --- SCROLL REVEAL ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        /* JS will add 'active' class on scroll */
+        .reveal.active { 
+            opacity: 1;
+            transform: translateY(0);
         }
         
+        /* Simple Fade In Animation for Load */
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Stagger delays for grid items (Note: these need JS for staggered application) */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* --- TYPEWRITER CURSOR --- */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #60a5fa; /* Blue-400 */
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
         /* --- PORTFOLIO CARD HOVER --- */
         .portfolio-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .portfolio-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         .portfolio-card:hover .card-icon {
             transform: scale(1.1);
             transition: transform 0.3s ease;
         }
-        
-        /* SKILL BAR (STATIC) */
+
+        /* --- SKILL BAR ANIMATION --- */
         .skill-bar-fill {
-            transition: none; 
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+        
+        @keyframes growWidth {
+            from { width: 0; }
+            to { width: var(--target-width); }
         }
 
-        /* Mobile adjustment for deep dive section */
+        /* --- IMAGE COMPARISON SLIDER (Required CSS) --- */
+        .img-comp-container {
+            position: relative;
+            height: 400px; /* Standard height */
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .img-comp-img {
+            position: absolute;
+            width: auto;
+            height: 100%;
+            overflow: hidden;
+        }
+        .img-comp-img img {
+            display: block;
+            height: 100%;
+            width: auto;
+            max-width: none; 
+        }
+        .img-comp-overlay {
+            /* This is the BEFORE image layer */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%; /* Initial split */
+            z-index: 8;
+        }
+        .img-comp-slider {
+            position: absolute;
+            z-index: 9;
+            cursor: ew-resize;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            border: 2px solid #ea580c; /* Orange accent */
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transition: transform 0.1s;
+        }
+        .img-comp-slider:active {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        /* Mobile adjustment for slider height */
         @media (max-width: 640px) {
             .img-comp-container {
                 height: 300px; 
             }
         }
+
+
+        /* --- NAVIGATION ACTIVE STATE (ScrollSpy) --- */
+        /* Use important because Tailwind classes conflict with simple CSS rules */
+        #navbar .nav-link.active {
+            color: #2563eb !important; /* Blue-600 */
+            border-bottom-color: #2563eb !important;
+        }
+        /* Default text color for the dynamic nav bar */
+        #navbar .nav-link {
+            color: white; /* Default on dark hero */
+        }
+        #navbar.bg-white .nav-link {
+            color: #1e293b; /* Dark on white scroll */
+        }
+        #navbar.bg-white .contact-btn {
+            background-color: #1e293b;
+            color: white;
+        }
+
     </style>
 </head>
 <body class="bg-white">
 
-    <!-- NAVIGATION (Static Sticky Bar) -->
-    <nav class="sticky top-0 w-full z-50 bg-white shadow-md">
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent text-white" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-slate-800 tracking-tight cursor-pointer" onclick="window.scrollTo(0,0)">Jian Su, Ph.D.</span>
+                    <span class="text-2xl font-bold tracking-tight cursor-pointer" onclick="window.scrollTo(0,0)">Jian Su, Ph.D.</span>
                 </div>
                 <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider">
-                    <a href="#" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Home</a>
-                    <a href="#process" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Process</a>
-                    <a href="#portfolio" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Portfolio</a>
-                    <a href="#about" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">About</a>
-                    <a href="#scholarship" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Scholarship</a>
-                    <a href="#credentials" class="text-slate-900 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">Credentials</a>
-                    <a href="#contact" class="px-4 py-2 rounded-lg bg-slate-800 text-white hover:bg-blue-600 transition">Contact</a>
+                    <a href="#" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Home</a>
+                    <a href="#process" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Process</a>
+                    <a href="#portfolio" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Portfolio</a>
+                    <a href="#about" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">About</a>
+                    <a href="#scholarship" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Scholarship</a>
+                    <a href="#credentials" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Credentials</a>
+                    <a href="#contact" class="px-4 py-2 rounded border border-white hover:bg-white hover:text-slate-900 transition contact-btn">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <header class="relative min-h-[60vh] flex items-center justify-center structural-bg text-center px-4 py-20">
-        <div class="relative max-w-5xl mx-auto z-10 pt-10">
+    <header class="relative min-h-screen flex items-center justify-center structural-bg text-center px-4">
+        <div class="relative max-w-5xl mx-auto z-10 pt-20">
             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-                Instructional Design Manager 
+                Instructional Design Manager <br/>
+                <span class="text-blue-400" id="typewriter-text"></span><span class="cursor">&nbsp;</span>
             </h1>
-            <p class="mt-4 max-w-3xl mx-auto text-2xl text-blue-300 font-light drop-shadow-md">
-                Bridging the gap between educational research and technical innovation.
+            <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-200 font-light drop-shadow-md reveal">
+                Through innovative, high-impact, data-driven course design.
             </p>
-            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#portfolio" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-all transform hover:-translate-y-1">
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 reveal">
+                <a href="#portfolio" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-blue-500/50 transition-all transform hover:-translate-y-1">
                     View Portfolio
                 </a>
+                <!-- UPDATED LINK: Pointing to Resume.pdf -->
                 <a href="Resume.pdf" target="_blank" class="px-8 py-4 bg-transparent border-2 border-slate-300 text-white font-bold rounded-lg hover:bg-white/10 transition-all transform hover:-translate-y-1 backdrop-blur-sm">
                     Download CV
                 </a>
             </div>
         </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#portfolio" class="text-white opacity-70 hover:opacity-100">
+                <i class="fas fa-chevron-down text-3xl"></i>
+            </a>
+        </div>
     </header>
 
-    <!-- NEW SECTION: MY PROCESS -->
+    <!-- NEW SECTION: MY PROCESS (Adjusted to 2 columns on mobile) -->
     <section id="process" class="py-24 bg-slate-50 border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 reveal">
                 <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Methodology</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">How I Work (ADDIE & Agile)</h2>
                 <p class="mt-4 text-lg text-gray-500">Structured processes ensure timely delivery and measurable outcomes.</p>
             </div>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center">
-                <!-- Step 1: Analyze -->
+            <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-2 for mobile, md:grid-cols-5 for desktop -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center reveal">
+                <!-- Step 1 -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-search text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">1. Analyze</h4>
                     <p class="text-xs text-gray-500 mt-1">Needs Assessment & Learner Profiles</p>
-                    <div class="hidden md:block absolute top-10 right-0 w-1/2 h-0.5 bg-gray-300 -z-10 transform translate-x-1/2"></div>
+                    <!-- Connector Line (Responsive) -->
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
                 </div>
-                <!-- Step 2: Design -->
+                <!-- Step 2 -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-pencil-ruler text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">2. Design</h4>
                     <p class="text-xs text-gray-500 mt-1">Storyboarding & Blueprinting</p>
-                    <div class="hidden md:block absolute top-10 right-0 w-full h-0.5 bg-gray-300 -z-10 transform translate-x-1/2"></div>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
                 </div>
-                <!-- Step 3: Develop -->
+                <!-- Step 3 -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-code text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">3. Develop</h4>
                     <p class="text-xs text-gray-500 mt-1">Canvas, Storyline & HTML5</p>
-                    <div class="hidden md:block absolute top-10 right-0 w-full h-0.5 bg-gray-300 -z-10 transform translate-x-1/2"></div>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
                 </div>
-                <!-- Step 4: Implement -->
+                <!-- Step 4 -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-rocket text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 mt-2">4. Implement</h4>
                     <p class="text-xs text-gray-500 mt-1">QA Testing & Launch</p>
-                    <div class="hidden md:block absolute top-10 right-0 w-full h-0.5 bg-gray-300 -z-10 transform translate-x-1/2"></div>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
                 </div>
-                <!-- Step 5: Evaluate -->
+                <!-- Step 5 -->
                 <div class="relative group">
                     <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
                         <i class="fas fa-chart-line text-2xl text-blue-600 group-hover:text-white"></i>
@@ -156,118 +292,179 @@
     <!-- PORTFOLIO GRID -->
     <section id="portfolio" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 reveal">
                 <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Case Studies</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">Selected Works</h2>
-                <p class="mt-4 text-lg text-gray-500">Transforming complex pedagogy into intuitive digital experiences.</p>
+                <p class="mt-4 text-lg text-gray-500">Case studies in academic transformation and faculty development.</p>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-1 for mobile, md:grid-cols-2 for desktop -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 
-                <!-- Project 1: Social Work -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-56 bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center relative overflow-hidden">
-                        <i class="fas fa-users text-7xl text-orange-200 group-hover:scale-110 transition-transform duration-500"></i>
-                        <div class="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Featured</div>
+                <!-- Project 1: Social Work Simulation (Featured Story) -->
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                    <!-- Card Content -->
+                    <div class="h-56 bg-orange-50 relative overflow-hidden flex items-center justify-center group-hover:bg-orange-100 transition-colors duration-500">
+                         <div class="absolute inset-0 bg-orange-100 pattern-grid-lg opacity-30"></div>
+                        <i class="fas fa-users text-7xl text-orange-300 card-icon transition-transform duration-500 group-hover:scale-110"></i>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-semibold tracking-wider uppercase">View Case Study</span>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm">
+                            Front Story
+                        </div>
                     </div>
                     <div class="p-8">
                         <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors">Social Work Simulation</h3>
-                        <p class="text-gray-600 mb-6">Designed complex storyline branching scenarios embedded in Canvas. Solved critical navigation issues for multi-course student access.</p>
+                        <p class="text-gray-600 mb-6">Designed storyline components, embedded in Canvas, managed flow, and created support guides for multi-course access.</p>
+                        <!-- Linked to the Deep Dive section -->
                         <div class="flex flex-wrap gap-4">
-                            <a href="#social-work-deep-dive" class="text-orange-600 font-bold uppercase text-sm hover:underline">Read Case Study</a>
+                            <a href="#social-work-deep-dive" class="text-orange-600 font-bold uppercase text-sm hover:underline">Read Deep Dive <i class="fas fa-arrow-down ml-1"></i></a>
                             <a href="https://canvas.instructure.com/courses/8814527" target="_blank" class="text-orange-600 font-bold uppercase text-sm hover:underline">View Project <i class="fas fa-external-link-alt ml-1"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2: Interactive Learning Objects (UPDATED) -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-56 bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center relative overflow-hidden">
-                        <i class="fas fa-cubes text-7xl text-purple-200 group-hover:scale-110 transition-transform duration-500"></i>
-                        <div class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Interactive</div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">Interactive Learning Objects</h3>
-                        <p class="text-gray-600 mb-6">Developed custom, responsive interactions using Articulate Storyline and Rise, focusing on complex logic and engagement metrics.</p>
-                        <a href="https://share.articulate.com/mdqHHMLwjJVolhygvCJhp" target="_blank" class="text-purple-600 font-bold uppercase text-sm hover:underline">Launch Interaction <i class="fas fa-external-link-alt ml-1"></i></a>
-                    </div>
+                <!-- Project 2: HTML Interactive Learning Objects (Moved & Renamed) -->
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                    <a href="https://jiansuphd.github.io/interactive-learning-objects/" target="_blank" class="block h-full">
+                        <div class="h-56 bg-teal-50 relative overflow-hidden flex items-center justify-center group-hover:bg-teal-100 transition-colors duration-500">
+                            <div class="absolute inset-0 bg-teal-100 pattern-grid-lg opacity-30"></div>
+                            <i class="fas fa-code text-7xl text-teal-300 card-icon transition-transform duration-500 group-hover:scale-110"></i>
+                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span class="text-white text-sm font-semibold tracking-wider uppercase">View HTML Examples</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-teal-600 transition-colors">HTML Interactions</h3>
+                            <p class="text-gray-600 mb-6">Lightweight, accessible interactive learning objects built with standard HTML, CSS, and JS.</p>
+                            <span class="text-teal-600 font-bold uppercase text-sm hover:underline">
+                                Launch Repository <i class="fas fa-external-link-alt ml-1"></i>
+                            </span>
+                        </div>
+                    </a>
                 </div>
 
-                <!-- Project 3: MATH 112 -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <!-- Project 3: Storyline Interactive Learning Objects (Restored Original Link) -->
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                    <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10 uppercase tracking-wider">
+                        New Project
+                    </div>
+                    <!-- REVERTED LINK: Pointing back to Articulate Share -->
+                    <a href="https://share.articulate.com/mdqHHMLwjJVolhygvCJhp" target="_blank" class="block h-full">
+                        <div class="h-56 bg-purple-50 relative overflow-hidden flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-500">
+                            <div class="absolute inset-0 bg-purple-100 pattern-grid-lg opacity-30"></div>
+                            <i class="fas fa-shapes text-7xl text-purple-300 card-icon transition-transform duration-500 group-hover:scale-110"></i>
+                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span class="text-white text-sm font-semibold tracking-wider uppercase">Try Interaction</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">Interactive Learning Objects</h3>
+                            <p class="text-gray-600 mb-6">Storyline design work demonstrating complex branching and user engagement strategies.</p>
+                            <span class="text-purple-600 font-bold uppercase text-sm hover:underline">
+                                Launch Project <i class="fas fa-external-link-alt ml-1"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 4: MATH 112 -->
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
                     <div class="h-56 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative overflow-hidden">
-                        <i class="fas fa-chart-line text-7xl text-blue-200 group-hover:scale-110 transition-transform duration-500"></i>
+                        <!-- Abstract representation of the "After" visual -->
+                        <i class="fas fa-chart-line text-7xl text-blue-200 group-hover:text-blue-600 card-icon transition-all duration-500 group-hover:scale-110"></i>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-semibold tracking-wider uppercase">View Analysis</span>
+                        </div>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">MATH 112 Redesign</h3>
-                        <p class="text-gray-600 mb-6">Used data analytics to identify attrition points. Restructured course architecture to improve retention by 15%.</p>
-                        <a href="#math-deep-dive" class="text-blue-600 font-bold uppercase text-sm hover:underline">View Analysis <i class="fas fa-arrow-down ml-1"></i></a>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">MATH 112 Redesign</h3>
+                        <p class="text-gray-600 mb-6">Reversing high attrition rates through structural redesign and pedagogical alignment.</p>
+                        <!-- Link to the Math Deep Dive section -->
+                        <a href="#math-deep-dive" class="inline-flex items-center text-blue-600 font-bold uppercase text-sm hover:underline">
+                            Read Case Study <i class="fas fa-arrow-down ml-1"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Project 4: Digital Distractions -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-56 bg-gradient-to-br from-slate-50 to-slate-200 flex items-center justify-center relative overflow-hidden">
-                        <i class="fas fa-mobile-alt text-7xl text-slate-300 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">Digital Distractions</h3>
-                        <p class="text-gray-600 mb-6">Research presentation on leveraging student devices for engagement rather than fighting against them.</p>
-                        <a href="https://canvas.instructure.com/courses/1298217" target="_blank" class="text-slate-600 font-bold uppercase text-sm hover:underline">View Presentation <i class="fas fa-external-link-alt ml-1"></i></a>
-                    </div>
+                <!-- Project 5: Managing Digital Distractions -->
+                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                    <a href="https://canvas.instructure.com/courses/1298217" target="_blank" class="block h-full">
+                        <div class="h-56 bg-gradient-to-br from-slate-50 to-slate-200 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-mobile-alt text-7xl text-gray-300 group-hover:text-slate-600 card-icon transition-transform duration-500 group-hover:scale-110"></i>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span class="text-white text-sm font-semibold tracking-wider uppercase">Watch Presentation</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">Managing Digital Distractions</h3>
+                            <p class="text-gray-600 mb-6">Presentation on utilizing digital devices for student engagement in the classroom.</p>
+                            <div class="text-xs text-gray-500 mb-4 italic">Presented at ELI Annual Meeting 2019</div>
+                            <span class="text-slate-600 font-bold uppercase text-sm hover:underline">
+                                View Course <i class="fas fa-external-link-alt ml-1"></i>
+                            </span>
+                        </div>
+                    </a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- DEEP DIVE: SOCIAL WORK SIMULATION (Primary Case Study - Text Focused) -->
+    <!-- DEEP DIVE: SOCIAL WORK SIMULATION (Primary Case Study with Slider) -->
     <section id="social-work-deep-dive" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="mb-12 text-center">
+            <!-- Context Header for the Mockup -->
+            <div class="mb-12 text-center reveal">
                 <span class="text-orange-600 font-bold uppercase tracking-widest text-sm">Project Deep Dive</span>
                 <h2 class="text-4xl font-bold text-slate-900 mt-2">Social Work Simulation</h2>
             </div>
 
-            <div class="max-w-4xl mx-auto space-y-12">
+            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on large screens -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 
-                <!-- Narrative -->
-                <div class="text-gray-600 text-lg leading-relaxed border-b border-gray-200 pb-8">
-                    <div class="inline-block bg-orange-100 text-orange-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">The Challenge</div>
-                    <p class="mb-4">
-                        The original Social Work course suffered from deep nested folders, leading to high support ticket volume and student frustration with wayfinding.
+                <!-- Text Content -->
+                <div class="reveal">
+                    <div class="inline-block bg-orange-100 text-orange-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">Before & After</div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Reimagining the Student Experience</h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        The original Social Work course suffered from deep nested folders and lack of visual hierarchy, causing high support ticket volume.
                     </p>
-                    <div class="inline-block bg-green-100 text-green-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">The Solution</div>
-                    <p>
-                        My solution focused on **structural UX design** and **component development**. I designed the storyline components, managed the embedding and data flow into Canvas, and created clear, external support guides (job aids) to minimize technical barriers. This centralized access and simplified the learner journey.
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        My redesign introduced a branching simulation hub embedded directly in Canvas. This centralized access, improved wayfinding, and provided immediate context for learners.
                     </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Storyline Component Design & Flow Management
+                        </li>
+                        <li class="flex items-center text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Developed comprehensive student/instructor guides
+                        </li>
+                        <li class="flex items-center text-slate-700 font-medium">
+                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Minimized technical barriers for multi-course access
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Artifact Focus and Decorative Elements -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center py-4 border-b border-gray-200">
-                    <div class="p-6 bg-white rounded-xl shadow-lg">
-                        <i class="fas fa-pencil-ruler text-5xl text-blue-600 mb-4"></i>
-                        <h4 class="font-bold text-slate-900">Storyline Design</h4>
-                        <p class="text-sm text-gray-500">Complex branching and scenario development.</p>
+                <!-- Interactive Slider -->
+                <div class="reveal delay-200">
+                    <p class="text-center text-xs text-gray-500 mb-2 uppercase tracking-widest">Drag slider to compare</p>
+                    
+                    <div class="img-comp-container" id="comparison-1">
+                        <!-- AFTER IMAGE (Bottom Layer) -->
+                        <div class="img-comp-img">
+                            <!-- Placeholder: NEW Design Mockup -->
+                            <img src="https://via.placeholder.com/800x450.png?text=NEW+Simulation+Hub+(After+Redesign)" alt="New Design">
+                        </div>
+                        <!-- BEFORE IMAGE (Top Layer) -->
+                        <div class="img-comp-img img-comp-overlay">
+                            <!-- Placeholder: OLD Design Mockup -->
+                            <img src="https://via.placeholder.com/800x450.png?text=OLD+Course+Folder+Structure+(Before)" alt="Old Design">
+                        </div>
                     </div>
-                    <div class="p-6 bg-white rounded-xl shadow-lg">
-                        <i class="fas fa-laptop-code text-5xl text-purple-600 mb-4"></i>
-                        <h4 class="font-bold text-slate-900">Canvas Integration</h4>
-                        <p class="text-sm text-gray-500">Flow management and troubleshooting multi-course access.</p>
-                    </div>
-                    <div class="p-6 bg-white rounded-xl shadow-lg">
-                        <i class="fas fa-book-reader text-5xl text-green-600 mb-4"></i>
-                        <h4 class="font-bold text-slate-900">Support Guides</h4>
-                        <p class="text-sm text-gray-500">Created job aids for faculty and students.</p>
-                    </div>
-                </div>
-
-                <!-- Direct Link to Artifact -->
-                <div class="text-center pt-8">
-                    <a href="https://canvas.instructure.com/courses/8814527" target="_blank" class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-xl text-white bg-orange-600 hover:bg-orange-700 transition shadow-lg transform hover:-translate-y-1">
-                        <i class="fas fa-external-link-alt mr-3"></i> View Live Course Artifact
-                    </a>
                 </div>
 
             </div>
@@ -278,14 +475,15 @@
     <section id="math-deep-dive" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="mb-8 border-l-4 border-blue-600 pl-4">
+            <div class="mb-8 border-l-4 border-blue-600 pl-4 reveal">
                 <span class="text-sm font-bold text-blue-600 tracking-wide uppercase">Secondary Project Deep Dive</span>
                 <h2 class="text-3xl font-bold text-slate-900">MATH 112 Redesign</h2>
             </div>
 
             <!-- Content for MATH 112 Case Study -->
-            <div class="bg-slate-50 rounded-xl shadow-lg p-8 border border-gray-200">
+            <div class="bg-slate-50 rounded-xl shadow-lg p-8 border border-gray-200 reveal">
                 
+                <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 3 columns on large screens -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Sidebar / Quick Summary -->
                     <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-8">
@@ -325,71 +523,99 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION (Optimized for Skills Display) -->
+    <!-- NEW SECTION: TESTIMONIALS -->
+    <section id="testimonials" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">Faculty Partnership: Endorsements</h2>
+            <div class="relative bg-slate-50 p-10 rounded-xl border border-gray-100 shadow-xl">
+                <i class="fas fa-quote-left text-4xl text-blue-200 absolute top-6 left-6"></i>
+                <p class="text-xl text-gray-600 italic relative z-10 mb-6">
+                    "Jian's ability to translate our complex social work scenarios into an interactive digital format was transformative. Students finally have a safe space to practice before entering the field."
+                </p>
+                <!-- RESPONSIVE ADJUSTMENT: centered on mobile -->
+                <div class="flex flex-col items-center justify-center space-y-2">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold">JD</div>
+                    <div class="text-center">
+                        <p class="font-bold text-slate-900 text-sm">Jane Doe, LCSW</p>
+                        <p class="text-xs text-gray-500">Associate Professor, College of Social Work</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
     <section id="about" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900">Expertise & Technical Skills</h2>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Expertise & Technical Skills</h2>
                 <p class="mt-4 text-lg text-gray-500">A unique blend of academic theory and technical application.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Bio (Primary Narrative) -->
-                <div class="prose prose-lg text-gray-600">
+            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on large screens -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- Bio -->
+                <div class="prose prose-lg text-gray-600 reveal">
                     <p>
                         With a <strong>Ph.D. in Instructional Technology</strong> and a background in Linguistics, I approach course design as a translation process: translating expert knowledge into learner-centric experiences.
                     </p>
                     <p>
-                        Since 2017, I have served as an Instructional Design Manager at the <strong>University of Tennessee</strong>, leading faculty development and large-scale curriculum innovations.
+                        Since 2017, I have served as an Instructional Design Specialist and Manager at the <strong>University of Tennessee</strong>, leading faculty development and large-scale curriculum innovations.
                     </p>
-                    <div class="flex gap-4 mt-6">
-                        <div class="bg-slate-100 p-4 rounded text-center w-1/2">
-                            <span class="block text-3xl font-bold text-blue-600">8+</span>
-                            <span class="text-xs text-gray-500 uppercase">Years Experience</span>
+                    
+                    <!-- Philosophy Cards (Small version) -->
+                    <div class="mt-8 space-y-6">
+                         <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4 text-blue-600 mt-1"><i class="fas fa-chart-pie"></i></div>
+                            <div><h4 class="font-bold text-slate-900">Data-Driven Strategy</h4><p class="text-sm">Using LMS analytics to iterate and improve.</p></div>
                         </div>
-                        <div class="bg-slate-100 p-4 rounded text-center w-1/2">
-                            <span class="block text-3xl font-bold text-blue-600">50+</span>
-                            <span class="text-xs text-gray-500 uppercase">Courses Launched</span>
+                        <div class="flex items-start">
+                            <div class="bg-green-100 p-2 rounded-full mr-4 text-green-600 mt-1"><i class="fas fa-universal-access"></i></div>
+                            <div><h4 class="font-bold text-slate-900">Inclusivity First (UDL)</h4><p class="text-sm">Ensuring equity for all learners.</p></div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-100 p-2 rounded-full mr-4 text-yellow-600 mt-1"><i class="fas fa-microphone-lines"></i></div>
+                            <div><h4 class="font-bold text-slate-900">Effective Communication</h4><p class="text-sm">Active Toastmasters member & advocate.</p></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Technical Skills (Visual Showcase) -->
-                <div class="space-y-6">
+                <!-- Animated Skill Bars -->
+                <div class="space-y-8 reveal delay-200">
                     <div>
-                        <div class="flex justify-between mb-1">
-                            <span class="text-base font-medium text-slate-700">Canvas LMS Architecture</span>
-                            <span class="text-sm font-medium text-slate-500">Expert</span>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-base font-bold text-slate-700">Canvas LMS Architecture</span>
+                            <span class="text-sm font-medium text-blue-600">Expert</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full skill-bar-fill" style="width: 95%"></div>
+                        <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
+                            <div class="bg-blue-600 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_forwards]" style="--target-width: 95%"></div>
                         </div>
                     </div>
                     <div>
-                        <div class="flex justify-between mb-1">
-                            <span class="text-base font-medium text-slate-700">Articulate Storyline 360</span>
-                            <span class="text-sm font-medium text-slate-500">Advanced</span>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-base font-bold text-slate-700">Articulate Storyline 360</span>
+                            <span class="text-sm font-medium text-purple-600">Advanced</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-purple-600 h-2.5 rounded-full skill-bar-fill" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-1">
-                            <span class="text-base font-medium text-slate-700">HTML5/CSS/JavaScript</span>
-                            <span class="text-sm font-medium text-slate-500">Intermediate</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-orange-500 h-2.5 rounded-full skill-bar-fill" style="width: 75%"></div>
+                        <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
+                            <div class="bg-purple-600 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.2s_forwards]" style="--target-width: 90%"></div>
                         </div>
                     </div>
                     <div>
-                        <div class="flex justify-between mb-1">
-                            <span class="text-base font-medium text-slate-700">Project Management (Agile)</span>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-base font-bold text-slate-700">HTML5/CSS/JavaScript</span>
+                            <span class="text-sm font-medium text-orange-500">Intermediate</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
+                            <div class="bg-orange-500 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.4s_forwards]" style="--target-width: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-base font-bold text-slate-700">Project Management (Agile)</span>
                             <span class="text-sm font-medium text-slate-500">Certified</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-green-500 h-2.5 rounded-full skill-bar-fill" style="width: 85%"></div>
+                        <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
+                            <div class="bg-gray-500 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.6s_forwards]" style="--target-width: 85%"></div>
                         </div>
                     </div>
                 </div>
@@ -405,46 +631,47 @@
                 <p class="mt-4 text-lg text-gray-500">Bridging research and practice through evidence-based publications.</p>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on desktop -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Publications -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:shadow-lg transition-all duration-300">
-                    <h3 class="flex items-center text-xl font-bold text-slate-900 mb-6">
-                        <span class="bg-blue-600 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-4 shadow-sm"><i class="fas fa-book-open"></i></span>
+                <div class="bg-white p-10 rounded-xl border border-gray-100 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="flex items-center text-xl font-bold text-slate-900 mb-8">
+                        <span class="bg-blue-600 text-white rounded-lg w-12 h-12 flex items-center justify-center mr-4 shadow-md"><i class="fas fa-book-open text-lg"></i></span>
                         Selected Publications
                     </h3>
-                    <ul class="space-y-6">
-                        <li class="pl-4 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300">
-                            <p class="text-slate-900 font-semibold text-sm">Validating the Turkish Version of the Self-Directed Online Learning Scale</p>
+                    <ul class="space-y-8">
+                        <li class="pl-4 border-l-4 border-blue-100 hover:border-blue-500 transition-colors duration-300">
+                            <p class="text-slate-900 font-bold text-base">Validating the Turkish Version of the Self-Directed Online Learning Scale</p>
                             <p class="text-gray-500 text-sm italic mt-1">Technology, Knowledge and Learning (2025)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300">
-                            <p class="text-slate-900 font-semibold text-sm">Investigating Students' Perception with an Online Dynamic Earth Course</p>
+                        <li class="pl-4 border-l-4 border-blue-100 hover:border-blue-500 transition-colors duration-300">
+                            <p class="text-slate-900 font-bold text-base">Investigating Students' Perception with an Online Dynamic Earth Course</p>
                             <p class="text-gray-500 text-sm italic mt-1">Geosciences (2024)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300">
-                            <p class="text-slate-900 font-semibold text-sm">A Construct Revalidation of the Community of Inquiry Survey</p>
+                        <li class="pl-4 border-l-4 border-blue-100 hover:border-blue-500 transition-colors duration-300">
+                            <p class="text-slate-900 font-bold text-base">A Construct Revalidation of the Community of Inquiry Survey</p>
                             <p class="text-gray-500 text-sm italic mt-1">International Review of Research in Open and Distributed Learning (2021)</p>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Speaking -->
-                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:shadow-lg transition-all duration-300">
-                    <h3 class="flex items-center text-xl font-bold text-slate-900 mb-6">
-                        <span class="bg-purple-600 text-white rounded-lg w-10 h-10 flex items-center justify-center mr-4 shadow-sm"><i class="fas fa-microphone-alt"></i></span>
+                <div class="bg-white p-10 rounded-xl border border-gray-100 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="flex items-center text-xl font-bold text-slate-900 mb-8">
+                        <span class="bg-purple-600 text-white rounded-lg w-12 h-12 flex items-center justify-center mr-4 shadow-md"><i class="fas fa-microphone-alt text-lg"></i></span>
                         Conference Speaking
                     </h3>
-                    <ul class="space-y-6">
-                        <li class="pl-4 border-l-2 border-purple-200 hover:border-purple-400 transition-colors duration-300">
-                            <p class="text-slate-900 font-semibold text-sm">Building An Online Learning Community</p>
+                    <ul class="space-y-8">
+                        <li class="pl-4 border-l-4 border-purple-100 hover:border-purple-500 transition-colors duration-300">
+                            <p class="text-slate-900 font-bold text-base">Building An Online Learning Community</p>
                             <p class="text-gray-500 text-sm italic mt-1">OLC Innovate Conference, Nashville, TN (2023)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-purple-200 hover:border-purple-400 transition-colors duration-300">
-                            <p class="text-slate-900 font-semibold text-sm">More Than Just Eye Candy: Visual Design for Online Content</p>
+                        <li class="pl-4 border-l-4 border-purple-100 hover:border-purple-500 transition-colors duration-300">
+                            <p class="text-slate-900 font-bold text-base">More Than Just Eye Candy: Visual Design for Online Content</p>
                             <p class="text-gray-500 text-sm italic mt-1">OLC Accelerate, Washington, DC (2020)</p>
                         </li>
-                        <li class="pl-4 border-l-2 border-purple-200 hover:border-purple-400 transition-colors duration-300">
-                            <p class="text-slate-900 font-semibold text-sm">Use Them or Lose Them: Digital Devices for Student Engagement</p>
+                        <li class="pl-4 border-l-4 border-purple-100 hover:border-purple-500 transition-colors duration-300">
+                            <p class="text-slate-900 font-bold text-base">Use Them or Lose Them: Digital Devices for Student Engagement</p>
                             <p class="text-gray-500 text-sm italic mt-1">ELI Annual Meeting (Anaheim) & Encore! Online Event (2019)</p>
                         </li>
                     </ul>
@@ -452,8 +679,8 @@
             </div>
         </div>
     </section>
-    
-    <!-- CREDENTIALS SECTION (Detailed list of Certifications) -->
+
+    <!-- CREDENTIALS SECTION -->
     <section id="credentials" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -461,50 +688,51 @@
                 <p class="mt-4 text-lg text-gray-500">Continuous learning in Artificial Intelligence, Project Management, and Leadership.</p>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on desktop -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- AI & Technical Leadership -->
                 <div>
-                    <h3 class="font-bold text-slate-900 text-xl mb-6 flex items-center">
-                        <i class="fas fa-robot text-blue-600 mr-3"></i> AI & Project Management
+                    <h3 class="font-bold text-slate-900 text-xl mb-8 flex items-center">
+                        <span class="bg-blue-100 p-2 rounded text-blue-600 mr-3"><i class="fas fa-robot"></i></span> AI & Project Management
                     </h3>
                     <div class="space-y-4">
                         <!-- Cert 1 -->
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300">
-                            <div class="flex-shrink-0 mr-4">
-                                <span class="bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">IBM</span>
+                        <div class="bg-white p-6 rounded-lg border border-gray-100 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300 hover:border-blue-200">
+                            <div class="flex-shrink-0 mr-5">
+                                <span class="bg-slate-100 text-slate-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">IBM</span>
                             </div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">AI Project Manager</h4>
+                                <h4 class="text-slate-900 font-bold text-lg">AI Project Manager</h4>
                                 <p class="text-sm text-gray-500">Professional Certificate (8 Course Series)</p>
                             </div>
                         </div>
                         <!-- Cert 2 -->
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300">
-                            <div class="flex-shrink-0 mr-4">
+                        <div class="bg-white p-6 rounded-lg border border-gray-100 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300 hover:border-blue-200">
+                            <div class="flex-shrink-0 mr-5">
                                 <span class="bg-blue-50 text-blue-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">Google</span>
                             </div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">Project Management</h4>
+                                <h4 class="text-slate-900 font-bold text-lg">Project Management</h4>
                                 <p class="text-sm text-gray-500">Professional Certificate (7 Course Series)</p>
                             </div>
                         </div>
                         <!-- Cert 3 -->
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300">
-                            <div class="flex-shrink-0 mr-4">
-                                <span class="bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">IBM</span>
+                        <div class="bg-white p-6 rounded-lg border border-gray-100 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300 hover:border-blue-200">
+                            <div class="flex-shrink-0 mr-5">
+                                <span class="bg-slate-100 text-slate-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">IBM</span>
                             </div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">Generative AI for Data Scientists</h4>
+                                <h4 class="text-slate-900 font-bold text-lg">Generative AI for Data Scientists</h4>
                                 <p class="text-sm text-gray-500">Specialization (3 Course Series)</p>
                             </div>
                         </div>
                          <!-- Cert 4 -->
-                         <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300">
-                            <div class="flex-shrink-0 mr-4">
+                         <div class="bg-white p-6 rounded-lg border border-gray-100 shadow-sm flex items-start hover:shadow-md transition-shadow duration-300 hover:border-blue-200">
+                            <div class="flex-shrink-0 mr-5">
                                 <span class="bg-pink-50 text-pink-600 font-bold px-3 py-1 rounded text-xs uppercase tracking-wide">Asana</span>
                             </div>
                             <div>
-                                <h4 class="text-slate-900 font-bold">Workflow Specialist</h4>
+                                <h4 class="text-slate-900 font-bold text-lg">Workflow Specialist</h4>
                                 <p class="text-sm text-gray-500">Advanced Workflow Management Certification</p>
                             </div>
                         </div>
@@ -513,25 +741,26 @@
 
                 <!-- Academic Honors & Service -->
                 <div>
-                    <h3 class="font-bold text-slate-900 text-xl mb-6 flex items-center">
-                        <i class="fas fa-medal text-yellow-500 mr-3"></i> Honors & Awards
+                    <h3 class="font-bold text-slate-900 text-xl mb-8 flex items-center">
+                        <span class="bg-yellow-100 p-2 rounded text-yellow-600 mr-3"><i class="fas fa-medal"></i></span> Honors & Awards
                     </h3>
-                    <div class="bg-white p-8 rounded-xl border border-gray-200 h-full hover:shadow-md transition-shadow duration-300">
-                        <ul class="space-y-8">
-                            <li class="relative pl-6 border-l-2 border-yellow-400">
-                                <h4 class="text-lg font-bold text-slate-900">Travis Hawk Fellowship</h4>
-                                <p class="text-blue-600 text-sm font-semibold mb-2">University of Tennessee, Knoxville</p>
-                                <p class="text-gray-600 text-sm">Awarded for academic excellence and research potential in Educational Psychology and Counseling.</p>
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 h-full hover:shadow-md transition-shadow duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-50 rounded-full -mr-16 -mt-16 opacity-50"></div>
+                        <ul class="space-y-10 relative z-10">
+                            <li class="relative pl-8 border-l-4 border-yellow-400">
+                                <h4 class="text-xl font-bold text-slate-900">Travis Hawk Fellowship</h4>
+                                <p class="text-blue-600 text-sm font-bold mb-2 uppercase tracking-wide">University of Tennessee, Knoxville</p>
+                                <p class="text-gray-600 text-base">Awarded for academic excellence and research potential in Educational Psychology and Counseling.</p>
                             </li>
-                            <li class="relative pl-6 border-l-2 border-yellow-400">
-                                <h4 class="text-lg font-bold text-slate-900">Outstanding Faculty Award</h4>
-                                <p class="text-blue-600 text-sm font-semibold mb-2">Zhongnan University of Economics and Law</p>
-                                <p class="text-gray-600 text-sm">Recognized for excellence in teaching English as a foreign language and curriculum development.</p>
+                            <li class="relative pl-8 border-l-4 border-yellow-400">
+                                <h4 class="text-xl font-bold text-slate-900">Outstanding Faculty Award</h4>
+                                <p class="text-blue-600 text-sm font-bold mb-2 uppercase tracking-wide">Zhongnan University of Economics and Law</p>
+                                <p class="text-gray-600 text-base">Recognized for excellence in teaching English as a foreign language and curriculum development.</p>
                             </li>
-                            <li class="relative pl-6 border-l-2 border-gray-300">
-                                <h4 class="text-lg font-bold text-slate-900">Conference Presentation Finalist</h4>
-                                <p class="text-blue-600 text-sm font-semibold mb-2">AECT Division of Distance Learning</p>
-                                <p class="text-gray-600 text-sm">Finalist for the Burmeister Outstanding Presentation Award (2012).</p>
+                            <li class="relative pl-8 border-l-4 border-gray-300">
+                                <h4 class="text-xl font-bold text-slate-900">Conference Presentation Finalist</h4>
+                                <p class="text-blue-600 text-sm font-bold mb-2 uppercase tracking-wide">AECT Division of Distance Learning</p>
+                                <p class="text-gray-600 text-base">Finalist for the Burmeister Outstanding Presentation Award (2012).</p>
                             </li>
                         </ul>
                     </div>
@@ -540,7 +769,7 @@
         </div>
     </section>
 
-    <!-- RESUME SECTION (Minimal Repetition) -->
+    <!-- RESUME SECTION -->
     <section id="resume" class="py-24 bg-slate-50 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center mb-16">
@@ -553,14 +782,14 @@
                 </a>
             </div>
 
+            <!-- RESPONSIVE GRID ADJUSTMENT: experience list remains full width but stacked content adjusts -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                
-                <!-- COLUMN 1: Experience & Education (Takes 2/3 width) -->
-                <div class="lg:col-span-2 space-y-12">
+                <!-- Main Content (Experience & Education) -->
+                <div class="lg:col-span-3 space-y-12">
                     <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100">
                         <h3 class="flex items-center text-xl font-bold text-slate-900 mb-8 border-b border-gray-100 pb-4">
                             <span class="bg-blue-100 text-blue-600 rounded-lg w-10 h-10 flex items-center justify-center mr-4 text-lg"><i class="fas fa-briefcase"></i></span>
-                            Experience Timeline
+                            Experience
                         </h3>
                         
                         <div class="space-y-12">
@@ -612,7 +841,7 @@
                     <div class="bg-white p-10 rounded-xl shadow-sm border border-gray-100">
                         <h3 class="flex items-center text-xl font-bold text-slate-900 mb-8 border-b border-gray-100 pb-4">
                             <span class="bg-blue-100 text-blue-600 rounded-lg w-10 h-10 flex items-center justify-center mr-4 text-lg"><i class="fas fa-graduation-cap"></i></span>
-                            Education History
+                            Education
                         </h3>
                         <div class="space-y-8">
                             <!-- Education item 1 -->
@@ -634,38 +863,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- COLUMN 2: Skills Sidebar (Takes 1/3 width, consolidated) -->
-                <div class="lg:col-span-1 space-y-12">
-                    <!-- Skills & Technologies Block -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider border-b pb-2">Core Competencies</h3>
-                        <div class="space-y-2 pt-2">
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Instructional Systems Design</p>
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Project Management</p>
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Faculty Development</p>
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Needs Analysis</p>
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Universal Design for Learning (UDL)</p>
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Data-Driven Design</p>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-gray-100">
-                            <p class="text-xs text-gray-500">Technical proficiencies are detailed in the **About** section.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Certifications Block (Quick List) -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h3 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider border-b pb-2">Key Certifications</h3>
-                        <div class="space-y-4 pt-2">
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-certificate text-yellow-500 mr-2"></i> IBM AI Project Manager</p>
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-certificate text-yellow-500 mr-2"></i> Google Project Management</p>
-                            <p class="text-sm font-medium text-slate-700"><i class="fas fa-certificate text-yellow-500 mr-2"></i> Asana Workflow Specialist</p>
-                            <div class="mt-4 pt-2 border-t border-gray-100">
-                                <a href="#credentials" class="text-xs font-bold text-blue-600 hover:underline">View All Credentials</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -683,6 +880,7 @@
             <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
                 I am interested in discussing learning strategy, curriculum innovation, or leadership roles in instructional design.
             </p>
+            <!-- RESPONSIVE ADJUSTMENT: stack buttons vertically on mobile -->
             <div class="flex flex-col sm:flex-row justify-center gap-6">
                 <a href="mailto:jsu1@utk.edu" class="inline-flex items-center justify-center px-10 py-5 border border-transparent text-lg font-bold rounded-xl text-slate-900 bg-white hover:bg-gray-100 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 w-full sm:w-auto">
                     <i class="fas fa-envelope mr-3 text-blue-600 text-xl"></i> Email Me
@@ -705,16 +903,182 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC (CLEANED) -->
+    <!-- JAVASCRIPT LOGIC (RESTORED & IMPROVED) -->
     <script>
-        // Placeholder function, as all complex animations were removed for performance
-        function initComparisons() {
-            return;
+        // 1. NAVIGATION SCROLL EFFECT & SCROLLSPY
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        // Add all sections that should trigger the ScrollSpy logic
+        const sections = document.querySelectorAll('#process, #portfolio, #social-work-deep-dive, #math-deep-dive, #testimonials, #about, #scholarship, #credentials, #resume, #contact');
+
+        function updateNavStyles() {
+            // Sticky Nav Style
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md', 'text-slate-900');
+                navbar.classList.remove('bg-transparent', 'text-white');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md', 'text-slate-900');
+                navbar.classList.add('bg-transparent', 'text-white');
+            }
+
+            // ScrollSpy (Active Link Highlighting)
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 250)) { // Adjusted offset for smoother triggering
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href').includes(current)) {
+                    li.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', updateNavStyles);
+        window.addEventListener('load', updateNavStyles); // Initial check on load
+
+
+        // 2. TYPEWRITER EFFECT
+        const words = ["driving student success.", "empowering faculty.", "innovating curriculum.", "scaling accessibility."];
+        let i = 0;
+        let timer;
+
+        function typeWriter() {
+            const heading = document.getElementById("typewriter-text");
+            // Guard clause in case element is missing
+            if (!heading) return;
+            
+            const currentWord = words[i];
+            let charIndex = 0;
+            
+            function type() {
+                if (charIndex < currentWord.length) {
+                    heading.innerHTML += currentWord.charAt(charIndex);
+                    charIndex++;
+                    timer = setTimeout(type, 100);
+                } else {
+                    timer = setTimeout(erase, 2000);
+                }
+            }
+            
+            function erase() {
+                if (charIndex > 0) {
+                    heading.innerHTML = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                    timer = setTimeout(erase, 50);
+                } else {
+                    i = (i + 1) % words.length;
+                    type();
+                }
+            }
+            type();
         }
 
+
+        // 3. IMAGE COMPARISON SLIDER
+        function initComparisons() {
+            const container = document.getElementById("comparison-1");
+            if (!container) return; // Guard clause
+            
+            const overlay = container.querySelector(".img-comp-overlay");
+            const afterImage = container.querySelector(".img-comp-img:not(.img-comp-overlay) img");
+            const beforeImage = overlay.querySelector("img");
+            
+            // Adjust overlay width and slider position to match image size (important for responsiveness)
+            const adjustSliderPosition = () => {
+                const containerWidth = container.offsetWidth;
+                overlay.style.width = (containerWidth / 2) + "px";
+                slider.style.left = (containerWidth / 2) + "px";
+                
+                // Crucial: ensure images inside the comparison layers match the container width
+                afterImage.style.width = containerWidth + 'px';
+                beforeImage.style.width = containerWidth + 'px';
+            };
+            
+            const slider = document.createElement("DIV");
+            slider.setAttribute("class", "img-comp-slider");
+            slider.innerHTML = "<i class='fas fa-arrows-alt-h text-orange-600'></i>";
+            container.appendChild(slider);
+            
+            adjustSliderPosition(); // Initial position
+            window.addEventListener('resize', adjustSliderPosition); // Adjust on resize
+
+            let clicked = 0;
+
+            slider.addEventListener("mousedown", slideReady);
+            window.addEventListener("mouseup", slideFinish);
+            slider.addEventListener("touchstart", slideReady);
+            window.addEventListener("touchend", slideFinish);
+
+            function slideReady(e) {
+                e.preventDefault();
+                clicked = 1;
+                window.addEventListener("mousemove", slideMove);
+                window.addEventListener("touchmove", slideMove);
+            }
+            function slideFinish() {
+                clicked = 0;
+                window.removeEventListener("mousemove", slideMove);
+                window.removeEventListener("touchmove", slideMove);
+            }
+            function slideMove(e) {
+                if (clicked == 0) return false;
+                let pos = getCursorPos(e);
+                if (pos < 0) pos = 0;
+                if (pos > container.offsetWidth) pos = container.offsetWidth;
+                slide(pos);
+            }
+            function getCursorPos(e) {
+                const r = container.getBoundingClientRect();
+                let x = (e.touches ? e.touches[0].pageX : e.pageX) - r.left;
+                x = x - window.pageXOffset;
+                return x;
+            }
+            function slide(x) {
+                overlay.style.width = x + "px";
+                slider.style.left = x + "px";
+            }
+        }
+
+        // 4. SCROLL REVEAL & SKILL BAR ANIMATION
+        function reveal() {
+            const windowHeight = window.innerHeight;
+            
+            // Basic Reveal Logic
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+
+            // Skill bars specific trigger
+            const skillBars = document.querySelectorAll(".skill-bar-fill");
+            for (let j = 0; j < skillBars.length; j++) {
+                const barTop = skillBars[j].getBoundingClientRect().top;
+                if (barTop < windowHeight - 100) {
+                    // Trigger the CSS animation by setting the width property
+                    skillBars[j].style.setProperty('--target-width', skillBars[j].getAttribute("data-width"));
+                    skillBars[j].style.animationPlayState = 'running';
+                }
+            }
+        }
+
+        // INITIALIZE ALL LOGIC
         document.addEventListener('DOMContentLoaded', () => {
+            typeWriter();
             initComparisons();
+            reveal(); 
         });
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal); // Initial reveal check on load
+
     </script>
 </body>
 </html>
