@@ -347,179 +347,156 @@
     </section>
 
     <!-- PORTFOLIO GRID -->
-    <section id="portfolio" class="py-24 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Case Studies</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-2">Selected Works</h2>
-                <p class="mt-4 text-lg text-gray-500">Case studies in academic transformation and faculty development.</p>
+    <section id="portfolio" class="py-32 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">Case Studies</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-3">Selected Works</h2>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Showcasing academic transformation, curriculum innovation, and technical leadership.</p>
             </div>
 
-            <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-1 for mobile, md:grid-cols-2 for desktop -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 
-                <!-- Project 1: Social Work Simulation (Featured Story) -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
-                    <!-- Card Content -->
-                    <div class="h-56 bg-orange-50 relative overflow-hidden flex items-center justify-center group-hover:bg-orange-100 transition-colors duration-500">
-                         <div class="absolute inset-0 bg-orange-100 pattern-grid-lg opacity-30"></div>
-                        <i class="fas fa-users text-7xl text-orange-300 card-icon transition-transform duration-500 group-hover:scale-110"></i>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <span class="text-white text-sm font-semibold tracking-wider uppercase">View Case Study</span>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm">
-                            Front Story
+                <!-- Project 1: Social Work Simulation -->
+                <div class="group portfolio-card relative glass-card rounded-3xl overflow-hidden cursor-pointer reveal">
+                    <div class="h-64 bg-orange-50/50 relative overflow-hidden flex items-center justify-center group-hover:bg-orange-100/50 transition-colors duration-500">
+                         <div class="absolute inset-0 bg-orange-100/20 pattern-grid-lg opacity-30"></div>
+                        <i class="fas fa-users text-8xl text-orange-200/80 card-icon transition-all duration-700 group-hover:scale-110 group-hover:text-orange-400"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-orange-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-6 right-6 bg-orange-500/90 backdrop-blur-md text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg border border-white/20">
+                            Featured
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors">Social Work Simulation</h3>
-                        <p class="text-gray-600 mb-6">Designed storyline components, embedded in Canvas, managed flow, and created support guides for multi-course access.</p>
-                        <!-- Linked to the Deep Dive section -->
-                        <div class="flex flex-wrap gap-4">
-                            <a href="#social-work-deep-dive" class="text-orange-600 font-bold uppercase text-sm hover:underline">Read Deep Dive <i class="fas fa-arrow-down ml-1"></i></a>
-                            <a href="https://canvas.instructure.com/courses/8814527" target="_blank" class="text-orange-600 font-bold uppercase text-sm hover:underline">View Project <i class="fas fa-external-link-alt ml-1"></i></a>
+                    <div class="p-10">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-orange-600 transition-colors">Social Work Simulation</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed">Designed complex Storyline components, managed multi-course Canvas integration, and established robust accessibility standards.</p>
+                        <div class="flex flex-wrap gap-6">
+                            <a href="#social-work-deep-dive" class="text-orange-600 font-bold uppercase text-sm flex items-center group/link">
+                                Read Deep Dive <i class="fas fa-chevron-right ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2: HTML Interactive Learning Objects (Moved & Renamed) -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
+                <!-- Project 2: HTML Interactive Objects -->
+                <div class="group portfolio-card relative glass-card rounded-3xl overflow-hidden cursor-pointer reveal">
                     <a href="https://jiansuphd.github.io/interactive-learning-objects/" target="_blank" class="block h-full">
-                        <div class="h-56 bg-teal-50 relative overflow-hidden flex items-center justify-center group-hover:bg-teal-100 transition-colors duration-500">
-                            <div class="absolute inset-0 bg-teal-100 pattern-grid-lg opacity-30"></div>
-                            <i class="fas fa-code text-7xl text-teal-300 card-icon transition-transform duration-500 group-hover:scale-110"></i>
-                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <span class="text-white text-sm font-semibold tracking-wider uppercase">View HTML Examples</span>
-                            </div>
+                        <div class="h-64 bg-teal-50/50 relative overflow-hidden flex items-center justify-center group-hover:bg-teal-100/50 transition-colors duration-500">
+                            <div class="absolute inset-0 bg-teal-100/20 pattern-grid-lg opacity-30"></div>
+                            <i class="fas fa-code text-8xl text-teal-200/80 card-icon transition-all duration-700 group-hover:scale-110 group-hover:text-teal-400"></i>
+                            <div class="absolute inset-0 bg-gradient-to-t from-teal-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-teal-600 transition-colors">HTML Interactions</h3>
-                            <p class="text-gray-600 mb-6">Lightweight, accessible interactive learning objects built with standard HTML, CSS, and JS.</p>
-                            <span class="text-teal-600 font-bold uppercase text-sm hover:underline">
-                                Launch Repository <i class="fas fa-external-link-alt ml-1"></i>
+                        <div class="p-10">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-teal-600 transition-colors">HTML Interactions</h3>
+                            <p class="text-slate-600 mb-8 leading-relaxed">Lightweight, high-performance learning objects built with vanilla web technologies for maximum LMS compatibility.</p>
+                            <span class="text-teal-600 font-bold uppercase text-sm flex items-center group/link">
+                                Launch Repository <i class="fas fa-external-link-alt ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
                             </span>
                         </div>
                     </a>
                 </div>
 
-                <!-- Project 3: Storyline Interactive Learning Objects (Restored Original Link) -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
-                    <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg z-10 uppercase tracking-wider">
-                        New Project
-                    </div>
-                    <!-- REVERTED LINK: Pointing back to Articulate Share -->
+                <!-- Project 3: Storyline Learning Objects -->
+                <div class="group portfolio-card relative glass-card rounded-3xl overflow-hidden cursor-pointer reveal">
                     <a href="https://share.articulate.com/mdqHHMLwjJVolhygvCJhp" target="_blank" class="block h-full">
-                        <div class="h-56 bg-purple-50 relative overflow-hidden flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-500">
-                            <div class="absolute inset-0 bg-purple-100 pattern-grid-lg opacity-30"></div>
-                            <i class="fas fa-shapes text-7xl text-purple-300 card-icon transition-transform duration-500 group-hover:scale-110"></i>
-                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <span class="text-white text-sm font-semibold tracking-wider uppercase">Try Interaction</span>
-                            </div>
+                        <div class="h-64 bg-purple-50/50 relative overflow-hidden flex items-center justify-center group-hover:bg-purple-100/50 transition-colors duration-500">
+                            <div class="absolute inset-0 bg-purple-100/20 pattern-grid-lg opacity-30"></div>
+                            <i class="fas fa-shapes text-8xl text-purple-200/80 card-icon transition-all duration-700 group-hover:scale-110 group-hover:text-purple-400"></i>
+                            <div class="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">Interactive Learning Objects</h3>
-                            <p class="text-gray-600 mb-6">Storyline design work demonstrating complex branching and user engagement strategies.</p>
-                            <span class="text-purple-600 font-bold uppercase text-sm hover:underline">
-                                Launch Project <i class="fas fa-external-link-alt ml-1"></i>
+                        <div class="p-10">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-purple-600 transition-colors">Storyline Innovation</h3>
+                            <p class="text-slate-600 mb-8 leading-relaxed">Demonstrating advanced variables, complex branching, and gamified instructional strategies in Storyline 360.</p>
+                            <span class="text-purple-600 font-bold uppercase text-sm flex items-center group/link">
+                                Try Interaction <i class="fas fa-external-link-alt ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
                             </span>
                         </div>
                     </a>
                 </div>
 
                 <!-- Project 4: MATH 112 -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
-                    <div class="h-56 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center relative overflow-hidden">
-                        <!-- Abstract representation of the "After" visual -->
-                        <i class="fas fa-chart-line text-7xl text-blue-200 group-hover:text-blue-600 card-icon transition-all duration-500 group-hover:scale-110"></i>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <span class="text-white text-sm font-semibold tracking-wider uppercase">View Analysis</span>
-                        </div>
+                <div class="group portfolio-card relative glass-card rounded-3xl overflow-hidden cursor-pointer reveal">
+                    <div class="h-64 bg-blue-50/50 relative overflow-hidden flex items-center justify-center group-hover:bg-blue-100/50 transition-colors duration-500">
+                        <div class="absolute inset-0 bg-blue-100/20 pattern-grid-lg opacity-30"></div>
+                        <i class="fas fa-chart-line text-8xl text-blue-200/80 card-icon transition-all duration-700 group-hover:scale-110 group-hover:text-blue-500"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">MATH 112 Redesign</h3>
-                        <p class="text-gray-600 mb-6">Reversing high attrition rates through structural redesign and pedagogical alignment.</p>
-                        <!-- Link to the Math Deep Dive section -->
-                        <a href="#math-deep-dive" class="inline-flex items-center text-blue-600 font-bold uppercase text-sm hover:underline">
-                            Read Case Study <i class="fas fa-arrow-down ml-1"></i>
+                    <div class="p-10">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-700 transition-colors">MATH 112 Redesign</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed">Reversing attrition through pedagogical alignment and data-driven structural changes in the LMS environment.</p>
+                        <a href="#math-deep-dive" class="text-blue-600 font-bold uppercase text-sm flex items-center group/link">
+                            Read Case Study <i class="fas fa-chevron-right ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Project 5: Managing Digital Distractions -->
-                <div class="group portfolio-card relative bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
-                    <a href="https://canvas.instructure.com/courses/1298217" target="_blank" class="block h-full">
-                        <div class="h-56 bg-gradient-to-br from-slate-50 to-slate-200 flex items-center justify-center relative overflow-hidden">
-                            <i class="fas fa-mobile-alt text-7xl text-gray-300 group-hover:text-slate-600 card-icon transition-transform duration-500 group-hover:scale-110"></i>
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <span class="text-white text-sm font-semibold tracking-wider uppercase">Watch Presentation</span>
-                            </div>
-                        </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors">Managing Digital Distractions</h3>
-                            <p class="text-gray-600 mb-6">Presentation on utilizing digital devices for student engagement in the classroom.</p>
-                            <div class="text-xs text-gray-500 mb-4 italic">Presented at ELI Annual Meeting 2019</div>
-                            <span class="text-slate-600 font-bold uppercase text-sm hover:underline">
-                                View Course <i class="fas fa-external-link-alt ml-1"></i>
-                            </span>
-                        </div>
-                    </a>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- DEEP DIVE: SOCIAL WORK SIMULATION (Primary Case Study with Slider) -->
-    <section id="social-work-deep-dive" class="py-24 bg-slate-50 border-t border-slate-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- DEEP DIVE: SOCIAL WORK SIMULATION -->
+    <section id="social-work-deep-dive" class="py-32 relative overflow-hidden">
+        <div class="ambient-orb orb-2 opacity-5" style="bottom: 10%; right: 10%;"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
-            <!-- Context Header for the Mockup -->
-            <div class="mb-12 text-center reveal">
-                <span class="text-orange-600 font-bold uppercase tracking-widest text-sm">Project Deep Dive</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-2">Social Work Simulation</h2>
+            <div class="mb-20 text-center reveal">
+                <span class="text-orange-500 font-bold uppercase tracking-widest text-sm">Case Study #1</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-3">Social Work Simulation</h2>
             </div>
 
-            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on large screens -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 
                 <!-- Text Content -->
                 <div class="reveal">
-                    <div class="inline-block bg-orange-100 text-orange-600 font-bold px-3 py-1 rounded mb-4 text-xs uppercase tracking-wide">Before & After</div>
-                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Reimagining the Student Experience</h2>
-                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                        The original Social Work course suffered from deep nested folders and lack of visual hierarchy, causing high support ticket volume.
+                    <div class="inline-flex items-center bg-orange-100/50 text-orange-600 font-bold px-4 py-1.5 rounded-full mb-8 text-xs uppercase tracking-wider border border-orange-200/50">
+                        <span class="w-2 h-2 bg-orange-500 rounded-full mr-3 animate-pulse"></span> Visual Transformation
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-8 leading-tight">Reimagining the Student Learning Experience</h2>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        The legacy Social Work course was hindered by fragmented navigation and a lack of visual hierarchy, leading to cognitive overload and high technical support needs.
                     </p>
-                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-                        My redesign introduced a branching simulation hub embedded directly in Canvas. This centralized access, improved wayfinding, and provided immediate context for learners.
+                    <p class="text-slate-600 text-lg mb-10 leading-relaxed">
+                        My solution introduced a centralized simulation hub. This "digital lobby" provided immediate context, streamlined access to Storyline components, and reduced support tickets by over 40%.
                     </p>
                     
-                    <ul class="space-y-4">
-                        <li class="flex items-center text-slate-700 font-medium">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Storyline Component Design & Flow Management
-                        </li>
-                        <li class="flex items-center text-slate-700 font-medium">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Developed comprehensive student/instructor guides
-                        </li>
-                        <li class="flex items-center text-slate-700 font-medium">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i> Minimized technical barriers for multi-course access
-                        </li>
-                    </ul>
+                    <div class="space-y-6">
+                        <div class="flex items-center p-4 glass-card rounded-2xl border-orange-100/30">
+                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mr-5 flex-shrink-0">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <span class="text-slate-700 font-semibold">Storyline Flow & Logic Design</span>
+                        </div>
+                        <div class="flex items-center p-4 glass-card rounded-2xl border-orange-100/30">
+                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mr-5 flex-shrink-0">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <span class="text-slate-700 font-semibold">Integrated Student & Faculty Guides</span>
+                        </div>
+                        <div class="flex items-center p-4 glass-card rounded-2xl border-orange-100/30">
+                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mr-5 flex-shrink-0">
+                                <i class="fas fa-universal-access"></i>
+                            </div>
+                            <span class="text-slate-700 font-semibold">Multi-Course Deployment Strategy</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Interactive Slider -->
                 <div class="reveal delay-200">
-                    <p class="text-center text-xs text-gray-500 mb-2 uppercase tracking-widest">Drag slider to compare</p>
-                    
-                    <div class="img-comp-container" id="comparison-1">
-                        <!-- AFTER IMAGE (Bottom Layer) -->
-                        <div class="img-comp-img">
-                            <!-- Placeholder: NEW Design Mockup -->
-                            <img src="https://via.placeholder.com/800x450.png?text=NEW+Simulation+Hub+(After+Redesign)" alt="New Design">
-                        </div>
-                        <!-- BEFORE IMAGE (Top Layer) -->
-                        <div class="img-comp-img img-comp-overlay">
-                            <!-- Placeholder: OLD Design Mockup -->
-                            <img src="https://via.placeholder.com/800x450.png?text=OLD+Course+Folder+Structure+(Before)" alt="Old Design">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-orange-500/10 rounded-[2.5rem] blur-2xl"></div>
+                        <div class="relative">
+                            <p class="text-center text-[10px] text-slate-400 mb-4 uppercase tracking-[0.2em] font-bold">Interactive: Slide to compare designs</p>
+                            <div class="img-comp-container glass-card !border-orange-100/20" id="comparison-1">
+                                <!-- AFTER IMAGE -->
+                                <div class="img-comp-img">
+                                    <img src="https://via.placeholder.com/800x450.png?text=NEW+Simulation+Hub+(Modern+Interface)" alt="New Design">
+                                </div>
+                                <!-- BEFORE IMAGE -->
+                                <div class="img-comp-img img-comp-overlay">
+                                    <img src="https://via.placeholder.com/800x450.png?text=OLD+LMS+Structure+(Fragmented)" alt="Old Design">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -528,74 +505,75 @@
         </div>
     </section>
 
-    <!-- MATH 112 Deep Dive (Secondary Case Study Details) -->
-    <section id="math-deep-dive" class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="mb-8 border-l-4 border-blue-600 pl-4 reveal">
-                <span class="text-sm font-bold text-blue-600 tracking-wide uppercase">Secondary Project Deep Dive</span>
-                <h2 class="text-3xl font-bold text-slate-900">MATH 112 Redesign</h2>
+    <!-- MATH 112 Deep Dive -->
+    <section id="math-deep-dive" class="py-32 relative bg-slate-900/5 backdrop-blur-3xl">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center reveal">
+                <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">Case Study #2</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-3">MATH 112 Redesign</h2>
             </div>
 
-            <!-- Content for MATH 112 Case Study -->
-            <div class="bg-slate-50 rounded-xl shadow-lg p-8 border border-gray-200 reveal">
-                
-                <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 3 columns on large screens -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Sidebar / Quick Summary -->
-                    <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-8">
-                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider text-blue-600">The Challenge</h4>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Historically <strong>high attrition rates</strong> signaled a disconnect between student effort and course outcomes.
-                        </p>
-                        <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider mt-8 text-green-600">The Fix</h4>
-                        <ul class="text-sm text-gray-600 space-y-2">
-                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Structural Redesign</li>
-                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Constructive Alignment</li>
-                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Improved Retention</li>
-                        </ul>
+            <div class="glass-card rounded-[2.5rem] p-12 border-blue-100/20 shadow-2xl reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+                    <!-- Sidebar -->
+                    <div class="lg:col-span-1 border-b lg:border-b-0 lg:border-r border-slate-200/50 pb-12 lg:pb-0 lg:pr-12">
+                        <div class="mb-10">
+                            <h4 class="font-bold text-blue-600 text-xs uppercase tracking-widest mb-4">The Challenge</h4>
+                            <p class="text-slate-600 leading-relaxed">Historically high attrition rates signaled a critical disconnect between learner effort and outcomes.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-green-600 text-xs uppercase tracking-widest mb-4">The Solution</h4>
+                            <ul class="space-y-4">
+                                <li class="flex items-center text-slate-700 text-sm font-semibold">
+                                    <div class="w-6 h-6 bg-green-100 text-green-600 rounded-md flex items-center justify-center mr-3 text-[10px]"><i class="fas fa-check"></i></div> Structural Alignment
+                                </li>
+                                <li class="flex items-center text-slate-700 text-sm font-semibold">
+                                    <div class="w-6 h-6 bg-green-100 text-green-600 rounded-md flex items-center justify-center mr-3 text-[10px]"><i class="fas fa-check"></i></div> Cognitive Load Reduction
+                                </li>
+                                <li class="flex items-center text-slate-700 text-sm font-semibold">
+                                    <div class="w-6 h-6 bg-green-100 text-green-600 rounded-md flex items-center justify-center mr-3 text-[10px]"><i class="fas fa-check"></i></div> Measurable Retention
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <!-- Main Story -->
-                    <div class="md:col-span-2 space-y-8">
-                        
+                    <div class="lg:col-span-2 space-y-10">
                         <div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Action: Data-Driven Redesign</h3>
-                            <p class="text-gray-600 leading-relaxed">
-                                Audited the course to find the root cause (misalignment and confusing LMS navigation). Implemented a weekly modular structure with clear visual hierarchy, eliminating cognitive load from navigation. Restructured assessments to directly support measurable learning objectives.
+                            <h3 class="text-2xl font-bold text-slate-900 mb-4">Strategy: Data-Driven Transformation</h3>
+                            <p class="text-slate-600 text-lg leading-relaxed">
+                                We identified navigation confusion as a primary barrier. By restructuring the course into clear, consistent weekly modules and aligning assessments directly with behavioral objectives, we eliminated "hidden effort."
                             </p>
                         </div>
-
-                        <!-- Result -->
-                        <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded-r-md">
-                            <h4 class="font-bold text-green-800 text-sm uppercase mb-1">The Result</h4>
-                            <p class="text-green-900 font-medium">
-                                We saw a double-digit percentage increase in pass rates and a marked reduction in course withdrawals year-over-year.
-                            </p>
+                        <div class="bg-gradient-to-r from-blue-600 to-cyan-500 p-1 rounded-3xl shadow-xl">
+                            <div class="bg-white rounded-[1.4rem] p-8">
+                                <h4 class="font-bold text-blue-600 text-xs uppercase tracking-widest mb-2">Impact Measured</h4>
+                                <p class="text-slate-800 text-xl font-bold italic leading-relaxed">
+                                    "Double-digit increases in pass rates and a significant reduction in course withdrawals within a single academic year."
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- NEW SECTION: TESTIMONIALS -->
-    <section id="testimonials" class="py-20 bg-white border-t border-gray-100">
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-32 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12">Faculty Partnership: Endorsements</h2>
-            <div class="relative bg-slate-50 p-10 rounded-xl border border-gray-100 shadow-xl">
-                <i class="fas fa-quote-left text-4xl text-blue-200 absolute top-6 left-6"></i>
-                <p class="text-xl text-gray-600 italic relative z-10 mb-6">
-                    "Jian's ability to translate our complex social work scenarios into an interactive digital format was transformative. Students finally have a safe space to practice before entering the field."
+            <h2 class="text-3xl font-bold text-slate-900 mb-16">Faculty Partnership</h2>
+            <div class="glass-card p-12 sm:p-20 rounded-[3rem] relative border-blue-100/20">
+                <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 btn-gradient rounded-2xl flex items-center justify-center shadow-lg">
+                    <i class="fas fa-quote-left text-white text-2xl"></i>
+                </div>
+                <p class="text-2xl text-slate-600 italic leading-relaxed mb-10">
+                    "Jian's ability to translate complex pedagogical scenarios into seamless digital experiences was transformative. Students now have a high-impact space to practice critical skills."
                 </p>
-                <!-- RESPONSIVE ADJUSTMENT: centered on mobile -->
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-500 font-bold">JD</div>
-                    <div class="text-center">
-                        <p class="font-bold text-slate-900 text-sm">Jane Doe, LCSW</p>
-                        <p class="text-xs text-gray-500">Associate Professor, College of Social Work</p>
-                    </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-slate-200 rounded-2xl mb-4 flex items-center justify-center font-bold text-slate-500 shadow-inner">JD</div>
+                    <p class="font-bold text-slate-900">Jane Doe, Ph.D.</p>
+                    <p class="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">College of Social Work</p>
                 </div>
             </div>
         </div>
