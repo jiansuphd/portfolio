@@ -1,0 +1,16 @@
+{
+  "activeProfile": {},
+  "profileUpdate": true,
+  "profileUpdateDelay": 800,
+  "uiUpdate": true,
+  "uiUpdateInterval": 1000,
+  "devices": {
+    "a30d19b05715d449e30182db77866c2ade366cd61d5628e98f7a8c4d8877137d": "C:\\Users\\jsu1\\OneDrive\\Documents\\Obsidian-Global-Profiles"
+  },
+  "statusbarInteraction": {
+    "click": "auto",
+    "ctrl_click": "none",
+    "shift_click": "none",
+    "alt_click": "none"
+  }
+}
