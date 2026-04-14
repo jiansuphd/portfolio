@@ -580,77 +580,80 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Expertise & Technical Skills</h2>
-                <p class="mt-4 text-lg text-gray-500">A unique blend of academic theory and technical application.</p>
+    <section id="about" class="py-32 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">Background</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-3">Expertise & Vision</h2>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Bridging the gap between academic theory and technical application.</p>
             </div>
 
-            <!-- RESPONSIVE GRID ADJUSTMENT: stack on mobile, 2 columns on large screens -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
                 <!-- Bio -->
-                <div class="prose prose-lg text-gray-600 reveal">
-                    <p>
-                        With a <strong>Ph.D. in Instructional Technology</strong> and a background in Linguistics, I approach course design as a translation process: translating expert knowledge into learner-centric experiences.
-                    </p>
-                    <p>
-                        Since 2017, I have served as an Instructional Design Specialist and Manager at the <strong>University of Tennessee</strong>, leading faculty development and large-scale curriculum innovations.
-                    </p>
+                <div class="reveal">
+                    <div class="prose prose-lg text-slate-600 leading-relaxed">
+                        <p class="mb-6">
+                            With a <strong class="text-slate-900 font-bold">Ph.D. in Instructional Technology</strong> and a foundation in Linguistics, I approach instructional design as a translation process—transforming complex expert knowledge into accessible, learner-centric experiences.
+                        </p>
+                        <p class="mb-10">
+                            Since 2017, I have served as an Instructional Design Specialist and Manager at the <strong class="text-slate-900 font-bold">University of Tennessee</strong>, leading large-scale curriculum innovations and faculty development initiatives that prioritize engagement and equity.
+                        </p>
+                    </div>
                     
-                    <!-- Philosophy Cards (Small version) -->
-                    <div class="mt-8 space-y-6">
-                         <div class="flex items-start">
-                            <div class="bg-blue-100 p-2 rounded-full mr-4 text-blue-600 mt-1"><i class="fas fa-chart-pie"></i></div>
-                            <div><h4 class="font-bold text-slate-900">Data-Driven Strategy</h4><p class="text-sm">Using LMS analytics to iterate and improve.</p></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="p-6 glass-card rounded-2xl border-blue-50">
+                            <div class="w-10 h-10 btn-gradient text-white rounded-xl flex items-center justify-center mb-4 shadow-sm">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 mb-2">Data-Driven</h4>
+                            <p class="text-sm text-slate-500">Iterative design based on LMS analytics.</p>
                         </div>
-                        <div class="flex items-start">
-                            <div class="bg-green-100 p-2 rounded-full mr-4 text-green-600 mt-1"><i class="fas fa-universal-access"></i></div>
-                            <div><h4 class="font-bold text-slate-900">Inclusivity First (UDL)</h4><p class="text-sm">Ensuring equity for all learners.</p></div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-yellow-100 p-2 rounded-full mr-4 text-yellow-600 mt-1"><i class="fas fa-microphone-lines"></i></div>
-                            <div><h4 class="font-bold text-slate-900">Effective Communication</h4><p class="text-sm">Active Toastmasters member & advocate.</p></div>
+                        <div class="p-6 glass-card rounded-2xl border-blue-50">
+                            <div class="w-10 h-10 btn-gradient text-white rounded-xl flex items-center justify-center mb-4 shadow-sm">
+                                <i class="fas fa-universal-access"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 mb-2">Inclusivity</h4>
+                            <p class="text-sm text-slate-500">UDL-first accessibility standards.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Animated Skill Bars -->
-                <div class="space-y-8 reveal delay-200">
+                <div class="space-y-10 reveal delay-200">
                     <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-base font-bold text-slate-700">Canvas LMS Architecture</span>
-                            <span class="text-sm font-medium text-blue-600">Expert</span>
+                        <div class="flex justify-between mb-3 items-end">
+                            <span class="text-slate-800 font-bold tracking-tight">Canvas LMS Architecture</span>
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Expert / 95%</span>
                         </div>
-                        <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
-                            <div class="bg-blue-600 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_forwards]" style="--target-width: 95%"></div>
+                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                            <div class="skill-bar-fill h-full rounded-full" data-width="95%"></div>
                         </div>
                     </div>
                     <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-base font-bold text-slate-700">Articulate Storyline 360</span>
-                            <span class="text-sm font-medium text-purple-600">Advanced</span>
+                        <div class="flex justify-between mb-3 items-end">
+                            <span class="text-slate-800 font-bold tracking-tight">Articulate Storyline 360</span>
+                            <span class="text-xs font-bold text-purple-600 uppercase tracking-widest">Advanced / 90%</span>
                         </div>
-                        <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
-                            <div class="bg-purple-600 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.2s_forwards]" style="--target-width: 90%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-base font-bold text-slate-700">HTML5/CSS/JavaScript</span>
-                            <span class="text-sm font-medium text-orange-500">Intermediate</span>
-                        </div>
-                        <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
-                            <div class="bg-orange-500 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.4s_forwards]" style="--target-width: 75%"></div>
+                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                            <div class="skill-bar-fill h-full rounded-full !bg-gradient-to-r from-purple-500 to-indigo-500" data-width="90%"></div>
                         </div>
                     </div>
                     <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="text-base font-bold text-slate-700">Project Management (Agile)</span>
-                            <span class="text-sm font-medium text-slate-500">Certified</span>
+                        <div class="flex justify-between mb-3 items-end">
+                            <span class="text-slate-800 font-bold tracking-tight">Web Tech (HTML/CSS/JS)</span>
+                            <span class="text-xs font-bold text-teal-600 uppercase tracking-widest">Proficient / 75%</span>
                         </div>
-                        <div class="w-full bg-gray-100 rounded-full h-3 shadow-inner">
-                            <div class="bg-gray-500 h-3 rounded-full skill-bar-fill w-0 animate-[growWidth_1.5s_ease-out_0.6s_forwards]" style="--target-width: 85%"></div>
+                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                            <div class="skill-bar-fill h-full rounded-full !bg-gradient-to-r from-teal-500 to-cyan-500" data-width="75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-3 items-end">
+                            <span class="text-slate-800 font-bold tracking-tight">Project Management (Agile)</span>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Certified / 85%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                            <div class="skill-bar-fill h-full rounded-full !bg-gradient-to-r from-slate-500 to-slate-700" data-width="85%"></div>
                         </div>
                     </div>
                 </div>
