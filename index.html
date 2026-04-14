@@ -274,80 +274,73 @@
             <p class="mt-6 max-w-2xl mx-auto text-xl text-slate-200 font-light drop-shadow-md reveal">
                 Through innovative, high-impact, data-driven course design.
             </p>
-            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4 reveal">
-                <a href="#portfolio" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 hover:shadow-blue-500/50 transition-all transform hover:-translate-y-1">
-                    View Portfolio
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-6 reveal">
+                <a href="#portfolio" class="px-10 py-4 btn-gradient text-white font-bold rounded-xl shadow-xl hover:shadow-blue-500/40 transition-all transform hover:-translate-y-1 flex items-center justify-center">
+                    Explore My Work <i class="fas fa-arrow-right ml-2 text-sm opacity-70"></i>
                 </a>
-                <!-- UPDATED LINK: Pointing to Resume.pdf -->
-                <a href="Resume.pdf" target="_blank" class="px-8 py-4 bg-transparent border-2 border-slate-300 text-white font-bold rounded-lg hover:bg-white/10 transition-all transform hover:-translate-y-1 backdrop-blur-sm">
-                    Download CV
+                <a href="Resume.pdf" target="_blank" class="px-10 py-4 bg-white/5 border border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-all transform hover:-translate-y-1 backdrop-blur-md flex items-center justify-center">
+                    <i class="fas fa-file-pdf mr-2 opacity-70"></i> Download CV
                 </a>
             </div>
         </div>
         
         <!-- Scroll Indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#portfolio" class="text-white opacity-70 hover:opacity-100">
+            <a href="#portfolio" class="text-white opacity-40 hover:opacity-100 transition-opacity">
                 <i class="fas fa-chevron-down text-3xl"></i>
             </a>
         </div>
     </header>
 
-    <!-- NEW SECTION: MY PROCESS (Adjusted to 2 columns on mobile) -->
-    <section id="process" class="py-24 bg-slate-50 border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Methodology</span>
-                <h2 class="text-4xl font-bold text-slate-900 mt-2">How I Work (ADDIE & Agile)</h2>
-                <p class="mt-4 text-lg text-gray-500">Structured processes ensure timely delivery and measurable outcomes.</p>
+    <!-- PROCESS SECTION -->
+    <section id="process" class="py-32 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">Methodology</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-3">The ADDIE Framework + Agile</h2>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Structured processes ensure timely delivery and measurable, high-impact outcomes.</p>
             </div>
             
-            <!-- RESPONSIVE GRID ADJUSTMENT: grid-cols-2 for mobile, md:grid-cols-5 for desktop -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center reveal">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 text-center reveal">
                 <!-- Step 1 -->
-                <div class="relative group">
-                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
-                        <i class="fas fa-search text-2xl text-blue-600 group-hover:text-white"></i>
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                        <i class="fas fa-search text-xl"></i>
                     </div>
-                    <h4 class="font-bold text-slate-900 mt-2">1. Analyze</h4>
-                    <p class="text-xs text-gray-500 mt-1">Needs Assessment & Learner Profiles</p>
-                    <!-- Connector Line (Responsive) -->
-                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                    <h4 class="font-bold text-slate-900 text-lg">Analyze</h4>
+                    <p class="text-sm text-slate-500 mt-3 leading-relaxed">Needs Assessment & Learner Profiles</p>
                 </div>
                 <!-- Step 2 -->
-                <div class="relative group">
-                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
-                        <i class="fas fa-pencil-ruler text-2xl text-blue-600 group-hover:text-white"></i>
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                        <i class="fas fa-pencil-ruler text-xl"></i>
                     </div>
-                    <h4 class="font-bold text-slate-900 mt-2">2. Design</h4>
-                    <p class="text-xs text-gray-500 mt-1">Storyboarding & Blueprinting</p>
-                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                    <h4 class="font-bold text-slate-900 text-lg">Design</h4>
+                    <p class="text-sm text-slate-500 mt-3 leading-relaxed">Storyboarding & Blueprinting</p>
                 </div>
                 <!-- Step 3 -->
-                <div class="relative group">
-                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
-                        <i class="fas fa-code text-2xl text-blue-600 group-hover:text-white"></i>
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                        <i class="fas fa-code text-xl"></i>
                     </div>
-                    <h4 class="font-bold text-slate-900 mt-2">3. Develop</h4>
-                    <p class="text-xs text-gray-500 mt-1">Canvas, Storyline & HTML5</p>
-                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                    <h4 class="font-bold text-slate-900 text-lg">Develop</h4>
+                    <p class="text-sm text-slate-500 mt-3 leading-relaxed">Canvas, Storyline & HTML5</p>
                 </div>
                 <!-- Step 4 -->
-                <div class="relative group">
-                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
-                        <i class="fas fa-rocket text-2xl text-blue-600 group-hover:text-white"></i>
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                        <i class="fas fa-rocket text-xl"></i>
                     </div>
-                    <h4 class="font-bold text-slate-900 mt-2">4. Implement</h4>
-                    <p class="text-xs text-gray-500 mt-1">QA Testing & Launch</p>
-                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-gray-300 -z-10"></div>
+                    <h4 class="font-bold text-slate-900 text-lg">Implement</h4>
+                    <p class="text-sm text-slate-500 mt-3 leading-relaxed">QA Testing & Launch</p>
                 </div>
                 <!-- Step 5 -->
-                <div class="relative group">
-                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105">
-                        <i class="fas fa-chart-line text-2xl text-blue-600 group-hover:text-white"></i>
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                        <i class="fas fa-chart-line text-xl"></i>
                     </div>
-                    <h4 class="font-bold text-slate-900 mt-2">5. Evaluate</h4>
-                    <p class="text-xs text-gray-500 mt-1">Data Review & Iteration</p>
+                    <h4 class="font-bold text-slate-900 text-lg">Evaluate</h4>
+                    <p class="text-sm text-slate-500 mt-3 leading-relaxed">Data Review & Iteration</p>
                 </div>
             </div>
         </div>
