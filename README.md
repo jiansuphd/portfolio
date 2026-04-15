@@ -9,25 +9,34 @@ This repository contains the source code for the personal and professional portf
 ## 🛠️ Technologies Used
 
 - **HTML5** & **CSS3**
-- **Tailwind CSS** (via CDN) for responsive, utility-first styling.
-- **Vanilla JavaScript** for interactive components (ScrollSpy, typewriter effect, image comparison slider, and reveal animations).
+- **Tailwind CSS** (via CDN) for modern, utility-first styling.
+- **Vanilla JavaScript** for high-performance interactive components.
 - **Font Awesome** for scalable vector icons.
-- **Google Fonts** (Open Sans & Roboto Slab) for typography.
+- **Google Fonts** (Inter & Outfit) for a clean, tech-forward aesthetic.
 
 ## 📂 Project Structure
 
-- `index.html`: The main portfolio document containing all sections (Hero, Process, Portfolio, Deep Dives, Testimonials, About, Scholarship, Credentials, Resume, and Contact).
-- `Resume.pdf`: Downloadable CV.
-- `hero-bg.jpg`: (Required) The background image for the hero section.
+- `index.html`: The main portfolio document featuring a "Creative Tech" design overhaul.
+- `.gitignore`: Configured to protect sensitive configuration and environment files.
+- `Resume.pdf`: Professional CV highlighting experience at the University of Tennessee.
+- `hero-bg.jpg`: (Required) The background asset for the hero section.
 
-## ✨ Features
+## ✨ Enhanced Features (Creative Tech UI)
 
-- **Modern UI/UX**: Clean, responsive design optimized for both desktop and mobile viewing.
-- **Interactive Animations**: Includes a custom typewriter effect, scroll-reveal animations, and animated skill progress bars.
-- **Image Comparison Slider**: A custom-built vanilla JS interactive slider for "Before & After" case studies.
-- **ScrollSpy Navigation**: Dynamic navigation that updates the active link based on scroll position and applies a sticky header.
+- **Glassmorphism**: Sophisticated frosted glass effects (`backdrop-blur`) applied to the navigation and project cards.
+- **Ambient Depth**: Subtle, blurred background mesh gradients for a modern, immersive feel.
+- **Interactive Animations**: 
+    - Custom **Typewriter Effect** for dynamic role headlines.
+    - **Scroll-Reveal** transitions for smooth content entry.
+    - **Image Comparison Slider** for "Before & After" instructional design case studies.
+- **Responsive ScrollSpy**: A dynamic navigation system that updates the active section as you scroll.
 
-## 📝 Methodology (ADDIE & Agile)
+## 🛡️ Security & Privacy Hardening
+
+- **Environment Protection**: Sensitive configuration folders (like `.obsidian/`) and API keys are explicitly excluded via `.gitignore`.
+- **Public Hosting Ready**: All local development metadata and private tokens have been removed from tracking to ensure safe hosting on GitHub.
+
+## 📝 ID Methodology (ADDIE & Agile)
 
 The portfolio highlights a structured instructional design process:
 1. **Analyze**: Needs Assessment & Learner Profiles
