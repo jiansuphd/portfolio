@@ -1,4 +1,9 @@
 
+# 📋 Progress Log
+
+> Append-only ops log. Format: `[YYYY-MM-DD] Category | Description`
+
+---
 
 ## 📅 2026-05-05
 
@@ -87,8 +92,3 @@
 |---|----------|-------------|
 | 51 | `Dev` | Phase 3 — Accessibility (aria-labels, keyboard slider, aria-current), ADDIE step connectors, performance cleanup (duplicate CSS removal, defer scripts), and footer quick-links all implemented in [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) as a single batch |
 | 52 | `Docs` | Checked off all Phase 3 items in [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) |
-# 📋 Progress Log
-
-> Append-only ops log. Format: `[YYYY-MM-DD] Category | Description`
-
----
