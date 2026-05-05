@@ -18,3 +18,7 @@
 | 8 | `Plan` | Created [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) — 3-phase design improvement roadmap for [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html): Phase 1 Critical Fixes (mobile nav, hero bg, image slider), Phase 2 UX (filter tabs, tool grid, contact form), Phase 3 Polish (a11y, ADDIE connectors, perf) |
 | 9 | `Docs` | Created [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) — full frontend dependency table, custom CSS patterns, JS module inventory, hosting setup, assets status |
 | 10 | `Revert` | User requested README restored to original; moved expanded content into `Tech Stack.md` |
+| 11 | `Decision` | Confirmed `00_meta/` naming convention over `_meta/` — numeric prefix is explicit, portable, and scales with sibling folders (e.g. `10_projects`, `20_archive`) |
+| 12 | `Docs` | Created [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) — frontend deps, custom CSS patterns, JS module inventory, hosting, assets status, planned additions |
+| 13 | `Format` | User requested README format improvement — partially reviewed; interrupted before implementation |
+| 14 | `Log` | Synced full session chat history to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) — all 14 actions from this conversation captured |
