@@ -1,14 +1,4 @@
-## 📅 2026-05-05 (Session 8)
 
-| # | Category | Description |
-|---|----------|-------------|
-| 51 | `Dev` | Phase 3 — Accessibility (aria-labels, keyboard slider, aria-current), ADDIE step connectors, performance cleanup (duplicate CSS removal, defer scripts), and footer quick-links all implemented in [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) as a single batch |
-| 52 | `Docs` | Checked off all Phase 3 items in [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) |
-# 📋 Progress Log
-
-> Append-only ops log. Format: `[YYYY-MM-DD] Category | Description`
-
----
 
 ## 📅 2026-05-05
 
@@ -89,3 +79,16 @@
 | 48 | `Dev` | Phase 1 now fully checked off in [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) — hamburger menu and slider CSS panels implemented and committed |
 | 49 | `Plan` | Ready to proceed with Phase 3 (accessibility, ADDIE connectors, CSS cleanup, footer links) |
 | 50 | `Log` | Synced Session 7 activity to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |
+
+---
+## 📅 2026-05-05 (Session 8)
+
+| # | Category | Description |
+|---|----------|-------------|
+| 51 | `Dev` | Phase 3 — Accessibility (aria-labels, keyboard slider, aria-current), ADDIE step connectors, performance cleanup (duplicate CSS removal, defer scripts), and footer quick-links all implemented in [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) as a single batch |
+| 52 | `Docs` | Checked off all Phase 3 items in [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) |
+# 📋 Progress Log
+
+> Append-only ops log. Format: `[YYYY-MM-DD] Category | Description`
+
+---
