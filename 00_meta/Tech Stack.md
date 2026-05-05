@@ -1,85 +1,4 @@
 
----
-
-## 🛠️ Step-by-Step Guide: Phase 3 — Polish & Accessibility
-
-This guide walks you through every detail of Phase 3 improvements: accessibility, ADDIE connectors, performance cleanup, and footer quick-links. Each step is beginner-friendly and mapped to the actual code in `index.html`.
-
-### 3.1 Accessibility Improvements
-
-**Goal:** Make the site more usable for everyone, including those using screen readers or keyboard navigation.
-
-**Steps:**
-1. **Add `aria-label` to icon-only links/buttons:**
-   - Find all `<a>` or `<button>` elements that only show an icon (e.g., the scroll chevron, slider handle).
-   - Add `aria-label="[describe action]"` (e.g., `aria-label="Scroll to portfolio"`).
-   - Example: `<a ... aria-label="Scroll to portfolio">`.
-2. **Add `aria-current="page"` to active nav link:**
-   - In the nav bar, find the link for the current section/page.
-   - Add `aria-current="page"` to that `<a>`.
-   - Example: `<a ... aria-current="page">Home</a>`.
-3. **Make the slider keyboard accessible:**
-   - In the slider JS, add event listeners for `ArrowLeft` and `ArrowRight` keys when the slider handle is focused.
-   - Move the slider left/right by a set number of pixels on key press.
-   - Ensure the slider handle is focusable: add `tabindex="0"` to the slider handle div.
-   - Example: `slider.setAttribute('tabindex', '0');`
-4. **Check color contrast:**
-   - Use a tool like [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) to verify all text/background color pairs meet WCAG AA.
-   - Adjust Tailwind classes or custom CSS if needed.
-
-### 3.2 ADDIE Step Connectors
-
-**Goal:** Visually connect the 5 ADDIE process cards for better process clarity.
-
-**Steps:**
-1. **Desktop (horizontal connector):**
-   - In the ADDIE section, wrap the 5 cards in a parent div with `relative` class.
-   - Add a new absolutely positioned `<div>` behind the cards, styled as a dashed or arrowed horizontal line.
-   - Use Tailwind: `absolute left-0 right-0 top-1/2 h-1 border-t-2 border-dashed border-blue-200 z-0`.
-   - Adjust z-index so the line appears behind the cards.
-2. **Mobile (vertical stepper):**
-   - Use Tailwind responsive classes (`lg:hidden`) to show a vertical connector only on small screens.
-   - Add a vertical dashed line and numbered circles beside each card.
-   - Example: `<div class="absolute left-4 top-0 h-full w-1 border-l-2 border-dashed border-blue-200"></div>`
-   - Add a small circle for each step, positioned with `top-[%]` or flex/grid utilities.
-
-### 3.3 Performance Cleanup
-
-**Goal:** Make the site faster and easier to maintain.
-
-**Steps:**
-1. **Remove duplicate CSS:**
-   - Search for repeated CSS rules (e.g., `#navbar .nav-link.active`).
-   - Keep only one copy in the `<style>` block.
-2. **Defer Font Awesome:**
-   - In the `<head>`, add `defer` to the Font Awesome `<link>` tag: `<link ... defer>`.
-   - This lets the page render faster before icons load.
-3. **Consolidate custom CSS:**
-   - Move all custom CSS into a single `<style>` block in the `<head>`.
-   - Remove any stray `<style>` tags elsewhere in the file.
-
-### 3.4 Footer Quick-Links
-
-**Goal:** Add navigation links to the footer for better UX.
-
-**Steps:**
-1. **Edit the `<footer>` section:**
-   - Add a `<nav>` with links: Home, Portfolio, About, Contact.
-   - Use Tailwind classes for spacing and hover effects.
-   - Example:
-     ```html
-     <nav class="flex gap-6 ...">
-       <a href="#">Home</a>
-       <a href="#portfolio">Portfolio</a>
-       <a href="#about">About</a>
-       <a href="#contact">Contact</a>
-     </nav>
-     ```
-2. **Add `aria-label="Footer quick links"` to the nav for accessibility.**
-
----
-
-**Tip:** For every change, save `index.html` and refresh your browser to check the result. Use browser dev tools (F12) to inspect elements and debug styles or accessibility attributes.
 # 🛠️ Tech Stack
 
 Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) — the portfolio site.
@@ -221,4 +140,85 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 
 ---
 
+---
+
+## 🛠️ Step-by-Step Guide: Phase 3 — Polish & Accessibility
+
+This guide walks you through every detail of Phase 3 improvements: accessibility, ADDIE connectors, performance cleanup, and footer quick-links. Each step is beginner-friendly and mapped to the actual code in `index.html`.
+
+### 3.1 Accessibility Improvements
+
+**Goal:** Make the site more usable for everyone, including those using screen readers or keyboard navigation.
+
+**Steps:**
+1. **Add `aria-label` to icon-only links/buttons:**
+   - Find all `<a>` or `<button>` elements that only show an icon (e.g., the scroll chevron, slider handle).
+   - Add `aria-label="[describe action]"` (e.g., `aria-label="Scroll to portfolio"`).
+   - Example: `<a ... aria-label="Scroll to portfolio">`.
+2. **Add `aria-current="page"` to active nav link:**
+   - In the nav bar, find the link for the current section/page.
+   - Add `aria-current="page"` to that `<a>`.
+   - Example: `<a ... aria-current="page">Home</a>`.
+3. **Make the slider keyboard accessible:**
+   - In the slider JS, add event listeners for `ArrowLeft` and `ArrowRight` keys when the slider handle is focused.
+   - Move the slider left/right by a set number of pixels on key press.
+   - Ensure the slider handle is focusable: add `tabindex="0"` to the slider handle div.
+   - Example: `slider.setAttribute('tabindex', '0');`
+4. **Check color contrast:**
+   - Use a tool like [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) to verify all text/background color pairs meet WCAG AA.
+   - Adjust Tailwind classes or custom CSS if needed.
+
+### 3.2 ADDIE Step Connectors
+
+**Goal:** Visually connect the 5 ADDIE process cards for better process clarity.
+
+**Steps:**
+1. **Desktop (horizontal connector):**
+   - In the ADDIE section, wrap the 5 cards in a parent div with `relative` class.
+   - Add a new absolutely positioned `<div>` behind the cards, styled as a dashed or arrowed horizontal line.
+   - Use Tailwind: `absolute left-0 right-0 top-1/2 h-1 border-t-2 border-dashed border-blue-200 z-0`.
+   - Adjust z-index so the line appears behind the cards.
+2. **Mobile (vertical stepper):**
+   - Use Tailwind responsive classes (`lg:hidden`) to show a vertical connector only on small screens.
+   - Add a vertical dashed line and numbered circles beside each card.
+   - Example: `<div class="absolute left-4 top-0 h-full w-1 border-l-2 border-dashed border-blue-200"></div>`
+   - Add a small circle for each step, positioned with `top-[%]` or flex/grid utilities.
+
+### 3.3 Performance Cleanup
+
+**Goal:** Make the site faster and easier to maintain.
+
+**Steps:**
+1. **Remove duplicate CSS:**
+   - Search for repeated CSS rules (e.g., `#navbar .nav-link.active`).
+   - Keep only one copy in the `<style>` block.
+2. **Defer Font Awesome:**
+   - In the `<head>`, add `defer` to the Font Awesome `<link>` tag: `<link ... defer>`.
+   - This lets the page render faster before icons load.
+3. **Consolidate custom CSS:**
+   - Move all custom CSS into a single `<style>` block in the `<head>`.
+   - Remove any stray `<style>` tags elsewhere in the file.
+
+### 3.4 Footer Quick-Links
+
+**Goal:** Add navigation links to the footer for better UX.
+
+**Steps:**
+1. **Edit the `<footer>` section:**
+   - Add a `<nav>` with links: Home, Portfolio, About, Contact.
+   - Use Tailwind classes for spacing and hover effects.
+   - Example:
+     ```html
+     <nav class="flex gap-6 ...">
+       <a href="#">Home</a>
+       <a href="#portfolio">Portfolio</a>
+       <a href="#about">About</a>
+       <a href="#contact">Contact</a>
+     </nav>
+     ```
+2. **Add `aria-label="Footer quick links"` to the nav for accessibility.**
+
+---
+
+**Tip:** For every change, save `index.html` and refresh your browser to check the result. Use browser dev tools (F12) to inspect elements and debug styles or accessibility attributes.
 **Backlinks:** [README.md](../README.md) | [Work Plan.md](Work%20Plan.md) | [progress.md](progress.md)
