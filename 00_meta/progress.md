@@ -1,3 +1,9 @@
+## 📅 2026-05-05 (Session 8)
+
+| # | Category | Description |
+|---|----------|-------------|
+| 51 | `Dev` | Phase 3 — Accessibility (aria-labels, keyboard slider, aria-current), ADDIE step connectors, performance cleanup (duplicate CSS removal, defer scripts), and footer quick-links all implemented in [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) as a single batch |
+| 52 | `Docs` | Checked off all Phase 3 items in [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) |
 # 📋 Progress Log
 
 > Append-only ops log. Format: `[YYYY-MM-DD] Category | Description`
@@ -72,3 +78,14 @@
 | 42 | `Plan` | User requested **Phase 3** complete — targets identified: duplicate `#navbar .nav-link.active` CSS, missing `aria-label` on scroll chevron + slider handle, no `aria-current` on nav links, ADDIE grid needs desktop connector + mobile stepper, footer needs quick-links |
 | 43 | `Chore` | Updated [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) checklist to reflect honest status — 1.1 ☐, 1.2 ✅, 1.3 ☐, 2.1-2.4 ✅, 3.1-3.4 ☐ |
 | 44 | `Log` | Synced Session 6 activity to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |
+
+## 📅 2026-05-05 (Session 7)
+
+| # | Category | Description |
+|---|----------|-------------|
+| 45 | `Docs` | Added detailed, beginner-friendly step-by-step guide for Phase 1 & 2 to [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) — covers required languages (HTML, CSS, JS), file to edit, and instructions for each feature |
+| 46 | `Docs` | Guide location: after JavaScript Modules table, under heading '🛠️ Step-by-Step Guide: Phase 1 & 2 Implementation' |
+| 47 | `Docs` | Explained to user how to find and use the guide in Tech Stack.md |
+| 48 | `Dev` | Phase 1 now fully checked off in [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) — hamburger menu and slider CSS panels implemented and committed |
+| 49 | `Plan` | Ready to proceed with Phase 3 (accessibility, ADDIE connectors, CSS cleanup, footer links) |
+| 50 | `Log` | Synced Session 7 activity to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |

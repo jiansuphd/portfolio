@@ -126,10 +126,10 @@
 - [x] 2.4 Contact — mailto CTA (Formspree pending real ID)
 
 ### Phase 3
-- [ ] 3.1 Accessibility: aria-labels, keyboard slider, aria-current
-- [ ] 3.2 ADDIE step connectors
-- [ ] 3.3 Duplicate CSS removal + defer scripts
-- [ ] 3.4 Footer quick-links
+- [x] 3.1 Accessibility: aria-labels, keyboard slider, aria-current
+- [x] 3.2 ADDIE step connectors
+- [x] 3.3 Duplicate CSS removal + defer scripts
+- [x] 3.4 Footer quick-links
 
 ---
 

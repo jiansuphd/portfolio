@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" defer>
     
     <style>
         :root {
@@ -366,8 +366,8 @@
         
         <!-- Scroll Indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#portfolio" class="text-white opacity-40 hover:opacity-100 transition-opacity">
-                <i class="fas fa-chevron-down text-3xl"></i>
+            <a href="#portfolio" class="text-white opacity-40 hover:opacity-100 transition-opacity" aria-label="Scroll to portfolio">
+                <i class="fas fa-chevron-down text-3xl" aria-hidden="true"></i>
             </a>
         </div>
     </header>
@@ -381,9 +381,9 @@
                 <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">Structured processes ensure timely delivery and measurable, high-impact outcomes.</p>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 text-center reveal">
+            <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 text-center reveal addie-connector">
                 <!-- Step 1 -->
-                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500 addie-step" data-step="1">
                     <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
                         <i class="fas fa-search text-xl"></i>
                     </div>
@@ -391,7 +391,7 @@
                     <p class="text-sm text-slate-500 mt-3 leading-relaxed">Needs Assessment & Learner Profiles</p>
                 </div>
                 <!-- Step 2 -->
-                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500 addie-step" data-step="2">
                     <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
                         <i class="fas fa-pencil-ruler text-xl"></i>
                     </div>
@@ -399,7 +399,7 @@
                     <p class="text-sm text-slate-500 mt-3 leading-relaxed">Storyboarding & Blueprinting</p>
                 </div>
                 <!-- Step 3 -->
-                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500 addie-step" data-step="3">
                     <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
                         <i class="fas fa-code text-xl"></i>
                     </div>
@@ -407,7 +407,7 @@
                     <p class="text-sm text-slate-500 mt-3 leading-relaxed">Canvas, Storyline & HTML5</p>
                 </div>
                 <!-- Step 4 -->
-                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500 addie-step" data-step="4">
                     <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
                         <i class="fas fa-rocket text-xl"></i>
                     </div>
@@ -415,7 +415,7 @@
                     <p class="text-sm text-slate-500 mt-3 leading-relaxed">QA Testing & Launch</p>
                 </div>
                 <!-- Step 5 -->
-                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500">
+                <div class="glass-card p-8 rounded-2xl group hover:border-blue-400/50 transition-all duration-500 addie-step" data-step="5">
                     <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
                         <i class="fas fa-chart-line text-xl"></i>
                     </div>
@@ -578,12 +578,33 @@
                             <p class="text-center text-[10px] text-slate-400 mb-4 uppercase tracking-[0.2em] font-bold">Interactive: Slide to compare designs</p>
                             <div class="img-comp-container glass-card !border-orange-100/20" id="comparison-1">
                                 <!-- AFTER IMAGE -->
-                                <div class="img-comp-img">
-                                    <img src="https://via.placeholder.com/800x450.png?text=NEW+Simulation+Hub+(Modern+Interface)" alt="New Design">
+                                <!-- AFTER (NEW) PANEL -->
+                                <div class="img-comp-img flex items-center justify-center h-full w-full bg-gradient-to-br from-cyan-400 via-blue-400 to-blue-700">
+                                    <div class="flex flex-col items-center justify-center w-full h-full p-8">
+                                        <div class="text-2xl font-bold text-white mb-4">NEW Simulation Hub</div>
+                                        <div class="bg-white/10 rounded-xl p-6 shadow-lg w-full max-w-md">
+                                            <ul class="text-white/90 text-left space-y-2 text-base">
+                                                <li><i class="fas fa-bolt text-cyan-300 mr-2"></i> Unified dashboard for all courses</li>
+                                                <li><i class="fas fa-users text-blue-200 mr-2"></i> Real-time collaboration tools</li>
+                                                <li><i class="fas fa-chart-line text-blue-300 mr-2"></i> Analytics & progress tracking</li>
+                                                <li><i class="fas fa-universal-access text-cyan-200 mr-2"></i> Accessibility built-in</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- BEFORE IMAGE -->
-                                <div class="img-comp-img img-comp-overlay">
-                                    <img src="https://via.placeholder.com/800x450.png?text=OLD+LMS+Structure+(Fragmented)" alt="Old Design">
+                                <!-- BEFORE (OLD) PANEL -->
+                                <div class="img-comp-img img-comp-overlay flex items-center justify-center h-full w-full bg-slate-800">
+                                    <div class="flex flex-col items-center justify-center w-full h-full p-8">
+                                        <div class="text-2xl font-bold text-orange-200 mb-4">OLD LMS Structure</div>
+                                        <div class="bg-slate-900/80 rounded-xl p-6 shadow-lg w-full max-w-md">
+                                            <ul class="text-orange-100/90 text-left space-y-2 text-base">
+                                                <li><i class="fas fa-folder-open text-orange-300 mr-2"></i> Fragmented course navigation</li>
+                                                <li><i class="fas fa-book text-orange-200 mr-2"></i> Static PDF resources</li>
+                                                <li><i class="fas fa-exclamation-triangle text-orange-300 mr-2"></i> No analytics or feedback</li>
+                                                <li><i class="fas fa-low-vision text-orange-200 mr-2"></i> Poor accessibility</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -935,6 +956,12 @@
                 <span class="text-2xl font-bold text-white tracking-tight">Jian Su, <span class="text-blue-500">Ph.D.</span></span>
                 <p class="text-sm mt-2 text-slate-500 font-medium">Instructional Design Manager & Scholar</p>
             </div>
+            <nav class="flex flex-wrap gap-6 justify-center md:justify-end items-center text-sm font-semibold mt-6 md:mt-0" aria-label="Footer quick links">
+                <a href="#" class="hover:text-blue-400 transition-colors">Home</a>
+                <a href="#portfolio" class="hover:text-blue-400 transition-colors">Portfolio</a>
+                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            </nav>
             <div class="flex flex-col items-center md:items-end gap-2">
                 <p class="text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">&copy; 2026 Jian Su. All rights reserved.</p>
                 <p class="text-[10px] text-slate-700">Built with Vanilla JS & Tailwind CSS</p>
