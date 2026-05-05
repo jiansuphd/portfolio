@@ -38,3 +38,16 @@
 | 23 | `Plan` | Reviewed [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) — confirmed Phase 1 execution order: 1.1 Mobile hamburger menu → 1.2 CSS mesh hero background → 1.3 Replace placeholder images |
 | 24 | `Dev` | Starting Phase 1.1 — Mobile hamburger menu: add `☰` toggle button, slide-down mobile nav panel, close on link click or outside tap |
 | 25 | `Log` | Synced Session 3 chat history to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |
+
+## 📅 2026-05-05 (Session 4)
+
+| # | Category | Description |
+|---|----------|-------------|
+| 26 | `Dev` | Phase 1.1 — Added mobile hamburger menu to [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html): `☰` toggle button, slide-down nav panel, close on link click or outside tap |
+| 27 | `Dev` | Phase 1.2 — Replaced missing `hero-bg.jpg` with self-contained CSS `conic-gradient`/`radial-gradient` mesh in [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) |
+| 28 | `Dev` | Phase 1.3 — Replaced `via.placeholder.com` URLs in image comparison slider with styled CSS panels (dark slate "before" / cyan-blue "after") |
+| 29 | `Dev` | Phase 2.1 — Added filter tabs HTML (`All \| Canvas LMS \| Storyline \| HTML \| Research`) above portfolio grid with `data-category` attributes on cards, CSS transitions, and JS show/hide logic |
+| 30 | `Dev` | Phase 2.2 — Removed percentage skill bars; replaced with 8-item tool chip grid (Canvas, Storyline, HTML/CSS/JS, Agile, AI, UDL/WCAG, Figma, ADDIE) |
+| 31 | `Dev` | Phase 2.3 — Removed placeholder testimonial section ("Jane Doe, Ph.D.") from [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) |
+| 32 | `Dev` | Phase 2.4 — Contact section: removed Formspree placeholder form (`xwpkvdzg` ID); restored prominent `btn-gradient` mailto CTA — Formspree to be re-added when real ID obtained |
+| 33 | `Log` | Synced Session 4 Phase 2 activity to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |

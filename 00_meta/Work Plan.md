@@ -28,19 +28,19 @@
 
 **Goal:** Eliminate anything broken or embarrassing on the live site.
 
-### 1.1 Mobile Hamburger Menu
+### 1.1 Mobile Hamburger Menu ✅
 - Add a `☰` button visible only on `md:` breakpoint and below
 - Clicking opens a full-width slide-down nav panel
 - Close on link click or outside tap
 - Estimated lines changed: ~40
 
-### 1.2 Hero Background — CSS Mesh Gradient
+### 1.2 Hero Background — CSS Mesh Gradient ✅
 - Remove dependency on missing `hero-bg.jpg`
 - Replace with a self-contained CSS `conic-gradient` / `radial-gradient` mesh
 - No image file required, renders perfectly on all devices
 - Keep the existing dark `#0f172a` base tone
 
-### 1.3 Image Comparison Slider — Replace Placeholders
+### 1.3 Image Comparison Slider — Replace Placeholders ✅
 - Replace `via.placeholder.com` URLs with styled CSS panels
 - "Before" panel: dark slate with a simple list/text mockup (the "old LMS")
 - "After" panel: a cyan/blue card mockup (the "new hub")
@@ -52,26 +52,27 @@
 
 **Goal:** Make the page more useful and professional for hiring managers.
 
-### 2.1 Portfolio Filter Tabs
+### 2.1 Portfolio Filter Tabs ✅
 - Add `All | Canvas | Storyline | HTML | Research` button row above the grid
 - Filter by `data-category` attribute on each card
 - Smooth CSS opacity transition on hide/show
 - No library needed — ~30 lines of JS
 
-### 2.2 Skill Bars → Tool Icon Grid
+### 2.2 Skill Bars → Tool Icon Grid ✅
 - Remove percentage bars (meaningless to non-technical readers)
 - Replace with a 3-column icon + label grid: Canvas, Storyline, Figma, HTML/CSS/JS, Agile, Python/AI
 - Each tool chip has a color-coded badge and hover tooltip with context
 - Cleaner and more honest signal of tooling
 
-### 2.3 Testimonial — Fix or Remove Placeholder
+### 2.3 Testimonial — Fix or Remove Placeholder ✅
 - Either replace "Jane Doe, Ph.D." with a real attribution or remove the section
 - If keeping, add a subtle "(name withheld)" note for authenticity
 
-### 2.4 Contact Form
+### 2.4 Contact Form ✅ (mailto only pending Formspree ID)
 - Add a lightweight 3-field form (Name, Email, Message) above the mailto button
 - POST to [Formspree](https://formspree.io) — free tier, no backend
 - Show a success/error inline message after submit
+- **Note:** Formspree placeholder removed; mailto CTA active; re-add form when real Formspree ID obtained
 
 ---
 
