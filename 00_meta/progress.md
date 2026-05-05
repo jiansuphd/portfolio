@@ -33,3 +33,8 @@
 | 18 | `Move` | Tech Stack table + Key Features + ADDIE table → already in [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) |
 | 19 | `Move` | Project Intelligence section → [`MOC.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/MOC.md) File Index |
 | 20 | `Log` | Synced full Session 2 chat history to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |
+| 21 | `Move` | Security section moved from [`README.md`](https://github.com/jiansuphd/portfolio/blob/main/README.md) → [`MOC.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/MOC.md) Security Notes block |
+| 22 | `Chore` | Final README strip — removed all content below `© 2026` line; README now ends cleanly at Contact section |
+| 23 | `Plan` | Reviewed [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) — confirmed Phase 1 execution order: 1.1 Mobile hamburger menu → 1.2 CSS mesh hero background → 1.3 Replace placeholder images |
+| 24 | `Dev` | Starting Phase 1.1 — Mobile hamburger menu: add `☰` toggle button, slide-down mobile nav panel, close on link click or outside tap |
+| 25 | `Log` | Synced Session 3 chat history to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |
