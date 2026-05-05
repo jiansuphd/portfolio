@@ -114,15 +114,15 @@
 ## ✅ Checklist
 
 ### Phase 1
-- [ ] 1.1 Mobile hamburger menu
-- [ ] 1.2 CSS mesh hero background (no image dependency)
-- [ ] 1.3 Image slider — CSS mockup panels
+- [ ] 1.1 Mobile hamburger menu ← **not yet implemented**
+- [x] 1.2 CSS mesh hero background (no image dependency)
+- [ ] 1.3 Image slider — CSS mockup panels ← **still uses via.placeholder.com**
 
 ### Phase 2
-- [ ] 2.1 Portfolio filter tabs
-- [ ] 2.2 Tool icon grid replaces skill bars
-- [ ] 2.3 Testimonial — real attribution or remove
-- [ ] 2.4 Formspree contact form
+- [x] 2.1 Portfolio filter tabs
+- [x] 2.2 Tool icon grid replaces skill bars
+- [x] 2.3 Testimonial — real attribution or remove
+- [x] 2.4 Contact — mailto CTA (Formspree pending real ID)
 
 ### Phase 3
 - [ ] 3.1 Accessibility: aria-labels, keyboard slider, aria-current
