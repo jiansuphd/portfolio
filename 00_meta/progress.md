@@ -22,3 +22,14 @@
 | 12 | `Docs` | Created [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) — frontend deps, custom CSS patterns, JS module inventory, hosting, assets status, planned additions |
 | 13 | `Format` | User requested README format improvement — partially reviewed; interrupted before implementation |
 | 14 | `Log` | Synced full session chat history to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) — all 14 actions from this conversation captured |
+
+## 📅 2026-05-05 (Session 2)
+
+| # | Category | Description |
+|---|----------|-------------|
+| 15 | `Docs` | Created [`MOC.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/MOC.md) — central index for all `00_meta/` files with repo tree and file index table |
+| 16 | `Chore` | Stripped duplicate sections from [`README.md`](https://github.com/jiansuphd/portfolio/blob/main/README.md) — removed everything appended below `© 2026` line (Repository Structure, Tech Stack table, Key Features, ADDIE table, Project Intelligence, Security, duplicate Contact) |
+| 17 | `Move` | Repository Structure → [`MOC.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/MOC.md) |
+| 18 | `Move` | Tech Stack table + Key Features + ADDIE table → already in [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) |
+| 19 | `Move` | Project Intelligence section → [`MOC.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/MOC.md) File Index |
+| 20 | `Log` | Synced full Session 2 chat history to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |

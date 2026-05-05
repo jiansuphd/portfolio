@@ -54,10 +54,6 @@ For inquiries regarding learning strategy, curriculum innovation, or leadership 
 ---
 *&copy; 2026 Jian Su. All rights reserved.*
 
----
-
-## 📂 Repository Structure
-
 ```
 portfolio/
 ├── index.html          # Single-page portfolio (HTML + Tailwind + Vanilla JS)
