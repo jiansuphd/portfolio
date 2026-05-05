@@ -43,4 +43,12 @@ portfolio/
 
 ---
 
+## 🛡️ Security Notes
+
+- `.gitignore` excludes `.obsidian/`, `.env`, API keys, and local config
+- No credentials or tokens committed to this repo
+- `hero-bg.jpg` is referenced in CSS but not committed — safe to add as a static asset
+
+---
+
 **Backlinks:** [README.md](../README.md) | [progress.md](progress.md)
