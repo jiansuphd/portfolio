@@ -51,3 +51,13 @@
 | 31 | `Dev` | Phase 2.3 — Removed placeholder testimonial section ("Jane Doe, Ph.D.") from [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) |
 | 32 | `Dev` | Phase 2.4 — Contact section: removed Formspree placeholder form (`xwpkvdzg` ID); restored prominent `btn-gradient` mailto CTA — Formspree to be re-added when real ID obtained |
 | 33 | `Log` | Synced Session 4 Phase 2 activity to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |
+
+## 📅 2026-05-05 (Session 5)
+
+| # | Category | Description |
+|---|----------|-------------|
+| 34 | `Audit` | Read [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) and [`Work Plan.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Work%20Plan.md) — explained all 4 sessions to user |
+| 35 | `Audit` | Verified Phase 1 status against live [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html): **1.1 hamburger menu NOT implemented**, **1.2 CSS mesh hero ✅ confirmed**, **1.3 slider still uses `via.placeholder.com`** — NOT done |
+| 36 | `Audit` | Verified Phase 2 status: **2.1 filter tabs ✅**, **2.2 tool chip grid ✅**, **2.3 testimonial removed ✅**, **2.4 mailto CTA ✅** — all confirmed in code |
+| 37 | `Plan` | Phase 3 research complete — identified exact targets: duplicate `#navbar .nav-link.active` CSS (lines 166+228), missing hamburger JS/HTML, `via.placeholder.com` at lines 554+558, missing `aria-label` on scroll chevron + slider handle, no `aria-current` on nav, ADDIE grid needs connector, footer needs quick-links |
+| 38 | `Log` | Synced Session 5 activity to [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) |
