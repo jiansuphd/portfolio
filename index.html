@@ -163,6 +163,16 @@
         }
 
         /* --- NAVIGATION --- */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
         #navbar .nav-link.active {
             color: #3b82f6 !important;
         }
@@ -312,6 +322,24 @@
                     <a href="#credentials" class="nav-link hover:text-blue-400 transition-colors border-b-2 border-transparent hover:border-blue-400 pb-1">Credentials</a>
                     <a href="#contact" class="px-4 py-2 rounded border border-white hover:bg-white hover:text-slate-900 transition contact-btn">Contact</a>
                 </div>
+                <!-- Hamburger button (mobile only) -->
+                <button id="hamburger" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="block w-6 h-0.5 bg-current transition-all duration-300" id="bar1"></span>
+                    <span class="block w-6 h-0.5 bg-current transition-all duration-300" id="bar2"></span>
+                    <span class="block w-6 h-0.5 bg-current transition-all duration-300" id="bar3"></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile slide-down panel -->
+        <div id="mobile-menu" class="md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-white/10">
+            <div class="flex flex-col px-6 py-4 gap-1 text-sm font-semibold uppercase tracking-wider">
+                <a href="#" class="mobile-nav-link py-3 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Home</a>
+                <a href="#process" class="mobile-nav-link py-3 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Process</a>
+                <a href="#portfolio" class="mobile-nav-link py-3 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Portfolio</a>
+                <a href="#about" class="mobile-nav-link py-3 border-b border-white/10 text-white hover:text-blue-400 transition-colors">About</a>
+                <a href="#scholarship" class="mobile-nav-link py-3 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Scholarship</a>
+                <a href="#credentials" class="mobile-nav-link py-3 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Credentials</a>
+                <a href="#contact" class="mt-2 py-3 px-4 btn-gradient text-white rounded-xl text-center mobile-nav-link">Contact</a>
             </div>
         </div>
     </nav>
@@ -948,6 +976,30 @@
         window.addEventListener('scroll', updateNavStyles);
         window.addEventListener('load', updateNavStyles);
 
+        // 1b. HAMBURGER MENU
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.getElementById('bar1').style.transform = '';
+            document.getElementById('bar2').style.opacity = '1';
+            document.getElementById('bar3').style.transform = '';
+        }
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = mobileMenu.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.getElementById('bar1').style.transform = isOpen ? 'translateY(8px) rotate(45deg)' : '';
+            document.getElementById('bar2').style.opacity = isOpen ? '0' : '1';
+            document.getElementById('bar3').style.transform = isOpen ? 'translateY(-8px) rotate(-45deg)' : '';
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('click', function(e) {
+            if (!navbar.contains(e.target)) closeMenu();
+        });
 
         // 2. TYPEWRITER EFFECT
         const words = ["driving student success.", "empowering faculty.", "innovating curriculum.", "scaling accessibility."];
