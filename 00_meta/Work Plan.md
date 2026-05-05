@@ -113,10 +113,11 @@
 
 ## ✅ Checklist
 
+
 ### Phase 1
-- [ ] 1.1 Mobile hamburger menu ← **not yet implemented**
+- [x] 1.1 Mobile hamburger menu
 - [x] 1.2 CSS mesh hero background (no image dependency)
-- [ ] 1.3 Image slider — CSS mockup panels ← **still uses via.placeholder.com**
+- [x] 1.3 Image slider — CSS mockup panels
 
 ### Phase 2
 - [x] 2.1 Portfolio filter tabs
