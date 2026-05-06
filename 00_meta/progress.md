@@ -91,3 +91,7 @@
 | 53 | `Chore` | Cleaned up [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) formatting |
 | 54 | `Format` | Reformatted [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) table for clarity |
 | 55 | `Docs` | Polished [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) with headers, icons, and table layouts |
+
+---
+
+**Backlinks:** [README.md](../README.md) | [Work Plan.md](Work%20Plan.md) | [Tech Stack.md](Tech%20Stack.md)
