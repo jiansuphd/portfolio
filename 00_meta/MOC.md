@@ -51,4 +51,3 @@ portfolio/
 
 ---
 
-**Backlinks:** [README.md](../README.md) | [progress.md](progress.md)
