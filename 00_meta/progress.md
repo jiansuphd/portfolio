@@ -60,8 +60,10 @@
 | | 54 | `Format` | Reformatted [`progress.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/progress.md) table for clarity |
 | | 55 | `Docs` | Polished [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) with headers, icons, and table layouts |
 | | 56 | `Docs` | Restored missing technical guides to [`Tech Stack.md`](https://github.com/jiansuphd/portfolio/blob/main/00_meta/Tech%20Stack.md) |
-| | 57 | `Docs` | Merged `karpathy_skills.md` into `Skills_Index.md` |
+| | 57 | `Docs` | Merged `karpathy_skills.md` into `skills_index.md` |
 | | 58 | `Chore` | Renamed `Skills_Index.md` to `skills_index.md` |
+| | 59 | `Docs` | Finalized Skills MOC and consolidated link audit |
+| | 60 | `Docs` | Repository-wide link audit completed |
 
 ---
 
