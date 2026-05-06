@@ -38,7 +38,7 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 
 ---
 
-## 🚀 Implementation Guide
+## 🚀 Implementation Roadmap
 
 ### Phase 1 — Critical Fixes
 1. **Mobile Menu**: Toggleable slide-down `#mobile-menu` using Tailwind `md:hidden`.
