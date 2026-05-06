@@ -17,7 +17,7 @@ portfolio/
     ├── progress.md         # Append-only ops log
     ├── Work Plan.md        # Phased design improvement roadmap
     ├── Tech Stack.md       # Full frontend dependency & CSS/JS reference
-    ├── karpathy_skills.md  # AI coding guidelines (Karpathy-inspired)
+    ├── skills_index.md     # Gemini CLI skills index
     └── karpathy_llm_wiki.md # LLM reference wiki
 ```
 
@@ -30,7 +30,7 @@ portfolio/
 | [progress.md](progress.md) | Append-only dated ops log of every change made to this repo |
 | [Work Plan.md](Work%20Plan.md) | 3-phase design improvement roadmap for `index.html` |
 | [Tech Stack.md](Tech%20Stack.md) | Frontend deps, custom CSS patterns, JS modules, hosting, assets |
-| [karpathy_skills.md](karpathy_skills.md) | AI-assisted coding guidelines: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution |
+| [skills_index.md](skills_index.md) | Gemini CLI skills index |
 | [karpathy_llm_wiki.md](karpathy_llm_wiki.md) | LLM reference wiki |
 
 ---
