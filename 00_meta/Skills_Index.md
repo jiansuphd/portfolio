@@ -1,4 +1,4 @@
-# 🧠 Gemini CLI Skills MOC
+# 🧠 Gemini CLI Skills Index
 
 This document serves as a centralized reference for all globally available Gemini CLI skills.
 
