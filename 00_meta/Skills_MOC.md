@@ -1,4 +1,4 @@
-# 🧠 Gemini CLI Skills Index
+# 🧠 Gemini CLI Skills MOC
 
 This document serves as a centralized reference for all globally available Gemini CLI skills installed in ~/.gemini/skills/ (linked to the Desktop vault).
 
@@ -152,3 +152,4 @@ This document serves as a centralized reference for all globally available Gemin
 _Last Index Refresh: May 5, 2026_
 
 **Backlink:** [Home MOC](../root_MOC.md)
+
