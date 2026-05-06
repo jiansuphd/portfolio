@@ -4,45 +4,45 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 
 ---
 
-## Frontend
+## 🎨 Frontend Dependencies
 
 | Tool | Version | Role | CDN URL |
 | :--- | :--- | :--- | :--- |
-| HTML5 | — | Structure & semantics | — |
-| Tailwind CSS | Latest | Utility-first styling | `https://cdn.tailwindcss.com` |
-| Vanilla JS | ES6+ | Interactions & animations | — |
-| Font Awesome | 6.0.0 | Icons | `cdnjs.cloudflare.com` |
-| Google Fonts (Inter) | Variable | Body text | `fonts.googleapis.com` |
-| Google Fonts (Outfit) | 400/600/700 | Headings | `fonts.googleapis.com` |
+| **HTML5** | — | Structure & semantics | — |
+| **Tailwind CSS** | Latest | Utility-first styling | `https://cdn.tailwindcss.com` |
+| **Vanilla JS** | ES6+ | Interactivity & animations | — |
+| **Font Awesome** | 6.0.0 | Icon library | `cdnjs.cloudflare.com` |
+| **Google Fonts (Inter)** | Variable | Primary body typography | `fonts.googleapis.com` |
+| **Google Fonts (Outfit)** | 400/600/700 | Heading typography | `fonts.googleapis.com` |
 
 ---
 
-## Custom CSS Patterns
+## ✨ Custom CSS Patterns
 
-| Pattern | Implementation | Used In |
+| Pattern | Implementation Method | Applied In |
 | :--- | :--- | :--- |
-| Glassmorphism | `backdrop-filter: blur(12px)` + `rgba` background | Nav, cards, slider |
-| Ambient Orbs | `position: fixed`, `filter: blur(80px)`, `opacity: 0.15` | Global background |
-| CSS Gradient Mesh | `radial-gradient` + `linear-gradient` layered | Hero section |
-| Scroll Reveal | `opacity: 0 → 1` + `translateY(20px → 0)` | All sections |
-| Skill Bar Animation | `width: 0 → data-width` on scroll | About section |
-| Typewriter | Character-by-character `innerHTML` loop | Hero headline |
+| **Glassmorphism** | `backdrop-filter: blur(12px)` + `rgba` background | Nav, cards, slider |
+| **Ambient Orbs** | `position: fixed`, `filter: blur(80px)`, `opacity: 0.15` | Global background |
+| **Gradient Mesh** | `radial-gradient` + `linear-gradient` layering | Hero section |
+| **Scroll Reveal** | `opacity: 0 → 1`, `translateY(20px → 0)` | All sections |
+| **Skill Animation** | `width: 0 → data-width` on scroll trigger | About section |
+| **Typewriter** | Dynamic `innerHTML` cycling loop | Hero headline |
 
 ---
 
-## JavaScript Modules
+## ⚙️ JavaScript Module Inventory
 
-| Module | Function | Lines (approx.) |
+| Module | Purpose | Complexity |
 | :--- | :--- | :--- |
-| ScrollSpy | Updates active nav link vs section offsets | ~25 |
-| Typewriter | Cycles through role phrases | ~35 |
-| Image Slider | Drag/touch handler for before/after overlay | ~50 |
-| Scroll Reveal | Adds `.active` class on view entry | ~20 |
-| Skill Trigger | Animates width on scroll | ~10 |
+| **ScrollSpy** | Nav link active-state synchronization | ~25 lines |
+| **Typewriter** | Animated hero headline phrases | ~35 lines |
+| **Image Slider** | Before/after touch-drag comparison | ~50 lines |
+| **Scroll Reveal** | IntersectionObserver entry animations | ~20 lines |
+| **Skill Trigger** | Scroll-activated width animation | ~10 lines |
 
 ---
 
-## 🛠️ Implementation Guide
+## 🚀 Implementation Guide
 
 ### Phase 1 — Critical Fixes
 1. **Mobile Menu**: Toggleable slide-down `#mobile-menu` using Tailwind `md:hidden`.
@@ -55,22 +55,22 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 3. **Contact**: Replace form with mailto `btn-gradient`.
 
 ### Phase 3 — Polish & Accessibility
-1. **A11y**: Add `aria-label` and `aria-current`.
+1. **A11y**: Add `aria-label` and `aria-current` attributes.
 2. **Connectors**: ADDIE process cards visually linked with dashed lines.
 3. **Performance**: Defer Font Awesome, consolidate custom CSS, and prune duplicates.
 4. **Footer**: Navigation quick-links added.
 
 ---
 
-## Hosting & Deployment
+## 🌐 Hosting & Deployment
 
 - **Service**: GitHub Pages
-- **Deploy**: Push to `main` → GitHub Pages serves `index.html`.
+- **Deploy**: Push to `main` branch → automated serving.
 - **URL**: [https://jiansuphd.github.io/portfolio/](https://jiansuphd.github.io/portfolio/)
 
 ---
 
-## Assets & Status
+## 📦 Assets & Status
 
 | File | Type | Status | Notes |
 | :--- | :--- | :--- | :--- |
