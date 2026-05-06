@@ -151,6 +151,6 @@ This document serves as a centralized reference for all globally available Gemin
 ---
 _Last Index Refresh: May 5, 2026_
 
-**Backlinks:** [Home MOC](../root_MOC.md)
+**Backlinks:** [Home MOC](root_MOC.md)
 
 
