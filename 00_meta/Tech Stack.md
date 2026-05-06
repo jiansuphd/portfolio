@@ -15,8 +15,6 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 | **Google Fonts (Inter)** | Variable | Primary body typography | `fonts.googleapis.com` |
 | **Google Fonts (Outfit)** | 400/600/700 | Heading typography | `fonts.googleapis.com` |
 
----
-
 ## ✨ Custom CSS Patterns
 
 | Pattern | Implementation Method | Applied In |
@@ -27,8 +25,6 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 | **Scroll Reveal** | `opacity: 0 → 1`, `translateY(20px → 0)` | All sections |
 | **Skill Animation** | `width: 0 → data-width` on scroll trigger | About section |
 | **Typewriter** | Dynamic `innerHTML` cycling loop | Hero headline |
-
----
 
 ## ⚙️ JavaScript Module Inventory
 
@@ -62,158 +58,35 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 
 ---
 
-## 🛠️ Step-by-Step Guide: Phase 1 & 2 Implementation
+## 🛠️ Detailed Implementation Guides
 
-### What Languages/Skills Do You Need?
+### Phase 1 & 2: What Languages/Skills Do You Need?
 - **HTML**: The structure of the page. All content, navigation, and sections are written in HTML.
-- **CSS**: The design and layout. All colors, spacing, gradients, and responsive styles are controlled with CSS (including Tailwind utility classes and custom styles).
-- **JavaScript**: The interactivity. All dynamic behaviors (menus, sliders, tab filters) are written in plain (vanilla) JavaScript, directly in `<script>` tags in `index.html`.
+- **CSS**: The design and layout. All colors, spacing, gradients, and responsive styles are controlled with CSS.
+- **JavaScript**: The interactivity. All dynamic behaviors are written in plain (vanilla) JavaScript in `<script>` tags.
 
-**If you are a total beginner:**
-- You only need to edit one file: `index.html`.
-- You do NOT need to install anything. All tools (Tailwind, Font Awesome) are loaded via CDN links at the top of the file.
-- You can use any text editor (VS Code, Atom, Notepad++) and view changes by opening `index.html` in your browser.
+**For Beginners:** Edit only `index.html`. No installation required; all tools loaded via CDN.
 
----
+### Phase 1 — Technical Steps
+1. **Mobile Hamburger Menu**: Add button with three bars (☰), toggle `#mobile-menu` on click.
+2. **CSS Mesh Hero Background**: Remove `<img>`, add `structural-bg` class with `radial-gradient`.
+3. **Image Comparison Slider**: Replace `via.placeholder.com` with two CSS panels (dark/slate "before", cyan/blue "after").
 
-### Phase 1 — Critical Fixes
+### Phase 2 — Technical Steps
+1. **Portfolio Filter Tabs**: Add tab buttons, use `data-category` for filtering cards.
+2. **Tool Icon Grid**: Grid of colored tool chips (Canvas, Storyline, HTML/CSS/JS, Agile, AI, UDL/WCAG, Figma, ADDIE).
+3. **Testimonial Section**: Remove placeholder.
+4. **Contact Section**: Remove Formspree; use mailto `btn-gradient` CTA.
 
-1. **Mobile Hamburger Menu**
-   - Add a `<button>` with three bars (☰) that only shows on small screens (`md:hidden` in Tailwind).
-   - Clicking the button toggles a slide-down mobile nav panel (`#mobile-menu`).
-   - Clicking any link or outside the menu closes it.
-   - All logic is in a `<script>` block at the bottom of `index.html`.
-
-2. **CSS Mesh Hero Background**
-   - Remove any `<img>` for the hero background.
-   - Add a `structural-bg` class to the `<header>` and define a multi-layered `radial-gradient` in the `<style>` block.
-   - No image files needed—just CSS.
-
-3. **Image Comparison Slider (CSS Panels)**
-   - Replace `<img src="via.placeholder.com">` with two `<div>`s:
-     - The "after" panel uses a blue/cyan gradient and a list of new features.
-     - The "before" panel uses a dark slate background and a list of old limitations.
-   - The slider handle is created by JavaScript and lets you drag to compare.
-
----
-
-### Phase 2 — UX Improvements
-
-1. **Portfolio Filter Tabs**
-   - Add a row of buttons above the portfolio grid: All, Canvas, Storyline, HTML, Research.
-   - Each project card gets a `data-category` attribute.
-   - JavaScript listens for tab clicks and shows/hides cards by category.
-
-2. **Tool Icon Grid**
-   - Remove skill bars.
-   - Add a grid of colored "tool chips" (Canvas, Storyline, HTML/CSS/JS, Agile, AI, UDL/WCAG, Figma, ADDIE).
-   - Each chip is a `<div>` styled with Tailwind and custom CSS.
-
-3. **Testimonial Section**
-   - Remove the placeholder testimonial ("Jane Doe, Ph.D.").
-   - If you want a real testimonial, add a new `<section>` with the quote and attribution.
-
-4. **Contact Section**
-   - Remove the Formspree form (unless you have a real Formspree ID).
-   - Add a prominent mailto button styled with `btn-gradient`.
-   - The button opens the user's email client to send you a message.
-
----
-
-**To edit or extend any of these features:**
-- Find the relevant section in `index.html` (use search/find in your editor).
-- Update the HTML for structure, the `<style>` block for design, and the `<script>` block for interactivity.
-- Save and refresh your browser to see changes.
-
-**You do NOT need to know React, Node.js, or any build tools.**
-
----
-
-## 🛠️ Step-by-Step Guide: Phase 3 — Polish & Accessibility
-
-This guide walks you through every detail of Phase 3 improvements: accessibility, ADDIE connectors, performance cleanup, and footer quick-links. Each step is beginner-friendly and mapped to the actual code in `index.html`.
-
-### 3.1 Accessibility Improvements
-
-**Goal:** Make the site more usable for everyone, including those using screen readers or keyboard navigation.
-
-**Steps:**
-1. **Add `aria-label` to icon-only links/buttons:**
-   - Find all `<a>` or `<button>` elements that only show an icon (e.g., the scroll chevron, slider handle).
-   - Add `aria-label="[describe action]"` (e.g., `aria-label="Scroll to portfolio"`).
-   - Example: `<a ... aria-label="Scroll to portfolio">`.
-2. **Add `aria-current="page"` to active nav link:**
-   - In the nav bar, find the link for the current section/page.
-   - Add `aria-current="page"` to that `<a>`.
-   - Example: `<a ... aria-current="page">Home</a>`.
-3. **Make the slider keyboard accessible:**
-   - In the slider JS, add event listeners for `ArrowLeft` and `ArrowRight` keys when the slider handle is focused.
-   - Move the slider left/right by a set number of pixels on key press.
-   - Ensure the slider handle is focusable: add `tabindex="0"` to the slider handle div.
-   - Example: `slider.setAttribute('tabindex', '0');`
-4. **Check color contrast:**
-   - Use a tool like [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) to verify all text/background color pairs meet WCAG AA.
-   - Adjust Tailwind classes or custom CSS if needed.
-
-### 3.2 ADDIE Step Connectors
-
-**Goal:** Visually connect the 5 ADDIE process cards for better process clarity.
-
-**Steps:**
-1. **Desktop (horizontal connector):**
-   - In the ADDIE section, wrap the 5 cards in a parent div with `relative` class.
-   - Add a new absolutely positioned `<div>` behind the cards, styled as a dashed or arrowed horizontal line.
-   - Use Tailwind: `absolute left-0 right-0 top-1/2 h-1 border-t-2 border-dashed border-blue-200 z-0`.
-   - Adjust z-index so the line appears behind the cards.
-2. **Mobile (vertical stepper):**
-   - Use Tailwind responsive classes (`lg:hidden`) to show a vertical connector only on small screens.
-   - Add a vertical dashed line and numbered circles beside each card.
-   - Example: `<div class="absolute left-4 top-0 h-full w-1 border-l-2 border-dashed border-blue-200"></div>`
-   - Add a small circle for each step, positioned with `top-[%]` or flex/grid utilities.
-
-### 3.3 Performance Cleanup
-
-**Goal:** Make the site faster and easier to maintain.
-
-**Steps:**
-1. **Remove duplicate CSS:**
-   - Search for repeated CSS rules (e.g., `#navbar .nav-link.active`).
-   - Keep only one copy in the `<style>` block.
-2. **Defer Font Awesome:**
-   - In the `<head>`, add `defer` to the Font Awesome `<link>` tag: `<link ... defer>`.
-   - This lets the page render faster before icons load.
-3. **Consolidate custom CSS:**
-   - Move all custom CSS into a single `<style>` block in the `<head>`.
-   - Remove any stray `<style>` tags elsewhere in the file.
-
-### 3.4 Footer Quick-Links
-
-**Goal:** Add navigation links to the footer for better UX.
-
-**Steps:**
-1. **Edit the `<footer>` section:**
-   - Add a `<nav>` with links: Home, Portfolio, About, Contact.
-   - Use Tailwind classes for spacing and hover effects.
-   - Example:
-     ```html
-     <nav class="flex gap-6 ...">
-       <a href="#">Home</a>
-       <a href="#portfolio">Portfolio</a>
-       <a href="#about">About</a>
-       <a href="#contact">Contact</a>
-     </nav>
-     ```
-2. **Add `aria-label="Footer quick links"` to the nav for accessibility.**
-
----
-
-**Tip:** For every change, save `index.html` and refresh your browser to check the result. Use browser dev tools (F12) to inspect elements and debug styles or accessibility attributes.
-**Backlinks:** [README.md](../README.md) | [Work Plan.md](Work%20Plan.md) | [progress.md](progress.md)
+### Phase 3 — Technical Steps
+1. **Accessibility**: Add `aria-label` (icons) and `aria-current` (nav). Make slider keyboard-accessible with `tabindex` and arrow listeners. Check color contrast.
+2. **ADDIE Connectors**: Wrap cards in `relative` div. Use absolute positioning for dashed line (desktop) or vertical stepper (mobile).
+3. **Performance**: Remove redundant CSS. Add `defer` to Font Awesome. Consolidate `<style>` blocks.
+4. **Footer Quick-Links**: Add navigation links with `aria-label`.
 
 ---
 
 ## 🌐 Hosting & Deployment
-
 - **Service**: GitHub Pages
 - **Deploy**: Push to `main` branch → automated serving.
 - **URL**: [https://jiansuphd.github.io/portfolio/](https://jiansuphd.github.io/portfolio/)
@@ -221,8 +94,11 @@ This guide walks you through every detail of Phase 3 improvements: accessibility
 ---
 
 ## 📦 Assets & Status
-
 | File | Type | Status | Notes |
 | :--- | :--- | :--- | :--- |
 | `Resume.pdf` | PDF | ✅ Committed | Linked in hero CTA |
 | `hero-bg.jpg` | Image | ❌ Missing | Removed in favor of CSS gradient |
+
+---
+
+**Backlinks:** [README.md](../README.md) | [Work Plan.md](Work%20Plan.md) | [progress.md](progress.md)
