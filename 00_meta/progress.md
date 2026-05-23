@@ -65,6 +65,7 @@
 | | 59 | `Docs` | Finalized Skills MOC and consolidated link audit |
 | | 60 | `Docs` | Repository-wide link audit completed |
 | **2026 - 05 - 23** | 61 | `Style` | Uplifted visual design of `index.html` to a premium PPT - inspired warm ivory style without content changes |
+| | 62 | `Fix` | Reviewed live GitHub Pages portfolio, fixed desktop nav active state, polished hyphenated copy, improved anchor offsets and mobile menu behavior in [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html), then pushed and verified deployment on [`jiansuphd.github.io/portfolio`](https://jiansuphd.github.io/portfolio/) |
 
 ---
 
