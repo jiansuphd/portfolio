@@ -46,7 +46,7 @@ Two special files help the LLM (and you) navigate the wiki as it grows. They ser
 
 **index.md** is content-oriented. It's a catalog of everything in the wiki - each page listed with a link, a one-line summary, and optionally metadata like date or source count. Organized by category (entities, concepts, sources, etc.). The LLM updates it on every ingest. When answering a query, the LLM reads the index first to find relevant pages, then drills into them. This works surprisingly well at moderate scale (~100 sources, ~hundreds of pages) and avoids the need for embedding-based RAG infrastructure.
 
-**progress.md** serves as both the phase checklist and the append-only ops log. The `## Ops Log` section is chronological - ingests, queries, lint passes. A useful tip: entries start with `### [YYYY-MM-DD] action | Description`, making them parseable with simple unix tools - `grep "^### \[" 00_meta/progress.md | tail -5` gives you the last 5 entries. This gives you a timeline of the wiki's evolution and helps the LLM understand what's been done recently.
+**progress.md** serves as both the phase checklist and the append-only ops log. The `## Ops Log` section is chronological - ingests, queries, lint passes. A useful tip: entries start with `### [YYYY-MM-DD] action | Description`, making them parseable with simple unix tools - `grep "^### \[" _meta/progress.md | tail -5` gives you the last 5 entries. This gives you a timeline of the wiki's evolution and helps the LLM understand what's been done recently.
 
 ## Optional: CLI tools
 
@@ -77,4 +77,3 @@ This document is intentionally abstract. It describes the idea, not a specific i
 
 ---
 **Backlinks:** [MOC](MOC.md)
-

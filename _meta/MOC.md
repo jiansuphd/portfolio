@@ -1,4 +1,4 @@
-# 🗺️ Map of Content — 00_meta/
+# 🗺️ Map of Content — _meta/
 
 Central index for all planning and reference files in this repository.
 
@@ -12,7 +12,7 @@ portfolio/
 ├── Resume.pdf              # Full CV
 ├── hero-bg.jpg             # Hero section background asset (⚠️ see Work Plan §1.2)
 ├── README.md               # Public-facing repo overview
-└── 00_meta/                # Project intelligence & planning
+└── _meta/                  # Project intelligence & planning
     ├── MOC.md              # ← You are here
     ├── progress.md         # Append-only ops log
     ├── Work Plan.md        # Phased design improvement roadmap
@@ -50,4 +50,3 @@ portfolio/
 - `hero-bg.jpg` is referenced in CSS but not committed — safe to add as a static asset
 
 ---
-
