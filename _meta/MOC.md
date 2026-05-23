@@ -1,4 +1,4 @@
-# 🗺️ Map of Content — _meta/
+# 🗺️ Map of Content - _meta/
 
 Central index for all planning and reference files in this repository.
 
@@ -47,6 +47,6 @@ portfolio/
 
 - `.gitignore` excludes `.obsidian/`, `.env`, API keys, and local config
 - No credentials or tokens committed to this repo
-- `hero-bg.jpg` is referenced in CSS but not committed — safe to add as a static asset
+- `hero-bg.jpg` is referenced in CSS but not committed - safe to add as a static asset
 
 ---

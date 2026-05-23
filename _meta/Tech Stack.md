@@ -1,6 +1,6 @@
 # 🛠️ Tech Stack
 
-Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html) — the portfolio site.
+Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/blob/main/index.html)  -  the portfolio site.
 
 ---
 
@@ -8,9 +8,9 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 
 | Tool | Version | Role | CDN URL |
 | :--- | :--- | :--- | :--- |
-| **HTML5** | — | Structure & semantics | — |
+| **HTML5** |  -  | Structure & semantics |  -  |
 | **Tailwind CSS** | Latest (Play CDN) | Utility-first styling | `https://cdn.tailwindcss.com` |
-| **Vanilla JavaScript** | ES6+ | Interactions & animations | — |
+| **Vanilla JavaScript** | ES6+ | Interactions & animations |  -  |
 | **Font Awesome** | 6.0.0 | Icons | `cdnjs.cloudflare.com` |
 | **Google Fonts (Inter)** | Variable | Body text | `fonts.googleapis.com` |
 | **Google Fonts (Outfit)** | 400/600/700 | Headings | `fonts.googleapis.com` |
@@ -54,7 +54,7 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 - You do NOT need to install anything. All tools (Tailwind, Font Awesome) are loaded via CDN links at the top of the file.
 - You can use any text editor (VS Code, Atom, Notepad++) and view changes by opening `index.html` in your browser.
 
-### Phase 1 — Critical Fixes
+### Phase 1  -  Critical Fixes
 1. **Mobile Hamburger Menu**
    - Add a `<button>` with three bars (☰) that only shows on small screens (`md:hidden` in Tailwind).
    - Clicking the button toggles a slide-down mobile nav panel (`#mobile-menu`).
@@ -63,14 +63,14 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 2. **CSS Mesh Hero Background**
    - Remove any `<img>` for the hero background.
    - Add a `structural-bg` class to the `<header>` and define a multi-layered `radial-gradient` in the `<style>` block.
-   - No image files needed—just CSS.
+   - No image files needed - just CSS.
 3. **Image Comparison Slider (CSS Panels)**
    - Replace `<img src="via.placeholder.com">` with two `<div>`s:
      - The "after" panel uses a blue/cyan gradient and a list of new features.
      - The "before" panel uses a dark slate background and a list of old limitations.
    - The slider handle is created by JavaScript and lets you drag to compare.
 
-### Phase 2 — UX Improvements
+### Phase 2  -  UX Improvements
 1. **Portfolio Filter Tabs**
    - Add a row of buttons above the portfolio grid: All, Canvas, Storyline, HTML, Research.
    - Each project card gets a `data-category` attribute.
@@ -89,7 +89,7 @@ Technical reference for [`index.html`](https://github.com/jiansuphd/portfolio/bl
 
 ---
 
-## 🛠️ Step-by-Step Guide: Phase 3 — Polish & Accessibility
+## 🛠️ Step-by-Step Guide: Phase 3  -  Polish & Accessibility
 
 This guide walks you through every detail of Phase 3 improvements: accessibility, ADDIE connectors, performance cleanup, and footer quick-links. Each step is beginner-friendly and mapped to the actual code in `index.html`.
 
@@ -140,7 +140,7 @@ This guide walks you through every detail of Phase 3 improvements: accessibility
 | File | Type | Status | Notes |
 |------|------|--------|-------|
 | `Resume.pdf` | PDF | ✅ Committed | Linked in hero CTA |
-| `hero-bg.jpg` | Image | ❌ Missing | Referenced in CSS but not in repo — see [Work Plan §1.2](Work%20Plan.md#12-hero-background--css-mesh-gradient) |
+| `hero-bg.jpg` | Image | ❌ Missing | Referenced in CSS but not in repo  -  see [Work Plan §1.2](Work%20Plan.md#12-hero-background--css-mesh-gradient) |
 
 ## Planned Additions (from [Work Plan.md](Work%20Plan.md))
 
