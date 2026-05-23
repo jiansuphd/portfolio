@@ -67,6 +67,10 @@
             position: relative;
         }
 
+        section[id] {
+            scroll-margin-top: 82px;
+        }
+
         /* --- BACKGROUND GRIDLINE OVERLAY --- */
         body::before {
             content: "";
@@ -231,9 +235,10 @@
             overflow: hidden;
             transition: max-height 0.35s ease, opacity 0.3s ease;
             opacity: 0;
+            box-shadow: 0 18px 36px rgba(20, 20, 19, 0.08);
         }
         #mobile-menu.open {
-            max-height: 400px;
+            max-height: calc(100vh - 80px);
             opacity: 1;
         }
         #navbar .nav-link.active {
@@ -454,7 +459,7 @@
                 <span class="text-clay" id="typewriter-text"></span><span class="cursor">&nbsp;</span>
             </h1>
             <p class="mt-6 max-w-2xl mx-auto text-xl text-muted font-light reveal">
-                Through innovative, high - impact, data - driven course design.
+                Through innovative, high-impact, data-driven course design.
             </p>
             <div class="mt-12 flex flex-col sm:flex-row justify-center gap-6 reveal">
                 <a href="#portfolio" class="px-10 py-4 btn-gradient font-bold rounded-xl flex items-center justify-center">
@@ -480,7 +485,7 @@
             <div class="text-center mb-20 reveal">
                 <span class="text-clay font-bold uppercase tracking-widest text-sm">Methodology</span>
                 <h2 class="text-4xl font-bold text-ink mt-3">The ADDIE Framework + Agile</h2>
-                <p class="mt-4 text-lg text-muted max-w-2xl mx-auto">Structured processes ensure timely delivery and measurable, high - impact outcomes.</p>
+                <p class="mt-4 text-lg text-muted max-w-2xl mx-auto">Structured processes ensure timely delivery and measurable, high-impact outcomes.</p>
             </div>
             
             <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 text-center reveal addie-connector">
@@ -558,8 +563,8 @@
                     </div>
                     <div class="p-10">
                         <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-clay transition-colors">Social Work Simulation</h3>
-                        <p class="text-muted mb-8 leading-relaxed">Designed complex Storyline components, managed multi - course Canvas integration, and established robust accessibility standards.</p>
-                        <div class="flex wrap gap-6">
+                        <p class="text-muted mb-8 leading-relaxed">Designed complex Storyline components, managed multi-course Canvas integration, and established robust accessibility standards.</p>
+                        <div class="flex flex-wrap gap-6">
                             <a href="#social-work-deep-dive" class="text-clay font-bold uppercase text-sm flex items-center group/link">
                                 Read Deep Dive <i class="fas fa-chevron-right ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
                             </a>
@@ -575,7 +580,7 @@
                         </div>
                         <div class="p-10">
                             <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-olive transition-colors">HTML Interactions</h3>
-                            <p class="text-muted mb-8 leading-relaxed">Lightweight, high - performance learning objects built with vanilla web technologies for maximum LMS compatibility.</p>
+                            <p class="text-muted mb-8 leading-relaxed">Lightweight, high-performance learning objects built with vanilla web technologies for maximum LMS compatibility.</p>
                             <span class="text-olive font-bold uppercase text-sm flex items-center group/link">
                                 Launch Repository <i class="fas fa-external-link-alt ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
                             </span>
@@ -606,7 +611,7 @@
                     </div>
                     <div class="p-10">
                         <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-blue transition-colors">MATH 112 Redesign</h3>
-                        <p class="text-muted mb-8 leading-relaxed">Reversing attrition through pedagogical alignment and data - driven structural changes in the LMS environment.</p>
+                        <p class="text-muted mb-8 leading-relaxed">Reversing attrition through pedagogical alignment and data-driven structural changes in the LMS environment.</p>
                         <a href="#math-deep-dive" class="text-blue font-bold uppercase text-sm flex items-center group/link">
                             Read Case Study <i class="fas fa-chevron-right ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
                         </a>
@@ -752,7 +757,7 @@
                             <div class="bg-paper rounded-[13px] p-8">
                                 <h4 class="font-bold text-clay text-xs uppercase tracking-widest mb-2">Impact Measured</h4>
                                 <p class="text-ink text-xl font-bold italic leading-relaxed">
-                                    "Double - digit increases in pass rates and a significant reduction in course withdrawals within a single academic year."
+                                    "Double-digit increases in pass rates and a significant reduction in course withdrawals within a single academic year."
                                 </p>
                             </div>
                         </div>
@@ -778,10 +783,10 @@
                 <div class="reveal">
                     <div class="prose prose-lg text-muted leading-relaxed">
                         <p class="mb-6">
-                            With a <strong class="text-ink font-bold">Ph.D. in Instructional Technology</strong> and a foundation in Linguistics, I approach instructional design as a translation process — transforming complex expert knowledge into accessible, learner - centric experiences.
+                            With a <strong class="text-ink font-bold">Ph.D. in Instructional Technology</strong> and a foundation in Linguistics, I approach instructional design as a translation process — transforming complex expert knowledge into accessible, learner-centric experiences.
                         </p>
                         <p class="mb-10">
-                            Since 2017, I have served as an Instructional Design Specialist and Manager at the <strong class="text-ink font-bold">University of Tennessee</strong>, leading large - scale curriculum innovations and faculty development initiatives that prioritize engagement and equity.
+                            Since 2017, I have served as an Instructional Design Specialist and Manager at the <strong class="text-ink font-bold">University of Tennessee</strong>, leading large-scale curriculum innovations and faculty development initiatives that prioritize engagement and equity.
                         </p>
                     </div>
                     
@@ -978,7 +983,7 @@
                             </div>
                             <p class="text-muted font-mono text-xs mb-4 tracking-wide">UNIVERSITY OF TENNESSEE, KNOXVILLE</p>
                             <p class="text-muted leading-relaxed max-w-4xl">
-                                Managing complex digital transformation projects, mentoring junior designers, and leading the design of high - impact online courses through data - driven strategies and evidence - based pedagogy.
+                                Managing complex digital transformation projects, mentoring junior designers, and leading the design of high-impact online courses through data-driven strategies and evidence-based pedagogy.
                             </p>
                         </div>
 
@@ -1082,10 +1087,14 @@
                     current = section.getAttribute('id');
                 }
             });
+            if (current === 'social-work-deep-dive' || current === 'math-deep-dive') {
+                current = 'portfolio';
+            }
 
             navLinks.forEach(li => {
                 li.classList.remove('active');
-                if (li.getAttribute('href').includes(current)) {
+                const href = li.getAttribute('href');
+                if ((current && href === `#${current}`) || (!current && href === '#')) {
                     li.classList.add('active');
                 }
             });
