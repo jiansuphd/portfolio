@@ -52,8 +52,8 @@
             --violet: #7A647D;
             --rose: #A54E46;
             --green: #57745A;
-            --shadow: 4px 4px 0 var(--soft);
-            --shadow-hover: 8px 8px 0 var(--line);
+            --shadow: 0 1px 2px rgba(20, 20, 19, 0.06);
+            --shadow-hover: 0 18px 40px rgba(20, 20, 19, 0.10);
             --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
             --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             --mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
@@ -85,16 +85,14 @@
             mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 64%);
         }
         
-        h1, h2, h3, h4, .font-heading {
-            font-family: var(--serif);
-            font-weight: 500;
-        }
+        h1, h2, h3, h4, .font-heading { font-weight: 700; }
+        h1, .hero-name { font-family: var(--serif); }
 
         /* --- CARD STYLING --- */
         .glass-card {
             background: var(--paper);
-            border: 1.5px solid var(--line-strong);
-            border-radius: 14px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
             box-shadow: var(--shadow);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
                         box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -102,16 +100,17 @@
         }
         .glass-card:hover {
             transform: translateY(-4px);
-            border-color: var(--ink);
+            border-color: var(--line-strong);
             box-shadow: var(--shadow-hover);
         }
 
         /* --- HERO BACKGROUND (PPT Style Warm Ivory / Ink) --- */
         .structural-bg {
             background-color: var(--ivory);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(201, 101, 69, 0.04) 0%, transparent 60%),
-                radial-gradient(circle at 90% 80%, rgba(88, 111, 143, 0.05) 0%, transparent 60%);
+            background-image:
+                linear-gradient(180deg, rgba(255,255,255,0.72), rgba(250,249,245,0.94)),
+                radial-gradient(circle at 18% 18%, rgba(201, 101, 69, 0.08) 0%, transparent 42%),
+                radial-gradient(circle at 86% 76%, rgba(88, 111, 143, 0.08) 0%, transparent 48%);
             background-size: cover;
             background-position: center;
         }
@@ -268,7 +267,7 @@
             background: var(--clay);
             color: var(--paper) !important;
             border: 1.5px solid var(--ink);
-            border-radius: 12px;
+            border-radius: 8px;
             transition: all 0.2s ease;
             box-shadow: var(--shadow);
         }
@@ -282,7 +281,7 @@
             background: var(--paper);
             color: var(--ink) !important;
             border: 1.5px solid var(--line-strong);
-            border-radius: 12px;
+            border-radius: 8px;
             transition: all 0.2s ease;
             box-shadow: var(--shadow);
         }
@@ -302,12 +301,12 @@
         /* --- PORTFOLIO FILTER TABS --- */
         .filter-btn {
             padding: 0.5rem 1.25rem;
-            border-radius: 999px;
+            border-radius: 8px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            border: 1px solid var(--line-strong);
+            border: 1px solid var(--line);
             background: var(--paper);
             color: var(--muted);
             cursor: pointer;
@@ -322,6 +321,50 @@
         }
         .portfolio-card[data-category] { transition: opacity 0.3s ease, transform 0.3s ease; }
         .portfolio-card.hidden-card { opacity: 0; pointer-events: none; position: absolute; visibility: hidden; }
+
+        .repo-shell {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        .repo-card {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+        .repo-card:hover {
+            border-color: var(--line-strong);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        .repo-card.hidden-card { opacity: 0; pointer-events: none; position: absolute; visibility: hidden; }
+        .repo-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            color: var(--muted);
+            font-size: .78rem;
+            line-height: 1;
+        }
+        .language-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            display: inline-block;
+            background: var(--clay);
+        }
+        .profile-stat {
+            border-left: 1px solid var(--line);
+            padding-left: 1rem;
+        }
+        @media (max-width: 640px) {
+            .profile-stat {
+                border-left: 0;
+                padding-left: 0;
+            }
+        }
 
         /* --- TOOL CHIP GRID --- */
         .tool-chip {
@@ -452,22 +495,98 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <header class="relative min-h-screen flex items-center justify-center structural-bg text-center px-4">
-        <div class="relative max-w-5xl mx-auto z-10 pt-20">
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-ink leading-tight mb-6">
-                Instructional Design Manager <br/>
-                <span class="text-clay" id="typewriter-text"></span><span class="cursor">&nbsp;</span>
-            </h1>
-            <p class="mt-6 max-w-2xl mx-auto text-xl text-muted font-light reveal">
-                Through innovative, high-impact, data-driven course design.
-            </p>
-            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-6 reveal">
-                <a href="#portfolio" class="px-10 py-4 btn-gradient font-bold rounded-xl flex items-center justify-center">
-                    Explore My Work <i class="fas fa-arrow-right ml-2 text-sm opacity-70"></i>
-                </a>
-                <a href="Resume.pdf" target="_blank" class="px-10 py-4 btn-secondary font-bold rounded-xl flex items-center justify-center">
-                    <i class="fas fa-file-pdf mr-2 opacity-70"></i> Download CV
-                </a>
+    <header class="relative min-h-screen flex items-center structural-bg px-4">
+        <div class="relative max-w-6xl mx-auto z-10 pt-24 pb-16 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-10 lg:gap-14 items-start">
+                <aside class="repo-shell p-6 reveal">
+                    <div class="w-28 h-28 rounded-full bg-ink text-paper flex items-center justify-center text-4xl font-bold hero-name border border-line-strong shadow-sm">
+                        JS
+                    </div>
+                    <h1 class="hero-name text-3xl sm:text-4xl font-bold text-ink mt-6 leading-tight">Jian Su, Ph.D.</h1>
+                    <p class="text-muted text-lg mt-1">Instructional Design Manager</p>
+                    <p class="mt-5 text-sm leading-relaxed text-muted">
+                        Building scalable online learning systems, accessible course experiences, and evidence-driven faculty partnerships.
+                    </p>
+                    <div class="mt-6 flex flex-col gap-3">
+                        <a href="#portfolio" class="px-5 py-3 btn-gradient font-bold flex items-center justify-center">
+                            Explore Work <i class="fas fa-arrow-right ml-2 text-sm opacity-70"></i>
+                        </a>
+                        <a href="Resume.pdf" target="_blank" class="px-5 py-3 btn-secondary font-bold flex items-center justify-center">
+                            <i class="fas fa-file-pdf mr-2 opacity-70"></i> Download CV
+                        </a>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-line space-y-3 text-sm text-muted">
+                        <p><i class="fas fa-building mr-2 text-clay"></i> University of Tennessee</p>
+                        <p><i class="fas fa-location-dot mr-2 text-blue"></i> Knoxville, Tennessee</p>
+                        <p><i class="fab fa-github mr-2 text-ink"></i> jiansuphd</p>
+                    </div>
+                </aside>
+
+                <div class="reveal">
+                    <div class="repo-shell overflow-hidden">
+                        <div class="px-6 py-4 border-b border-line flex flex-wrap items-center justify-between gap-3 bg-soft/35">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <i class="fas fa-book-open text-muted"></i>
+                                <span class="font-bold text-ink">portfolio / learning-design-systems</span>
+                                <span class="tag blue">Public</span>
+                            </div>
+                            <a href="https://github.com/jiansuphd?tab=repositories" target="_blank" class="text-sm font-semibold text-blue hover:text-clay transition-colors">
+                                View GitHub <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                        <div class="p-6 sm:p-8">
+                            <p class="text-xs font-bold uppercase tracking-[0.22em] text-clay mb-5">Pinned portfolio profile</p>
+                            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
+                                Course design work that <span class="text-clay" id="typewriter-text"></span><span class="cursor">&nbsp;</span>
+                            </h2>
+                            <p class="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
+                                A compact index of case studies, tools, research, and production-ready learning objects designed for real academic programs.
+                            </p>
+                            <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-5">
+                                <div>
+                                    <div class="text-3xl font-bold text-ink">8+</div>
+                                    <p class="text-xs uppercase tracking-widest text-muted mt-1">Years at UT</p>
+                                </div>
+                                <div class="profile-stat">
+                                    <div class="text-3xl font-bold text-ink">4</div>
+                                    <p class="text-xs uppercase tracking-widest text-muted mt-1">Case Studies</p>
+                                </div>
+                                <div class="profile-stat">
+                                    <div class="text-3xl font-bold text-ink">ADDIE</div>
+                                    <p class="text-xs uppercase tracking-widest text-muted mt-1">Workflow</p>
+                                </div>
+                                <div class="profile-stat">
+                                    <div class="text-3xl font-bold text-ink">UDL</div>
+                                    <p class="text-xs uppercase tracking-widest text-muted mt-1">Standard</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="#process" class="repo-card p-5 group">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-ink group-hover:text-clay transition-colors">Design Process</h3>
+                                <i class="fas fa-diagram-project text-muted"></i>
+                            </div>
+                            <p class="text-sm text-muted mt-3 leading-relaxed">ADDIE structure paired with agile delivery.</p>
+                        </a>
+                        <a href="#scholarship" class="repo-card p-5 group">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-ink group-hover:text-blue transition-colors">Scholarship</h3>
+                                <i class="fas fa-graduation-cap text-muted"></i>
+                            </div>
+                            <p class="text-sm text-muted mt-3 leading-relaxed">Research-informed digital learning strategy.</p>
+                        </a>
+                        <a href="#credentials" class="repo-card p-5 group">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-ink group-hover:text-olive transition-colors">Credentials</h3>
+                                <i class="fas fa-certificate text-muted"></i>
+                            </div>
+                            <p class="text-sm text-muted mt-3 leading-relaxed">Instructional, AI, and project management training.</p>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -536,14 +655,21 @@
     <!-- PORTFOLIO GRID -->
     <section id="portfolio" class="py-32 relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 reveal">
-                <span class="text-clay font-bold uppercase tracking-widest text-sm">Case Studies</span>
-                <h2 class="text-4xl font-bold text-ink mt-3">Selected Works</h2>
-                <p class="mt-4 text-lg text-muted max-w-2xl mx-auto">Showcasing academic transformation, curriculum innovation, and technical leadership.</p>
+            <div class="mb-8 reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+                <div>
+                    <span class="text-clay font-bold uppercase tracking-widest text-sm">Repositories</span>
+                    <h2 class="text-4xl font-bold text-ink mt-3">Selected Works</h2>
+                    <p class="mt-4 text-lg text-muted max-w-2xl">Pinned learning-design projects, formatted like a working repository index for quick scanning.</p>
+                </div>
+                <div class="hidden lg:flex items-center gap-6 text-sm text-muted">
+                    <span><i class="fas fa-code-branch mr-2"></i>Production-ready</span>
+                    <span><i class="fas fa-universal-access mr-2"></i>Accessible</span>
+                    <span><i class="fas fa-chart-line mr-2"></i>Evidence-led</span>
+                </div>
             </div>
 
             <!-- Filter Tabs -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12 reveal" id="filter-tabs">
+            <div class="repo-shell p-3 mb-8 reveal flex flex-wrap gap-2" id="filter-tabs">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="canvas">Canvas LMS</button>
                 <button class="filter-btn" data-filter="storyline">Storyline</button>
@@ -551,71 +677,94 @@
                 <button class="filter-btn" data-filter="research">Research</button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10" id="portfolio-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="portfolio-grid">
                 
                 <!-- Project 1: Social Work Simulation -->
-                <div class="group portfolio-card relative glass-card rounded-2xl overflow-hidden cursor-pointer reveal" data-category="canvas storyline">
-                    <div class="h-64 bg-soft/40 relative overflow-hidden flex items-center justify-center group-hover:bg-soft/70 transition-colors duration-500 border-b border-line-strong/40">
-                        <i class="fas fa-users text-8xl text-clay/20 card-icon transition-all duration-700 group-hover:scale-105 group-hover:text-clay/40"></i>
-                        <div class="absolute top-6 right-6 tag clay shadow-sm">
-                            Featured
+                <div class="group portfolio-card repo-card p-6 reveal" data-category="canvas storyline">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="min-w-0">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <h3 class="text-xl font-bold text-blue group-hover:text-clay transition-colors">social-work-simulation</h3>
+                                <span class="tag clay">Featured</span>
+                            </div>
+                            <p class="text-muted mt-4 leading-relaxed">Complex Storyline components, multi-course Canvas integration, and accessibility standards for applied practice scenarios.</p>
                         </div>
+                        <i class="fas fa-users text-2xl text-clay/70"></i>
                     </div>
-                    <div class="p-10">
-                        <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-clay transition-colors">Social Work Simulation</h3>
-                        <p class="text-muted mb-8 leading-relaxed">Designed complex Storyline components, managed multi-course Canvas integration, and established robust accessibility standards.</p>
-                        <div class="flex flex-wrap gap-6">
-                            <a href="#social-work-deep-dive" class="text-clay font-bold uppercase text-sm flex items-center group/link">
-                                Read Deep Dive <i class="fas fa-chevron-right ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
-                            </a>
-                        </div>
+                    <div class="mt-7 flex flex-wrap gap-x-5 gap-y-3 items-center">
+                        <span class="repo-meta"><span class="language-dot" style="background: var(--clay);"></span>Storyline</span>
+                        <span class="repo-meta"><i class="fas fa-layer-group"></i>Canvas LMS</span>
+                        <span class="repo-meta"><i class="fas fa-universal-access"></i>Accessibility</span>
                     </div>
+                    <a href="#social-work-deep-dive" class="mt-6 inline-flex items-center text-sm font-bold text-clay uppercase tracking-wider group/link">
+                        Read deep dive <i class="fas fa-chevron-right ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
+                    </a>
                 </div>
 
                 <!-- Project 2: HTML Interactive Objects -->
-                <div class="group portfolio-card relative glass-card rounded-2xl overflow-hidden cursor-pointer reveal" data-category="html">
-                    <a href="https://jiansuphd.github.io/interactive-learning-objects/" target="_blank" class="block h-full">
-                        <div class="h-64 bg-soft/40 relative overflow-hidden flex items-center justify-center group-hover:bg-soft/70 transition-colors duration-500 border-b border-line-strong/40">
-                            <i class="fas fa-code text-8xl text-olive/20 card-icon transition-all duration-700 group-hover:scale-105 group-hover:text-olive/40"></i>
+                <div class="group portfolio-card repo-card p-6 reveal" data-category="html">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="min-w-0">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <h3 class="text-xl font-bold text-blue group-hover:text-olive transition-colors">interactive-learning-objects</h3>
+                                <span class="tag olive">Live</span>
+                            </div>
+                            <p class="text-muted mt-4 leading-relaxed">Lightweight vanilla HTML learning objects designed for performance, portability, and maximum LMS compatibility.</p>
                         </div>
-                        <div class="p-10">
-                            <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-olive transition-colors">HTML Interactions</h3>
-                            <p class="text-muted mb-8 leading-relaxed">Lightweight, high-performance learning objects built with vanilla web technologies for maximum LMS compatibility.</p>
-                            <span class="text-olive font-bold uppercase text-sm flex items-center group/link">
-                                Launch Repository <i class="fas fa-external-link-alt ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
-                            </span>
-                        </div>
+                        <i class="fas fa-code text-2xl text-olive/75"></i>
+                    </div>
+                    <div class="mt-7 flex flex-wrap gap-x-5 gap-y-3 items-center">
+                        <span class="repo-meta"><span class="language-dot" style="background: var(--olive);"></span>HTML</span>
+                        <span class="repo-meta"><i class="fas fa-gauge-high"></i>Fast</span>
+                        <span class="repo-meta"><i class="fas fa-plug"></i>LMS-ready</span>
+                    </div>
+                    <a href="https://jiansuphd.github.io/interactive-learning-objects/" target="_blank" class="mt-6 inline-flex items-center text-sm font-bold text-olive uppercase tracking-wider group/link">
+                        Launch repository <i class="fas fa-external-link-alt ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
                     </a>
                 </div>
 
                 <!-- Project 3: Storyline Learning Objects -->
-                <div class="group portfolio-card relative glass-card rounded-2xl overflow-hidden cursor-pointer reveal" data-category="storyline">
-                    <a href="https://share.articulate.com/mdqHHMLwjJVolhygvCJhp" target="_blank" class="block h-full">
-                        <div class="h-64 bg-soft/40 relative overflow-hidden flex items-center justify-center group-hover:bg-soft/70 transition-colors duration-500 border-b border-line-strong/40">
-                            <i class="fas fa-shapes text-8xl text-violet/20 card-icon transition-all duration-700 group-hover:scale-105 group-hover:text-violet/40"></i>
+                <div class="group portfolio-card repo-card p-6 reveal" data-category="storyline">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="min-w-0">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <h3 class="text-xl font-bold text-blue group-hover:text-violet transition-colors">storyline-innovation-lab</h3>
+                                <span class="tag violet">Demo</span>
+                            </div>
+                            <p class="text-muted mt-4 leading-relaxed">Advanced variables, branching logic, and gamified instructional strategies built in Storyline 360.</p>
                         </div>
-                        <div class="p-10">
-                            <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-violet transition-colors">Storyline Innovation</h3>
-                            <p class="text-muted mb-8 leading-relaxed">Demonstrating advanced variables, complex branching, and gamified instructional strategies in Storyline 360.</p>
-                            <span class="text-violet font-bold uppercase text-sm flex items-center group/link">
-                                Try Interaction <i class="fas fa-external-link-alt ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
-                            </span>
-                        </div>
+                        <i class="fas fa-shapes text-2xl text-violet/75"></i>
+                    </div>
+                    <div class="mt-7 flex flex-wrap gap-x-5 gap-y-3 items-center">
+                        <span class="repo-meta"><span class="language-dot" style="background: var(--violet);"></span>Storyline</span>
+                        <span class="repo-meta"><i class="fas fa-code-branch"></i>Branching</span>
+                        <span class="repo-meta"><i class="fas fa-gamepad"></i>Gamified</span>
+                    </div>
+                    <a href="https://share.articulate.com/mdqHHMLwjJVolhygvCJhp" target="_blank" class="mt-6 inline-flex items-center text-sm font-bold text-violet uppercase tracking-wider group/link">
+                        Try interaction <i class="fas fa-external-link-alt ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
                     </a>
                 </div>
 
                 <!-- Project 4: MATH 112 -->
-                <div class="group portfolio-card relative glass-card rounded-2xl overflow-hidden cursor-pointer reveal" data-category="research canvas">
-                    <div class="h-64 bg-soft/40 relative overflow-hidden flex items-center justify-center group-hover:bg-soft/70 transition-colors duration-500 border-b border-line-strong/40">
-                        <i class="fas fa-chart-line text-8xl text-blue/20 card-icon transition-all duration-700 group-hover:scale-105 group-hover:text-blue/40"></i>
+                <div class="group portfolio-card repo-card p-6 reveal" data-category="research canvas">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="min-w-0">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <h3 class="text-xl font-bold text-blue group-hover:text-blue transition-colors">math-112-redesign</h3>
+                                <span class="tag blue">Case Study</span>
+                            </div>
+                            <p class="text-muted mt-4 leading-relaxed">Pedagogical alignment and data-driven LMS restructuring to address attrition in a high-enrollment course.</p>
+                        </div>
+                        <i class="fas fa-chart-line text-2xl text-blue/75"></i>
                     </div>
-                    <div class="p-10">
-                        <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-blue transition-colors">MATH 112 Redesign</h3>
-                        <p class="text-muted mb-8 leading-relaxed">Reversing attrition through pedagogical alignment and data-driven structural changes in the LMS environment.</p>
-                        <a href="#math-deep-dive" class="text-blue font-bold uppercase text-sm flex items-center group/link">
-                            Read Case Study <i class="fas fa-chevron-right ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
-                        </a>
+                    <div class="mt-7 flex flex-wrap gap-x-5 gap-y-3 items-center">
+                        <span class="repo-meta"><span class="language-dot" style="background: var(--blue);"></span>Canvas LMS</span>
+                        <span class="repo-meta"><i class="fas fa-chart-simple"></i>Analytics</span>
+                        <span class="repo-meta"><i class="fas fa-flask"></i>Research</span>
                     </div>
+                    <a href="#math-deep-dive" class="mt-6 inline-flex items-center text-sm font-bold text-blue uppercase tracking-wider group/link">
+                        Read case study <i class="fas fa-chevron-right ml-2 text-xs transition-transform group-hover/link:translate-x-1"></i>
+                    </a>
                 </div>
 
             </div>
@@ -1128,7 +1277,7 @@
         });
 
         // 2. TYPEWRITER EFFECT
-        const words = ["driving student success.", "empowering faculty.", "innovating curriculum.", "scaling accessibility."];
+        const words = ["drives student success.", "empowers faculty.", "modernizes curriculum.", "scales accessibility."];
         let i = 0;
         let timer;
 
