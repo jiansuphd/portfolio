@@ -164,4 +164,4 @@ The goal is reducing costly mistakes on non-trivial work, not slowing down simpl
 
 MIT
 ---
-**Backlinks:** [Root MOC](MOC.md)
+**Backlinks:** [Root MOC](portfolio/_meta/MOC.md)

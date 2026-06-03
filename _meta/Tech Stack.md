@@ -140,9 +140,9 @@ This guide walks you through every detail of Phase 3 improvements: accessibility
 | File | Type | Status | Notes |
 |------|------|--------|-------|
 | `Resume.pdf` | PDF | ✅ Committed | Linked in hero CTA |
-| `hero-bg.jpg` | Image | ❌ Missing | Referenced in CSS but not in repo  -  see [Work Plan §1.2](Work%20Plan.md#12-hero-background--css-mesh-gradient) |
+| `hero-bg.jpg` | Image | ❌ Missing | Referenced in CSS but not in repo  -  see [Work Plan §1.2](portfolio/_meta/Work%20Plan.md#12-hero-background--css-mesh-gradient) |
 
-## Planned Additions (from [Work Plan.md](Work%20Plan.md))
+## Planned Additions (from [Work Plan.md](portfolio/_meta/Work%20Plan.md))
 
 | Tool | Purpose | Phase |
 |------|---------|-------|
@@ -151,4 +151,4 @@ This guide walks you through every detail of Phase 3 improvements: accessibility
 
 ---
 
-**Backlinks:** [README.md](../README.md) | [Work Plan.md](Work%20Plan.md) | [progress.md](progress.md)
+**Backlinks:** [README.md](../README.md) | [Work Plan.md](portfolio/_meta/Work%20Plan.md) | [progress.md](portfolio/_meta/progress.md)

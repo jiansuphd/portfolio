@@ -27,11 +27,11 @@ portfolio/
 
 | File | Purpose |
 |------|---------|
-| [progress.md](progress.md) | Append-only dated ops log of every change made to this repo |
-| [Work Plan.md](Work%20Plan.md) | 3-phase design improvement roadmap for `index.html` |
+| [progress.md](portfolio/_meta/progress.md) | Append-only dated ops log of every change made to this repo |
+| [Work Plan.md](portfolio/_meta/Work%20Plan.md) | 3-phase design improvement roadmap for `index.html` |
 | [Tech Stack.md](Tech%20Stack.md) | Frontend deps, custom CSS patterns, JS modules, hosting, assets |
 | [skills_index.md](skills_index.md) | Gemini CLI skills index |
-| [karpathy_llm_wiki.md](karpathy_llm_wiki.md) | LLM reference wiki |
+| [karpathy_llm_wiki.md](portfolio/_meta/karpathy_llm_wiki.md) | LLM reference wiki |
 
 ---
 
